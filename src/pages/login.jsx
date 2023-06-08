@@ -1,8 +1,36 @@
-import Background from "../basics/background";
-import Logo from "../../assets/logo.png"
+import Background from "../components/background.jsx";
+import Logo from "../assets/logo.png";
 import { AiOutlineMail, AiOutlineLock } from 'react-icons/ai';
+import { useNavigate } from "react-router-dom";
+import { useForm } from 'react-hook-form';
 
 const Login = () => {
+    
+    const { register, handleSubmit } = useForm()
+    const navigate = useNavigate();
+    const onSubmit = (data) => {
+
+      console.log(data.email)
+      console.log(data.password)
+
+      fetch('http://localhost:8080/login',{
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(({ email: data.email, password: data.password }))
+    })
+    .then((res) => res.json())
+    .then((data) =>{
+      if(data.user.role === 'waiter'){
+        navigate('/waiter');
+      }
+      
+    }) 
+
+  }
+
+
     return (
         <>        
             <Background />
@@ -12,31 +40,28 @@ const Login = () => {
                 <div>
                   <img src={Logo} alt="logo" className="logo-login" />
                 </div>
-                  <form className="form">      
+                  <form className="form" onSubmit={handleSubmit(onSubmit)}>      
                   
                       <div className="input-login-container">           
                       <AiOutlineMail className="email-icon" />   
-                      <input
+                      <input {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
                         type="text"
                         className="input-login"
                         id="email"
                         placeholder="Email" 
                       />             
                       </div>  
-
                 
                       <div className="input-login-container">  
                       <AiOutlineLock className="password-icon" />
-                      <input
+                      <input {...register('password', { required: true})}
                         type="password"
                         className="input-login"
                         id="password"
                         placeholder="Password"
                       />   
-                      </div>           
+                      </div>     
 
-                       
-                    
                       <button type="submit" className="submit-btn">
                         <span className="transition"></span>
                         <span className="gradient"></span>
@@ -50,5 +75,6 @@ const Login = () => {
         </>
     );
 };
+
 
 export default Login;
