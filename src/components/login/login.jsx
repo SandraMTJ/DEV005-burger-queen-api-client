@@ -4,8 +4,7 @@ import { AiOutlineMail, AiOutlineLock } from 'react-icons/ai';
 
 const Login = () => {
     return (
-        <>
-        
+        <>        
             <Background />
             <section className="section-login">
 
