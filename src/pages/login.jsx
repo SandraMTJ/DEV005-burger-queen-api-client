@@ -6,28 +6,30 @@ import { useForm } from 'react-hook-form';
 
 const Login = () => {
     
-    const { register, handleSubmit } = useForm()
-    const navigate = useNavigate();
-    const onSubmit = (data) => {
+  const { register, handleSubmit } = useForm()
+  const navigate = useNavigate();
 
-      console.log(data.email)
-      console.log(data.password)
+  const onSubmit = (data) => {
 
-      fetch('http://localhost:8080/login',{
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(({ email: data.email, password: data.password }))
+    console.log(data.email)
+    console.log(data.password)
+
+    fetch('http://localhost:8080/login',{
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(({ email: data.email, password: data.password }))
     })
     .then((res) => res.json())
     .then((data) =>{
       if(data.user.role === 'waiter'){
         navigate('/waiter');
-      }
-      
+      }      
     }) 
-
+    .catch((err) => {
+      console.error(err);
+    })
   }
 
 
