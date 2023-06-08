@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois&family=Kalam&display=swap');
+*{
+    font-family: 'Jacques Francois', serif;
+}
+/*Background*/
+.background-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    background-color: #0f0f0f;    
+}
+.up-bars, .bottom-bars{
+    position: absolute;
+    width: 100%;      
+}
+.up-bars {     
+    top: 8%;
+}
+
+.bottom-bars{
+    bottom: 8%;
+}
+
+.form{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+}
+
+/*Login*/
+
+.section-login{
+    height: 100vh;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5%;
+}
+.logo-login{
+    width: 520px;
+    height: 420px;
+}
+
+.input-login{
+  font-size: 35px;
+  width: 380px;
+  height: 90px;
+  border-radius: 15px;
+  padding: 10px 0px 10px 60px;
+  margin: 20px
+}
+
+.submit-btn {
+  font-family: 'Jacques Francois', serif;
+  font-size: 40px;
+  padding: 3px 30px;
+  background: #9A601B;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+.submit-btn:hover .transition {
+  transform: scale(0.97);
+}
+
+.email-icon, .password-icon{
+  font-size: 30px;
+  position: absolute;
+  margin: 50px 40px;
+}
+
+@media (min-width: 835px) {
+  .login-container{  
+    width: 100%; 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+}
