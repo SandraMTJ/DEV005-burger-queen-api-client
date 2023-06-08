@@ -1,69 +1,137 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+@import url('https://fonts.googleapis.com/css2?family=Jacques+Francois&family=Kalam&display=swap');
+*{
+    font-family: 'Jacques Francois', serif;
+}
+/*Background*/
+.background-section {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; 
+    background-color: #0f0f0f;    
+}
+.up-bars, .bottom-bars{
+    position: absolute;
+    width: 100%;      
+}
+.up-bars {     
+    top: 8%;
 }
 
-a {
+.bottom-bars{
+    bottom: 8%;
+}
+
+.form{
+    display:flex;
+    margin-right: 7%;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    width: 100%;
+    height: 100%;
+    *border: 2px solid yellow;
+    padding:auto;
+}
+
+/*Login*/
+.login-container{
+    width: 100%;
+    height: 55%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    *border: 2px solid red;
+}
+.section-login{
+    height: 100vh;
+    border: 2px solid blue;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5%;
+}
+.logo-login{
+    width: 520px;
+    height: 420px;
+}
+
+.form-label{
+  color: gray;
+  font-size: 2rem;
+}
+
+.input-login{
+    padding: 30px;
+    height: 150%;
+    width: 120%;
+    font-size: 25px;
+    padding: 1em;
+}
+
+.mb-3 {
+  padding-bottom: 15px;
+}
+
+.submit-btn {
+  font-family: 'Jacques Francois', serif;
+  font-size: 40px;
+  padding: 0.3em 1.5em;
   font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+  background: #9A601B;
+  color: white;
+  border: none;
+  position: relative;
+  overflow:hidden;
+  border-radius: 0.6em;
+
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+.gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 0.6em;
+  margin-top: -0.25em;
+  background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, ));
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.label {
+  position: relative;
+  top: -1px;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.transition {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-duration: 500ms;
+  background-color: rgba(31, 41, 55, 0.6);
+  border-radius: 9999px;
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.submit-btn:hover .transition {
+  width: 14em;
+  height: 14em;
+}
+
+.submit-btn:active {
+  transform: scale(0.97);
+}
+
+.email-icon{
+
+  position: absolute;
+  top: 245px;
+  size: 50px;
+  left: 540px;
+  
 }
