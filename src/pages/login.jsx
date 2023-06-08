@@ -1,13 +1,13 @@
 import Background from "../components/background.jsx";
 import Logo from "../assets/logo.png";
 import { AiOutlineMail, AiOutlineLock } from 'react-icons/ai';
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
 
 const Login = () => {
     
     const { register, handleSubmit } = useForm()
-
+    const navigate = useNavigate();
     const onSubmit = (data) => {
 
       console.log(data.email)
@@ -22,8 +22,11 @@ const Login = () => {
     })
     .then((res) => res.json())
     .then((data) =>{
-      console.log(data)
-    })
+      if(data.user.role === 'waiter'){
+        navigate('/waiter');
+      }
+      
+    }) 
 
   }
 
