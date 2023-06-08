@@ -1,4 +1,4 @@
-import Bars from '../../assets/bars.png'
+import Bars from '../assets/bars.png'
 const Background = () => {
     return (
         <section className = "background-section">
