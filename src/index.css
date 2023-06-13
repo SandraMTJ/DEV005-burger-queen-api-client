@@ -98,14 +98,13 @@
   border: 1px solid red;
   display: flex;
   background-color: white;
-  color: black;
-  width: 20%;
-  height: 50px;
+  background-color: rgb(124, 103, 103);
 }
 
 .btn-logout{
-  width: 5px;
-  height: 5px;
+  width: 50px;
+  height: 50px;
+  background-color: aqua;
 }
 
 @media (min-width: 835px) {

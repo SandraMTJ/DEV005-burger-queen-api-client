@@ -32,7 +32,6 @@ const LoginForm = () => {
             setUserRole(data.user.role);
             localStorage.setItem('token', data.accessToken);
             localStorage.setItem('userRole', data.user.role); 
-            
 
             if(data.user.role === 'waiter'){
                 navigate('/waiter');
