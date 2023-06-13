@@ -1,8 +1,13 @@
 import { AiOutlineMail, AiOutlineLock } from 'react-icons/ai';
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { useState } from 'react';
+
 
 const LoginForm = () => {
+
+    const [token, setToken] = useState('');
+    const [userRole, setUserRole] = useState('');
     
     const { register, handleSubmit, formState: { errors }, setError } = useForm()
    
@@ -17,13 +22,21 @@ const LoginForm = () => {
         })
         .then((res) => {
             if (res.status === 400) {
-                setError('password', { type: 'invalid', message: 'Invalid credentials' });            }
+                setError('password', { type: 'invalid', message: 'Invalid credentials' });          
+          }
             return res.json();
           })
-        .then((data) =>{
+        .then((data) =>{              
+
+            setToken(data.accessToken);
+            setUserRole(data.user.role);
+            localStorage.setItem('token', data.accessToken);
+            localStorage.setItem('userRole', data.user.role); 
+            
+
             if(data.user.role === 'waiter'){
                 navigate('/waiter');
-            }      
+            }  
         })
     }
 

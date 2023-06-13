@@ -1,6 +1,6 @@
-import Background from "../components/background.jsx";
-import LoginForm from "../components/login/loginform.jsx";
-import LogoLogin from "../components/login/logologin.jsx";
+import Background from "../components/Background.jsx";
+import LoginForm from "../components/login/LoginForm.jsx";
+import LogoLogin from "../components/login/LogoLogin.jsx";
 
 const Login = () => {    
 
