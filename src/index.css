@@ -91,6 +91,23 @@
   margin: 50px 40px;
 }
 
+/* Logout */
+
+.btn-logout-container{
+
+  border: 1px solid red;
+  display: flex;
+  background-color: white;
+  color: black;
+  width: 20%;
+  height: 50px;
+}
+
+.btn-logout{
+  width: 5px;
+  height: 5px;
+}
+
 @media (min-width: 835px) {
   .login-container{  
     width: 100%; 
