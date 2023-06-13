@@ -31,8 +31,6 @@ const Login = () => {
       console.error(err);
     })
   }
-
-
     return (
         <>        
             <Background />
@@ -68,9 +66,7 @@ const Login = () => {
                         <span className="transition"></span>
                         <span className="gradient"></span>
                         <span className="label">Submit</span>
-                      </button>
-                    
-                    
+                      </button>          
                   </form>
                 </div>
             </section>
