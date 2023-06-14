@@ -11,12 +11,10 @@ const Logout = () => {
     };
 
     return (
-        <div className='btn-logout-container'>
-            <button className="btn-logout" onClick={logout}>
-                <RiLogoutBoxRLine className="password-icon" />
+            <button className="btn-navBar" onClick={logout}>
+                <RiLogoutBoxRLine className="navBar-icon" />
                 Logout
             </button>
-        </div>
     );
 };
 

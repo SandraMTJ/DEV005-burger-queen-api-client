@@ -33,8 +33,8 @@ const LoginForm = () => {
             localStorage.setItem('token', data.accessToken);
             localStorage.setItem('userRole', data.user.role); 
 
-            if(data.user.role === 'waiter'){
-                navigate('/waiter');
+            if(data){
+                navigate('/wall');
             }  
         })
     }

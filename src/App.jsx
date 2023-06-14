@@ -1,5 +1,5 @@
 import Login from './pages/Login';
-import Waiter from './pages/Waiter';
+import Wall from './pages/Wall';
 import { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -14,6 +14,8 @@ function App() {
 
     if (!token) {
       navigate('/'); 
+    } else{
+      navigate('/wall');
     }
   }, [navigate]);
 
@@ -21,7 +23,7 @@ function App() {
     <div>
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/waiter" element={<Waiter />} />
+        <Route path="/wall" element={<Wall />} />
       </Routes>
     </div>
   );
