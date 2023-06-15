@@ -25,3 +25,19 @@
 //     });
 //   });
 // });
+
+
+import { render, screen} from '@testing-library/react';
+import LoginForm from './loginform';
+import { vi } from 'vitest'
+
+vi.mock('react-router-dom', () =>{
+    return{useNavigate: vi.fn()}
+})
+describe('LoginForm', () =>{
+    test("renders login form",()=>{
+        render(<LoginForm/>)
+        screen.debug()
+        expect(true).toBe(true)
+    });
+})

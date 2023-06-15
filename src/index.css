@@ -218,6 +218,9 @@
   border-radius: 20px;
 }
 
+.selected{
+  background-color: #D68C1C;
+}
 
 @media (min-width: 835px) {
   .login-container{  

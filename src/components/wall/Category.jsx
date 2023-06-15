@@ -1,12 +1,30 @@
-const Category = ({ onSelect }) => {
+import { useState } from "react";
 
+const Category = ({ onSelect }) => {
+    const [selectedButton, setSelectedButton] = useState('breakfast');
+  
+    const handleButtonClick = (category) => {
+      setSelectedButton(category);
+      onSelect(category);
+    };
+  
     return (
-            <div className="container-category">
-                <label className="name-client-label">Category: </label>
-                <button className="btn-breakfast"  onClick={() => onSelect('breakfast')}>Breakfast</button>
-                <button className="btn-lunch" onClick={() => onSelect('lunch')}>Lunch - Dinner</button>     
-            </div>
+      <div className="container-category">
+        <label className="name-client-label">Category: </label>
+        <button
+          className={`btn-breakfast ${selectedButton === 'breakfast' ? 'selected' : ''}`}
+          onClick={() => handleButtonClick('breakfast')}
+        >
+          Breakfast
+        </button>
+        <button
+          className={`btn-lunch ${selectedButton === 'lunch' ? 'selected' : ''}`}
+          onClick={() => handleButtonClick('lunch')}
+        >
+          Lunch - Dinner
+        </button>
+      </div>
     );
-};
+  };
 
 export default Category;

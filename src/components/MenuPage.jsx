@@ -32,7 +32,7 @@ const ProductContainer = ({ selectedMenu }) => {
             <div className='img-container'>
               <img src={product.image} alt={product.image} className="product-image" />
             </div>
-            <span>{product.price}</span>
+            <span>${product.price}.00</span>
           </div>
         ))}
       </div>
