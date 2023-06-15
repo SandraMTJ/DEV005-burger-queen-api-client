@@ -24,15 +24,19 @@ const ProductContainer = ({ selectedMenu }) => {
   }, [selectedMenu]);
 
   return (
-    <div className="container-products">
-      {products.map(product => (
-        <div key={product.id} className='card-product'>
-          <span>{product.name}</span>
-          <img src={product.image} alt={product.image} className="product-image" />
-          <span>{product.price}</span>
-        </div>
-      ))}
-    </div>
+    <section className='section-menu'>
+      <div className="container-products">
+        {products.map(product => (
+          <div key={product.id} className='card-product'>
+            <span>{product.name}</span>
+            <div className='img-container'>
+              <img src={product.image} alt={product.image} className="product-image" />
+            </div>
+            <span>{product.price}</span>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };
 
