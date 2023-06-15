@@ -190,8 +190,7 @@
   flex-wrap: wrap;  
   width: 100vw;  
   height: 60vh;
-  overflow: auto;
-  
+  overflow: auto;  
 }
 .card-product{ 
   margin: 30px 30px; 
