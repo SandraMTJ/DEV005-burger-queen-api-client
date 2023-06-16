@@ -1,43 +1,59 @@
-// import React from 'react';
-// import '@testing-library/jest-dom/extend-expect';
-// import { render, fireEvent } from '@testing-library/react';
-// import LoginForm from './LoginForm';
+import { render, screen } from '@testing-library/react';
+import LoginForm from './LoginForm';
+import { vi  } from 'vitest'
+// import userEvent from '@testing-library/user-event';
 
 
-// describe('LoginForm', () => {
-//   it('should submit the form with email and password', () => {
-//     const { getByLabelText, getByText } = render(<LoginForm />);
-//     const emailInput = getByLabelText('Email');
-//     const passwordInput = getByLabelText('Password');
-//     const submitButton = getByText('Submit');
+// Mockear useNavigate
+vi.mock('react-router-dom', () => {
+    return {
+      useNavigate: vi.fn()
+    };
+  });
 
-//     fireEvent.change(emailInput, { target: { value: 'test@test.com' } });
-//     fireEvent.change(passwordInput, { target: { value: 'password123' } });
-//     fireEvent.click(submitButton);
+render(<LoginForm />);
+const emailInput = screen.getByPlaceholderText('Email');
+const passwordInput = screen.getByPlaceholderText('Password');
+const submitButton = screen.getByText('Submit');
 
-//     // assert that the form was submitted with the correct values
-//     expect(fetch).toHaveBeenCalledWith('http://localhost:8080/login', {
-//       method: 'POST',
-//       headers: {
-//         'Content-Type': 'application/json',
-//       },
-//       body: JSON.stringify({ email: 'test@test.com', password: 'password123' }),
-//     });
-//   });
-// });
+describe('LoginForm', () => {
+  it('should render the form', () => {
+    expect(emailInput).toBeInTheDocument();
+    expect(passwordInput).toBeInTheDocument();
+    expect(submitButton).toBeInTheDocument();
+  });
+});
+
+import {  fireEvent } from '@testing-library/react';
 
 
-import { render, screen} from '@testing-library/react';
-import LoginForm from './loginform';
-import { vi } from 'vitest'
+describe('LoginForm', () => {
 
-vi.mock('react-router-dom', () =>{
-    return{useNavigate: vi.fn()}
-})
-describe('LoginForm', () =>{
-    test("renders login form",()=>{
-        render(<LoginForm/>)
-        screen.debug()
-        expect(true).toBe(true)
+  it('should handle API request failure', async () => {
+    // Mock the fetch function
+    window.fetch = vi.fn().mockResolvedValue({
+      json: vi.fn().mockResolvedValue({
+        message: 'Invalid credentials',
+      }),
+      status: 400,
     });
-})
+
+    render(<LoginForm />);
+
+    const emailInput = screen.getByPlaceholderText('Email');
+    const passwordInput = screen.getByPlaceholderText('Password');
+    const submitButton = screen.getByText('Submit');
+
+    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
+    fireEvent.change(passwordInput, { target: { value: 'testPassword' } });
+    fireEvent.click(submitButton);
+
+    // Wait for the error message to appear
+    await screen.findByText('Invalid credentials');
+
+    // Assert the error message is displayed
+    expect(screen.getByText('Invalid credentials')).toBeInTheDocument();
+  });
+
+  // Add more test cases as needed
+});
