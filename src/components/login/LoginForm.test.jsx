@@ -1,59 +1,54 @@
-import { render, screen } from '@testing-library/react';
-import LoginForm from './LoginForm';
-import { vi  } from 'vitest'
-// import userEvent from '@testing-library/user-event';
 
+import { render, screen, fireEvent, waitFor} from '@testing-library/react';
+import LoginForm from './LoginForm';
+import { vi } from 'vitest';
 
 // Mockear useNavigate
-vi.mock('react-router-dom', () => {
-    return {
-      useNavigate: vi.fn()
-    };
-  });
+vi.mock('react-router-dom', () =>{
+    return{useNavigate: vi.fn()}
+})  
 
-render(<LoginForm />);
-const emailInput = screen.getByPlaceholderText('Email');
-const passwordInput = screen.getByPlaceholderText('Password');
-const submitButton = screen.getByText('Submit');
+describe('LoginForm', () =>{
 
-describe('LoginForm', () => {
-  it('should render the form', () => {
-    expect(emailInput).toBeInTheDocument();
-    expect(passwordInput).toBeInTheDocument();
-    expect(submitButton).toBeInTheDocument();
-  });
-});
-
-import {  fireEvent } from '@testing-library/react';
-
-
-describe('LoginForm', () => {
-
-  it('should handle API request failure', async () => {
-    // Mock the fetch function
-    window.fetch = vi.fn().mockResolvedValue({
-      json: vi.fn().mockResolvedValue({
-        message: 'Invalid credentials',
-      }),
-      status: 400,
+    // Tests that an error message is displayed when an invalid email is submitted
+    test("Email invalid", async () => {
+        const { getByPlaceholderText, getByText} = render(<LoginForm />);
+    
+        fireEvent.change(getByPlaceholderText('Email'), { target: { value: 'invalidemail' } });
+        fireEvent.change(getByPlaceholderText('Password'), { target: { value: 'password' } });
+        fireEvent.click(getByText('Submit'));
+    
+        await waitFor(() => expect(getByText('Invalid email')).toBeInTheDocument());
     });
 
-    render(<LoginForm />);
+    // Tests that an error message is displayed when an invalid password is submitted
+    test("Password invalid", async () => {
+        const { getByPlaceholderText, getByText } = render(<LoginForm />);
+    
+        fireEvent.change(getByPlaceholderText('Email'), { target: { value: 'test@test.com' } });
+        fireEvent.change(getByPlaceholderText('Password'), { target: { value: '' } });
+        fireEvent.click(getByText('Submit'));
+    
+        await waitFor(() => expect(getByText('Password required')).toBeInTheDocument());
+    });
 
-    const emailInput = screen.getByPlaceholderText('Email');
-    const passwordInput = screen.getByPlaceholderText('Password');
-    const submitButton = screen.getByText('Submit');
+    test('should render the form', () => {
+        render(<LoginForm />);
+        const emailInput = screen.getByPlaceholderText('Email');
+        const passwordInput = screen.getByPlaceholderText('Password');
+        const submitButton = screen.getByText('Submit');        
+        expect(emailInput).toBeInTheDocument();
+        expect(passwordInput).toBeInTheDocument();
+        expect(submitButton).toBeInTheDocument();
+    }); 
+})
 
-    fireEvent.change(emailInput, { target: { value: 'test@example.com' } });
-    fireEvent.change(passwordInput, { target: { value: 'testPassword' } });
-    fireEvent.click(submitButton);
 
-    // Wait for the error message to appear
-    await screen.findByText('Invalid credentials');
 
-    // Assert the error message is displayed
-    expect(screen.getByText('Invalid credentials')).toBeInTheDocument();
-  });
 
-  // Add more test cases as needed
-});
+
+
+
+
+
+

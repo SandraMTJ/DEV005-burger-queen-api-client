@@ -4,7 +4,7 @@ import StatusBtn from './StatusBtn.jsx';
 import AdminBtn from './AdminBtn.jsx';
 import LogoWall from './LogoWall.jsx';
 
-const NavBar = () => {
+const NavBar = ({ setShowOrder }) => {
     const userRole = localStorage.getItem('userRole');
     return (
         <>
@@ -12,7 +12,7 @@ const NavBar = () => {
             <div className='container-btns'>
                 {userRole === 'admin' && <AdminBtn />}
                 {(userRole === 'waiter' || userRole === 'admin') && <StatusBtn />}
-                {(userRole === 'waiter' || userRole === 'admin') && <OrderBtn />}
+                {(userRole === 'waiter' || userRole === 'admin') && <OrderBtn setShowOrder={setShowOrder} />}
                 <Logout />
             </div>
         </>
@@ -20,3 +20,5 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+

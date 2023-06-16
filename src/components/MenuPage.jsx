@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import Category from './wall/Category';
+import ClientName from './wall/ClientName';
+import { BiPlusMedical } from 'react-icons/bi';
 
 const ProductContainer = ({ selectedMenu }) => {
   const [products, setProducts] = useState([]);
@@ -28,6 +30,7 @@ const ProductContainer = ({ selectedMenu }) => {
       <div className="container-products">
         {products.map(product => (
           <div key={product.id} className='card-product'>
+            <button className='btn-add-product'><BiPlusMedical/></button>
             <span>{product.name}</span>
             <div className='img-container'>
               <img src={product.image} alt={product.image} className="product-image" />
@@ -48,10 +51,11 @@ const MenuPage = () => {
   };
 
   return (
-    <div>
+    <>
       <Category onSelect={handleMenuSelect} />
+      <ClientName />
       <ProductContainer selectedMenu={selectedMenu} />
-    </div>
+    </>
   );
 };
 

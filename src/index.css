@@ -137,6 +137,23 @@
 }
 
 /* Menu */
+
+.btn-add-product{
+  border: none; 
+  background-color: #D68C1C;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: -25px;
+  right: -20px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
 .name-client-input{
   border-radius: 15px;
   width: 290px;
@@ -154,7 +171,7 @@
   color: white;
   position: absolute;
   top: 150px;
-  left: 470px;  
+  left: 450px;  
   display:flex;
   align-items: center;
   flex-direction: column;
@@ -203,6 +220,7 @@
   justify-content: center;
   width: 40%;
   height: 40%;
+  position: relative;
 }
 
 .img-container{
@@ -220,6 +238,89 @@
 
 .selected{
   background-color: #D68C1C;
+}
+
+/* orders */
+
+.order-container{
+  border: 2px solid #D68C1C;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;  
+  width: 100vw;  
+  height: 40vh;
+  overflow: auto;  
+}
+
+.icon-close-order{
+  position: absolute;
+  top: 13px;
+  right: 20px;
+  color:white;
+  font-size: 60px;    
+}
+
+.order-title{
+  margin-top: 25px;
+  font-size: 45px;
+  color:white;
+}
+.container-name-client-order{
+  display:flex;
+  width: 90%;
+  margin: 40px 0 20px 0;
+}
+.name-client-order{
+  font-size: 38px;
+  color: white;
+}
+.titles-orders-table{
+  font-size: 30px;
+}
+.section-orders{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid cyan;
+}  
+
+.orders-title-table{
+  width: 90%;
+}
+
+.orders-content-table{
+  margin-top: 50px;
+  width: 90%;
+}
+
+.content-orders-table{
+  font-size: 30px;
+}
+
+.order-celd1, .order-celd2, .order-celd3 {
+  background-color: #d89542;
+  text-align: center;
+  width:30%;
+}
+
+.order-celd1{
+  border-radius: 13px 0 0 13px;
+}
+
+.order-celd3{
+  border-radius: 0 13px 13px 0;
+}
+
+.order-celd4, .order-celd5, .order-celd6 {
+  color: white;
+  text-align: center;
+  width:30%;
+}
+
+.order-celd5 {
+  border-left: 2px solid #d89542;
+  border-right: 2px solid #d89542;
 }
 
 @media (min-width: 835px) {
@@ -241,7 +342,7 @@
   }
 
   .container-name{
-    top: 250px;
+    top: 260px;
     left: 110px;
     align-items: start;
   }
@@ -252,14 +353,14 @@
   }
 
   .name-client-input{
-    width: 220px;
-    height: 45px;
+    width: 245px;
+    height: 55px;
     margin-top: 5px;
   }
 
   .container-category{
     position: absolute;
-    top: 370px;
+    top: 360px;
     left: 110px; 
     display:flex;
     flex-direction: column;
@@ -268,9 +369,9 @@
   
   .btn-lunch, .btn-breakfast{
     border-radius: 15px;
-    width: 220px;
-    height: 50px;
-    margin: 5px 0px;
+    width: 245px;
+    height: 55px;
+    margin: 8px 0px;
   }
   
   .btn-admin {
