@@ -27,12 +27,12 @@ const LoginForm = () => {
             return res.json();
           })
         .then((data) =>{              
-
+            
             setToken(data.accessToken);
             setUserRole(data.user.role);
             localStorage.setItem('token', data.accessToken);
             localStorage.setItem('userRole', data.user.role); 
-
+            
             if(data){
                 navigate('/wall');
             }  

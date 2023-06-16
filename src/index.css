@@ -137,6 +137,25 @@
 }
 
 /* Menu */
+
+.btn-add-product{
+  border: none; 
+  background-color: #D68C1C;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  top: -25px;
+  right: -20px;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.order-container{
+  background-color: red;
+  width: 300px;
+  height: 300px;
+}
 .name-client-input{
   border-radius: 15px;
   width: 290px;
@@ -154,7 +173,7 @@
   color: white;
   position: absolute;
   top: 150px;
-  left: 470px;  
+  left: 450px;  
   display:flex;
   align-items: center;
   flex-direction: column;
@@ -203,6 +222,7 @@
   justify-content: center;
   width: 40%;
   height: 40%;
+  position: relative;
 }
 
 .img-container{
@@ -241,7 +261,7 @@
   }
 
   .container-name{
-    top: 250px;
+    top: 260px;
     left: 110px;
     align-items: start;
   }
@@ -252,14 +272,14 @@
   }
 
   .name-client-input{
-    width: 220px;
-    height: 45px;
+    width: 245px;
+    height: 55px;
     margin-top: 5px;
   }
 
   .container-category{
     position: absolute;
-    top: 370px;
+    top: 360px;
     left: 110px; 
     display:flex;
     flex-direction: column;
@@ -268,9 +288,9 @@
   
   .btn-lunch, .btn-breakfast{
     border-radius: 15px;
-    width: 220px;
-    height: 50px;
-    margin: 5px 0px;
+    width: 245px;
+    height: 55px;
+    margin: 8px 0px;
   }
   
   .btn-admin {
