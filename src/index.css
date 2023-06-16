@@ -151,11 +151,9 @@
   align-items: center;
   justify-content: center;
 }
-.order-container{
-  background-color: red;
-  width: 300px;
-  height: 300px;
-}
+
+
+
 .name-client-input{
   border-radius: 15px;
   width: 290px;
@@ -240,6 +238,89 @@
 
 .selected{
   background-color: #D68C1C;
+}
+
+/* orders */
+
+.order-container{
+  border: 2px solid #D68C1C;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;  
+  width: 100vw;  
+  height: 40vh;
+  overflow: auto;  
+}
+
+.icon-close-order{
+  position: absolute;
+  top: 13px;
+  right: 20px;
+  color:white;
+  font-size: 60px;    
+}
+
+.order-title{
+  margin-top: 25px;
+  font-size: 45px;
+  color:white;
+}
+.container-name-client-order{
+  display:flex;
+  width: 90%;
+  margin: 40px 0 20px 0;
+}
+.name-client-order{
+  font-size: 38px;
+  color: white;
+}
+.titles-orders-table{
+  font-size: 30px;
+}
+.section-orders{
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid cyan;
+}  
+
+.orders-title-table{
+  width: 90%;
+}
+
+.orders-content-table{
+  margin-top: 50px;
+  width: 90%;
+}
+
+.content-orders-table{
+  font-size: 30px;
+}
+
+.order-celd1, .order-celd2, .order-celd3 {
+  background-color: #d89542;
+  text-align: center;
+  width:30%;
+}
+
+.order-celd1{
+  border-radius: 13px 0 0 13px;
+}
+
+.order-celd3{
+  border-radius: 0 13px 13px 0;
+}
+
+.order-celd4, .order-celd5, .order-celd6 {
+  color: white;
+  text-align: center;
+  width:30%;
+}
+
+.order-celd5 {
+  border-left: 2px solid #d89542;
+  border-right: 2px solid #d89542;
 }
 
 @media (min-width: 835px) {

@@ -1,6 +1,6 @@
 
 import { render, screen, fireEvent, waitFor} from '@testing-library/react';
-import LoginForm from './loginform';
+import LoginForm from './LoginForm';
 import { vi } from 'vitest';
 
 // Mockear useNavigate
