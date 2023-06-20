@@ -4,21 +4,21 @@ import { BiPlusMedical } from 'react-icons/bi';
 import { FaMinus } from 'react-icons/fa';
 
 
-const Order = ({ setShowOrder, allProducts, setAllProducts, total, clientName, setCountProducts, setTotal, countProducts }) => { // Pass the setShowOrder function as a prop
+const Order = (props) => { // Pass the setShowOrder function as a prop
 
   
   const handleClick = () => {
-    setShowOrder(false); // Set showOrder to false when clicked
+    props.setShowOrder(false); // Set showOrder to false when clicked
   };
 
   const onDeleteProduct = product => {
-		const results = allProducts.filter(
+		const results = props.allProducts.filter(
 			item => item.id !== product.id
 		);
 
-		setTotal(total - product.price * product.qty);
-		setCountProducts(countProducts - product.qty);
-		setAllProducts(results);
+		props.setTotal(props.total - product.price * product.qty);
+		props.setCountProducts(props.countProducts - product.qty);
+		props.setAllProducts(results);
 	};
 
   const onReduceProduct = product => {
@@ -26,9 +26,9 @@ const Order = ({ setShowOrder, allProducts, setAllProducts, total, clientName, s
       onDeleteProduct(product);
     } else {
       const newQuantity = product.qty - 1;
-      setTotal(total - product.price);
-      setCountProducts(countProducts - 1);
-      setAllProducts(prevProducts =>
+      props.setTotal(props.total - product.price);
+      props.setCountProducts(props.countProducts - 1);
+      props.setAllProducts(prevProducts =>
         prevProducts.map(prevProduct =>
           prevProduct.id === product.id ? { ...prevProduct, qty: newQuantity } : prevProduct
         )
@@ -38,9 +38,9 @@ const Order = ({ setShowOrder, allProducts, setAllProducts, total, clientName, s
 
   const onIncreaseProduct = product => {    
       const newQuantity = product.qty + 1;
-      setTotal(total + product.price);
-      setCountProducts(countProducts + 1);
-      setAllProducts(prevProducts =>
+      props.setTotal(props.total + product.price);
+      props.setCountProducts(props.countProducts + 1);
+      props.setAllProducts(prevProducts =>
         prevProducts.map(prevProduct =>
           prevProduct.id === product.id ? { ...prevProduct, qty: newQuantity } : prevProduct
         )
@@ -55,7 +55,7 @@ const Order = ({ setShowOrder, allProducts, setAllProducts, total, clientName, s
       <section className="section-orders">
         <h1 className="order-title">Order</h1>
         <div className='container-name-client-order'>
-            <span className='name-client-order'>Client: {clientName}</span>
+            <span className='name-client-order'>Client: {props.clientName}</span>
         </div>
         <table className="orders-title-table">
             <thead className="titles-orders-table">                    
@@ -71,7 +71,7 @@ const Order = ({ setShowOrder, allProducts, setAllProducts, total, clientName, s
         <div className="order-container">         
           <table className="orders-content-table">
               <thead className="content-orders-table">
-                  {allProducts.map(product =>{
+                  {props.allProducts.map(product =>{
                     return(
                     <tr key = {product.id}>
                       <th className='order-celd4' scope="col">{product.name}</th>
@@ -92,15 +92,15 @@ const Order = ({ setShowOrder, allProducts, setAllProducts, total, clientName, s
           </table>
         </div>
         <table className="orders-content-table">
-            <thead className={`content-orders-table  ${total > 0 ? '' : 'hidden'}`}>                    
+            <thead className={`content-orders-table  ${props.total > 0 ? '' : 'hidden'}`}>                    
               <tr>
                   <th className='order-celd4' scope="col"></th>
                   <th className='order-celd4' scope="col">TOTAL:</th>
-                  <th className='order-celd-total' scope="col">${total}.00</th>            
+                  <th className='order-celd-total' scope="col">${props.total}.00</th>            
               </tr>                   
             </thead>
         </table>
-        <button type="submit" className={`btn-send-order  ${total > 0 ? '' : 'hidden'}`}>
+        <button type="submit" className={`btn-send-order  ${props.total > 0 ? '' : 'hidden'}`}>
           Send order
         </button>
 

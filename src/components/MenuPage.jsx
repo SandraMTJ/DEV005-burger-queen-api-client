@@ -3,24 +3,24 @@ import Category from './wall/Category';
 import ClientName from './wall/ClientName';
 import { BiPlusMedical } from 'react-icons/bi';
 
-const ProductContainer = ({ selectedMenu, allProducts, setAllProducts, countProducts, setCountProducts, total, setTotal }) => {
+const ProductContainer = (props) => {
   const [products, setProducts] = useState([]);
 
   const onAddProduct = product => {
-		if (allProducts.find(item => item.id === product.id)) {
-			const products = allProducts.map(item =>
+		if (props.allProducts.find(item => item.id === product.id)) {
+			const products = props.allProducts.map(item =>
 				item.id === product.id
 					? { ...item, qty: item.qty + 1 }
 					: item
 			);
-      setTotal(total + product.price * product.qty);
-			setCountProducts(countProducts + product.qty);
-			return setAllProducts([...products]);
+      props.setTotal(props.total + product.price * product.qty);
+			props.setCountProducts(props.countProducts + product.qty);
+			return props.setAllProducts([...products]);
 		}
 
-    setTotal(total + product.price * product.qty);
-		setCountProducts(countProducts + product.qty);
-		setAllProducts([...allProducts, product]);
+    props.setTotal(props.total + product.price * product.qty);
+		props.setCountProducts(props.countProducts + product.qty);
+		props.setAllProducts([...props.allProducts, product]);
 	};
 
   useEffect(() => {
@@ -33,14 +33,14 @@ const ProductContainer = ({ selectedMenu, allProducts, setAllProducts, countProd
     })
       .then(response => response.json())
       .then(data => {
-        const filteredProducts = data.filter(product => product.type === selectedMenu);
+        const filteredProducts = data.filter(product => product.type === props.selectedMenu);
 
         setProducts(filteredProducts);
       })
       .catch(error => {
         console.error('API error:', error);
       });
-  }, [selectedMenu]);
+  }, [props.selectedMenu]);
 
   return (
     <section className='section-menu'>
@@ -60,7 +60,7 @@ const ProductContainer = ({ selectedMenu, allProducts, setAllProducts, countProd
   );
 };
 
-const MenuPage = ({ setAllProducts, allProducts, countProducts, setCountProducts, total, setTotal, setClientName, clientNameError, setClientNameError }) => {
+const MenuPage = (props) => {
   const [selectedMenu, setSelectedMenu] = useState('breakfast');
 
   const handleMenuSelect = (menu) => {
@@ -70,15 +70,19 @@ const MenuPage = ({ setAllProducts, allProducts, countProducts, setCountProducts
   return (
     <>
       <Category onSelect={handleMenuSelect} />
-      <ClientName setClientName = {setClientName} clientNameError = {clientNameError} setClientNameError = {setClientNameError}/>
+      <ClientName 
+        setClientName = {props.setClientName} 
+        clientNameError = {props.clientNameError} 
+        setClientNameError = {props.setClientNameError}
+      />
       <ProductContainer 
       selectedMenu={selectedMenu} 
-      setAllProducts = { setAllProducts } 
-      allProducts = {allProducts}
-      total={total}
-      setTotal={setTotal}
-      countProducts={countProducts}
-      setCountProducts={setCountProducts}
+      setAllProducts = { props.setAllProducts } 
+      allProducts = {props.allProducts}
+      total={props.total}
+      setTotal={props.setTotal}
+      countProducts={props.countProducts}
+      setCountProducts={props.setCountProducts}
       />
     </>
   );

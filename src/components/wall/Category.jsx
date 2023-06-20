@@ -1,11 +1,11 @@
 import { useState } from "react";
 
-const Category = ({ onSelect }) => {
+const Category = (props) => {
     const [selectedButton, setSelectedButton] = useState('breakfast');
   
     const handleButtonClick = (category) => {
       setSelectedButton(category);
-      onSelect(category);
+      props.onSelect(category);
     };
   
     return (
