@@ -1,9 +1,11 @@
 import { CgClose } from 'react-icons/cg';
 
-const Order = ({ setShowOrder }) => { // Pass the setShowOrder function as a prop
+const Order = ({ setShowOrder, allProducts }) => { // Pass the setShowOrder function as a prop
+
   const handleClick = () => {
     setShowOrder(false); // Set showOrder to false when clicked
   };
+ 
 
   return (
     <>
@@ -24,17 +26,17 @@ const Order = ({ setShowOrder }) => { // Pass the setShowOrder function as a pro
          </table>
         <div className="order-container">         
         <table className="orders-content-table">
-            <thead className="content-orders-table">                    
-                <tr>
-                    <th className='order-celd4' scope="col">Product</th>
-                    <th className='order-celd5' scope="col">Quantity</th>
-                    <th className='order-celd6' scope="col">Price</th>            
-                </tr>    
-                <tr>
-                    <th className='order-celd4' scope="col">Product</th>
-                    <th className='order-celd5' scope="col">Quantity</th>
-                    <th className='order-celd6' scope="col">Price</th>            
-                </tr>   
+            <thead className="content-orders-table">
+                {allProducts.map(product =>{
+                  return(
+                  <tr key = {product.id}>
+                    <th className='order-celd4' scope="col">{product.name}</th>
+                    <th className='order-celd5' scope="col">{product.qty}</th>
+                    <th className='order-celd6' scope="col">${product.qty * product.price}.00</th>            
+                  </tr> 
+                  )
+                })}       
+                   
                               
              </thead>
          </table>                  

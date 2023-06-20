@@ -243,7 +243,6 @@
 /* orders */
 
 .order-container{
-  border: 2px solid #D68C1C;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;  
@@ -282,7 +281,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px solid cyan;
 }  
 
 .orders-title-table{
