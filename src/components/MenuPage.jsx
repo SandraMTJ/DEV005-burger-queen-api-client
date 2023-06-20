@@ -3,9 +3,8 @@ import Category from './wall/Category';
 import ClientName from './wall/ClientName';
 import { BiPlusMedical } from 'react-icons/bi';
 
-const ProductContainer = ({ selectedMenu, allProducts, setAllProducts }) => {
+const ProductContainer = ({ selectedMenu, allProducts, setAllProducts, countProducts, setCountProducts, total, setTotal }) => {
   const [products, setProducts] = useState([]);
-
 
   const onAddProduct = product => {
 		if (allProducts.find(item => item.id === product.id)) {
@@ -14,9 +13,13 @@ const ProductContainer = ({ selectedMenu, allProducts, setAllProducts }) => {
 					? { ...item, qty: item.qty + 1 }
 					: item
 			);
-		
+      setTotal(total + product.price * product.qty);
+			setCountProducts(countProducts + product.qty);
 			return setAllProducts([...products]);
 		}
+
+    setTotal(total + product.price * product.qty);
+		setCountProducts(countProducts + product.qty);
 		setAllProducts([...allProducts, product]);
 	};
 
@@ -57,7 +60,7 @@ const ProductContainer = ({ selectedMenu, allProducts, setAllProducts }) => {
   );
 };
 
-const MenuPage = ({ setAllProducts, allProducts }) => {
+const MenuPage = ({ setAllProducts, allProducts, countProducts, setCountProducts, total, setTotal, setClientName }) => {
   const [selectedMenu, setSelectedMenu] = useState('breakfast');
 
   const handleMenuSelect = (menu) => {
@@ -67,11 +70,15 @@ const MenuPage = ({ setAllProducts, allProducts }) => {
   return (
     <>
       <Category onSelect={handleMenuSelect} />
-      <ClientName />
+      <ClientName setClientName = {setClientName}/>
       <ProductContainer 
       selectedMenu={selectedMenu} 
       setAllProducts = { setAllProducts } 
       allProducts = {allProducts}
+      total={total}
+      setTotal={setTotal}
+      countProducts={countProducts}
+      setCountProducts={setCountProducts}
       />
     </>
   );

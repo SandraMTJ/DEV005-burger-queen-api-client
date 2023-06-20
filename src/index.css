@@ -111,6 +111,7 @@
   width: 130px;
   font-size: 20px;
   margin-right: 10px;
+  position: relative;
 
 }
 
@@ -242,6 +243,19 @@
 
 /* orders */
 
+.count-products{
+  background-color: #D68C1C;
+  border-radius: 50%;
+  width: 28px;
+  height: 28px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -10px;
+  left: 105px;  
+}
+
 .order-container{
   display: flex;
   justify-content: center;
@@ -249,6 +263,12 @@
   width: 100vw;  
   height: 40vh;
   overflow: auto;  
+}
+
+.delete-icon{
+  color: white;
+  position: absolute;
+  right: 20px;
 }
 
 .icon-close-order{
@@ -310,7 +330,7 @@
   border-radius: 0 13px 13px 0;
 }
 
-.order-celd4, .order-celd5, .order-celd6 {
+.order-celd4, .order-celd5, .order-celd6, .order-celd-total {
   color: white;
   text-align: center;
   width:30%;
@@ -319,6 +339,15 @@
 .order-celd5 {
   border-left: 2px solid #d89542;
   border-right: 2px solid #d89542;
+}
+.order-celd6{
+  position: relative;
+}
+.order-celd-total{
+  color: #0f0f0f;
+  background-color: #706F6F;
+  border-radius: 15px;
+  font-size: 45px;
 }
 
 @media (min-width: 835px) {
@@ -375,6 +404,11 @@
   .btn-admin {
     height: 50px;
   } 
+
+  .count-products{
+    top: -10px;
+    left: 95px;  
+  }
 
   .container-products{   
     height: 70vh;

@@ -10,7 +10,9 @@ const Wall = () => {
     const [allProducts, setAllProducts] = useState([]);
 	const [total, setTotal] = useState(0);
 	const [countProducts, setCountProducts] = useState(0);
+    const [clientName, setClientName] = useState('');
 
+  
     return (
         <>
             {showOrder ? (
@@ -19,12 +21,21 @@ const Wall = () => {
                     <Order 
                     setShowOrder={setShowOrder}
                     allProducts={allProducts}
+                    setAllProducts={setAllProducts}
+                    total={total}
+                    setTotal={setTotal}
+                    countProducts={countProducts}
+                    setCountProducts={setCountProducts}
+                    clientName = {clientName}
                     />
                 </>
             ) : (
                 <>
                     <Background />
-                    <NavBar setShowOrder={setShowOrder}/>
+                    <NavBar 
+                    setShowOrder={setShowOrder}
+                    countProducts={countProducts}
+                    />
                     {(userRole === 'waiter' || userRole === 'admin') && <MenuPage 
                         allProducts={allProducts}
                         setAllProducts={setAllProducts}
@@ -32,6 +43,7 @@ const Wall = () => {
                         setTotal={setTotal}
                         countProducts={countProducts}
                         setCountProducts={setCountProducts}
+                        setClientName = {setClientName}
                         />
                     }
                 </>
