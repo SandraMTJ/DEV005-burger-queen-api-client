@@ -1,5 +1,8 @@
 import { CgClose } from 'react-icons/cg';
 import { RiDeleteBin5Line } from 'react-icons/ri';
+import { BiPlusMedical } from 'react-icons/bi';
+import { FaMinus } from 'react-icons/fa';
+
 
 const Order = ({ setShowOrder, allProducts, setAllProducts, total, clientName, setCountProducts, setTotal, countProducts }) => { // Pass the setShowOrder function as a prop
 
@@ -17,6 +20,33 @@ const Order = ({ setShowOrder, allProducts, setAllProducts, total, clientName, s
 		setCountProducts(countProducts - product.qty);
 		setAllProducts(results);
 	};
+
+  const onReduceProduct = product => {
+    if (product.qty === 1) {
+      onDeleteProduct(product);
+    } else {
+      const newQuantity = product.qty - 1;
+      setTotal(total - product.price);
+      setCountProducts(countProducts - 1);
+      setAllProducts(prevProducts =>
+        prevProducts.map(prevProduct =>
+          prevProduct.id === product.id ? { ...prevProduct, qty: newQuantity } : prevProduct
+        )
+      );
+    }
+  };
+
+  const onIncreaseProduct = product => {    
+      const newQuantity = product.qty + 1;
+      setTotal(total + product.price);
+      setCountProducts(countProducts + 1);
+      setAllProducts(prevProducts =>
+        prevProducts.map(prevProduct =>
+          prevProduct.id === product.id ? { ...prevProduct, qty: newQuantity } : prevProduct
+        )
+      );
+  };
+  
  
 
   return (
@@ -45,9 +75,15 @@ const Order = ({ setShowOrder, allProducts, setAllProducts, total, clientName, s
                     return(
                     <tr key = {product.id}>
                       <th className='order-celd4' scope="col">{product.name}</th>
-                      <th className='order-celd5' scope="col">{product.qty}</th>
-                      <th className='order-celd6' scope="col">${product.qty * product.price}.00
-                      <RiDeleteBin5Line className='delete-icon' onClick={() => onDeleteProduct(product)}/>
+                      <th className='order-celd5' scope="col">
+                          <FaMinus className='minus-icon' onClick={() => onReduceProduct(product)}/>
+                          <span className='qty-span'>{product.qty}</span>
+                          <BiPlusMedical className='plus-icon' onClick={() => onIncreaseProduct(product)}/>
+                      
+                      </th>
+                      <th className='order-celd6' scope="col">
+                        ${product.qty * product.price}.00
+                        <RiDeleteBin5Line className='delete-icon' onClick={() => onDeleteProduct(product)}/>
                       </th>            
                     </tr> 
                     )

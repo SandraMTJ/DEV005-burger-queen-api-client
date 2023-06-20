@@ -343,11 +343,18 @@
 .order-celd6{
   position: relative;
 }
+.qty-span{
+  margin: 0 40px;
+}
 .order-celd-total{
   color: #0f0f0f;
   background-color: #706F6F;
   border-radius: 15px;
   font-size: 45px;
+}
+
+.plus-icon, .minus-icon{
+  color:#D68C1C;
 }
 
 @media (min-width: 835px) {
