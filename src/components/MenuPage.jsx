@@ -60,7 +60,7 @@ const ProductContainer = ({ selectedMenu, allProducts, setAllProducts, countProd
   );
 };
 
-const MenuPage = ({ setAllProducts, allProducts, countProducts, setCountProducts, total, setTotal, setClientName }) => {
+const MenuPage = ({ setAllProducts, allProducts, countProducts, setCountProducts, total, setTotal, setClientName, clientNameError, setClientNameError }) => {
   const [selectedMenu, setSelectedMenu] = useState('breakfast');
 
   const handleMenuSelect = (menu) => {
@@ -70,7 +70,7 @@ const MenuPage = ({ setAllProducts, allProducts, countProducts, setCountProducts
   return (
     <>
       <Category onSelect={handleMenuSelect} />
-      <ClientName setClientName = {setClientName}/>
+      <ClientName setClientName = {setClientName} clientNameError = {clientNameError} setClientNameError = {setClientNameError}/>
       <ProductContainer 
       selectedMenu={selectedMenu} 
       setAllProducts = { setAllProducts } 

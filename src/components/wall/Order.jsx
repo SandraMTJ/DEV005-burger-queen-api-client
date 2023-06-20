@@ -92,7 +92,7 @@ const Order = ({ setShowOrder, allProducts, setAllProducts, total, clientName, s
           </table>
         </div>
         <table className="orders-content-table">
-            <thead className={`content-orders-table  ${total>0 ? '' : 'hidden'}`}>                    
+            <thead className={`content-orders-table  ${total > 0 ? '' : 'hidden'}`}>                    
               <tr>
                   <th className='order-celd4' scope="col"></th>
                   <th className='order-celd4' scope="col">TOTAL:</th>
@@ -100,7 +100,7 @@ const Order = ({ setShowOrder, allProducts, setAllProducts, total, clientName, s
               </tr>                   
             </thead>
         </table>
-        <button type="submit" className={`btn-send-order  ${total>0 ? '' : 'hidden'}`}>
+        <button type="submit" className={`btn-send-order  ${total > 0 ? '' : 'hidden'}`}>
           Send order
         </button>
 

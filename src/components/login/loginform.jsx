@@ -22,7 +22,7 @@ const LoginForm = () => {
         .then((res) => {
             if (res.status === 400) {
                 setError('password', { type: 'invalid', message: 'Invalid credentials' });          
-          }
+            }
             return res.json();
           })
         .then((data) =>{              
