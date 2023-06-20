@@ -65,7 +65,7 @@
   margin:-18px 0px -12px 0px;
 }
 
-.submit-btn {
+.submit-btn, .btn-send-order {
   font-family: 'Jacques Francois', serif;
   font-size: 40px;
   background: #9A601B;
@@ -261,7 +261,7 @@
   justify-content: center;
   flex-wrap: wrap;  
   width: 100vw;  
-  height: 40vh;
+  height: 45vh;
   overflow: auto;  
 }
 
@@ -317,7 +317,7 @@
 }
 
 .order-celd1, .order-celd2, .order-celd3 {
-  background-color: #d89542;
+  background-color:#9A601B;
   text-align: center;
   width:30%;
 }
@@ -325,7 +325,9 @@
 .order-celd1{
   border-radius: 13px 0 0 13px;
 }
-
+.hidden{
+  display: none;
+}
 .order-celd3{
   border-radius: 0 13px 13px 0;
 }
@@ -347,8 +349,7 @@
   margin: 0 40px;
 }
 .order-celd-total{
-  color: #0f0f0f;
-  background-color: #706F6F;
+  color: #D68C1C;
   border-radius: 15px;
   font-size: 45px;
 }
@@ -428,4 +429,8 @@
     display: flex;
     align-items: center;
   }  
+
+  .order-container{
+    height: 27vh;
+  }
 }

@@ -89,17 +89,21 @@ const Order = ({ setShowOrder, allProducts, setAllProducts, total, clientName, s
                     )
                   })}                                 
               </thead>
-          </table>   
+          </table>
         </div>
         <table className="orders-content-table">
-              <thead className="content-orders-table">                    
-                <tr>
-                    <th className='order-celd4' scope="col"></th>
-                    <th className='order-celd4' scope="col">TOTAL:</th>
-                    <th className='order-celd-total' scope="col">${total}.00</th>            
-                </tr>                   
-             </thead>
-         </table>
+            <thead className={`content-orders-table  ${total>0 ? '' : 'hidden'}`}>                    
+              <tr>
+                  <th className='order-celd4' scope="col"></th>
+                  <th className='order-celd4' scope="col">TOTAL:</th>
+                  <th className='order-celd-total' scope="col">${total}.00</th>            
+              </tr>                   
+            </thead>
+        </table>
+        <button type="submit" className={`btn-send-order  ${total>0 ? '' : 'hidden'}`}>
+          Send order
+        </button>
+
       </section>
     </>
   );

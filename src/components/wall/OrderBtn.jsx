@@ -8,7 +8,7 @@ const OrderBtn = ({ setShowOrder, countProducts }) => {
             <button className="btn-navBar"  onClick={() => setShowOrder(true)}>
                 <BiFoodMenu className="navBar-icon" />
                 Order
-                <div className='count-products'>
+                <div className={`count-products ${countProducts>0 ? '':'hidden'}`}>
 					<span id='count-products'>{countProducts}</span>
 				</div>
             </button>
