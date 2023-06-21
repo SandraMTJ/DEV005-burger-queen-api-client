@@ -4,13 +4,17 @@ import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 
 const LoginForm = () => {
-
+    // Creación de estados para toke, rol del usuario y id
     const [token, setToken] = useState('');
     const [userRole, setUserRole] = useState('');
+    const [userId, setUserId] = useState('');
     
+    // Llamado a funciones para formularios
     const { register, handleSubmit, formState: { errors }, setError } = useForm()
    
     const navigate = useNavigate();
+
+    // Manejar el envío del formulario y hacer la solicitud de la api para iniciar sesión
     const onSubmit = (data) => {
         fetch('http://localhost:8080/login',{
             method: 'POST',
@@ -24,16 +28,19 @@ const LoginForm = () => {
                 setError('password', { type: 'invalid', message: 'Invalid credentials' });          
             }
             return res.json();
-          })
+        })
         .then((data) =>{              
-            
             setToken(data.accessToken);
             setUserRole(data.user.role);
+            setUserId(data.user.id);
+            // Guardar datos en el localStorage
             localStorage.setItem('token', data.accessToken);
             localStorage.setItem('userRole', data.user.role); 
+            localStorage.setItem('userId', data.user.id); 
             
+            // Redirigir al muro cuando haya usuario
             if(data){
-                navigate('/wall');
+              navigate('/wall');
             }  
         })
     }

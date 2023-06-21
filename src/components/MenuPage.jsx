@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Category from './wall/Category';
 import ClientName from './wall/ClientName';
 import { BiPlusMedical } from 'react-icons/bi';
+import ModalOrder from './wall/ModalOrder';
 
 const ProductContainer = (props) => {
   const [products, setProducts] = useState([]);
@@ -66,9 +67,12 @@ const MenuPage = (props) => {
   const handleMenuSelect = (menu) => {
     setSelectedMenu(menu);
   };
+  console.log(props.showModalOrder)
+  
 
   return (
-    <>
+    <>    
+      {(props.showModalOrder ? <ModalOrder setShowModalOrder = {props.setShowModalOrder}/> : '')}                   
       <Category onSelect={handleMenuSelect} />
       <ClientName 
         setClientName = {props.setClientName} 

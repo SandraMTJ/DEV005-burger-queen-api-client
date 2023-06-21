@@ -12,6 +12,7 @@ const Wall = () => {
 	const [countProducts, setCountProducts] = useState(0);
     const [clientName, setClientName] = useState('');
     const [clientNameError, setClientNameError] = useState('');
+    const [showModalOrder, setShowModalOrder] = useState(false);
 
   
     return (
@@ -28,6 +29,7 @@ const Wall = () => {
                     countProducts={countProducts}
                     setCountProducts={setCountProducts}
                     clientName = {clientName}
+                    setShowModalOrder = {setShowModalOrder}
                     />
                 </>
             ) : (
@@ -49,6 +51,8 @@ const Wall = () => {
                         setClientName = {setClientName}
                         clientNameError = {clientNameError}
                         setClientNameError = {setClientNameError}
+                        showModalOrder = {showModalOrder}
+                        setShowModalOrder = {setShowModalOrder}
                         />
                     }
                 </>
