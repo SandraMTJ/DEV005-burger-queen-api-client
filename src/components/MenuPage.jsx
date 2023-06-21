@@ -66,9 +66,7 @@ const MenuPage = (props) => {
 
   const handleMenuSelect = (menu) => {
     setSelectedMenu(menu);
-  };
-  console.log(props.showModalOrder)
-  
+  };  
 
   return (
     <>    

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import NavBar from '../components/wall/NavBar.jsx';
 import MenuPage from '../components/MenuPage.jsx';
 import Order from '../components/wall/Order.jsx';
+import Status from '../components/wall/Status.jsx';
 
 const Wall = () => {
     const userRole = localStorage.getItem('userRole');
@@ -13,14 +14,14 @@ const Wall = () => {
     const [clientName, setClientName] = useState('');
     const [clientNameError, setClientNameError] = useState('');
     const [showModalOrder, setShowModalOrder] = useState(false);
+    const [showStatus, setShowStatus] = useState(false);
 
   
-    return (
-        <>
-            {showOrder ? (
-                <>
-                    <Background />
-                    <Order 
+    let componentToRender;
+
+        if (showOrder) {
+            componentToRender = (
+                <Order 
                     setShowOrder={setShowOrder}
                     allProducts={allProducts}
                     setAllProducts={setAllProducts}
@@ -28,37 +29,50 @@ const Wall = () => {
                     setTotal={setTotal}
                     countProducts={countProducts}
                     setCountProducts={setCountProducts}
-                    clientName = {clientName}
-                    setShowModalOrder = {setShowModalOrder}
-                    />
-                </>
-            ) : (
+                    clientName={clientName}
+                    setShowModalOrder={setShowModalOrder}
+                />
+            );
+        } else if (showStatus){
+            componentToRender = (
+                <Status setShowStatus = {setShowStatus}/>
+            );
+        }else {
+            componentToRender = (
                 <>
-                    <Background />
                     <NavBar 
                         setShowOrder={setShowOrder}
                         countProducts={countProducts}
-                        clientName = {clientName}
-                        setClientNameError = {setClientNameError}
+                        clientName={clientName}
+                        setClientNameError={setClientNameError}
+                        setShowStatus={setShowStatus}
                     />
-                    {(userRole === 'waiter' || userRole === 'admin') && <MenuPage 
-                        allProducts={allProducts}
-                        setAllProducts={setAllProducts}
-                        total={total}
-                        setTotal={setTotal}
-                        countProducts={countProducts}
-                        setCountProducts={setCountProducts}
-                        setClientName = {setClientName}
-                        clientNameError = {clientNameError}
-                        setClientNameError = {setClientNameError}
-                        showModalOrder = {showModalOrder}
-                        setShowModalOrder = {setShowModalOrder}
+                    {(userRole === 'waiter' || userRole === 'admin') && (
+                        <MenuPage 
+                            allProducts={allProducts}
+                            setAllProducts={setAllProducts}
+                            total={total}
+                            setTotal={setTotal}
+                            countProducts={countProducts}
+                            setCountProducts={setCountProducts}
+                            setClientName={setClientName}
+                            clientNameError={clientNameError}
+                            setClientNameError={setClientNameError}
+                            showModalOrder={showModalOrder}
+                            setShowModalOrder={setShowModalOrder}
                         />
-                    }
+                    )}
                 </>
-            )}
-        </>
-    );
+            );
+        }
+
+        return (
+            <>
+                <Background />
+                {componentToRender}
+            </>
+        );
+
 };
 
 export default Wall;
