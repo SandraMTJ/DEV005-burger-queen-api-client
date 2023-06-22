@@ -42,6 +42,7 @@ const Order = (props) => {
       userId: userId,
       products: orderProducts,
       status: 'pending',
+      total: props.total,
       dateEntry: new Date(Date.now()).toLocaleTimeString()
     };
 
@@ -149,7 +150,7 @@ const Order = (props) => {
         </table>
         <div className="order-container">         
           <table className="orders-content-table">
-            <thead className="content-orders-table">
+            <tbody className="content-orders-table">
               {props.allProducts.map(product =>{
                 return(
                 <tr key = {product.id}>
@@ -167,17 +168,17 @@ const Order = (props) => {
                 </tr> 
                 )
               })}                                 
-            </thead>
+            </tbody>
           </table>
         </div>
         <table className="orders-content-table">
-            <thead className={`content-orders-table  ${props.total > 0 ? '' : 'hidden'}`}>                    
+            <tbody className={`content-orders-table  ${props.total > 0 ? '' : 'hidden'}`}>                    
               <tr>
                   <th className='order-celd4' scope="col"></th>
                   <th className='order-celd4' scope="col">TOTAL:</th>
                   <th className='order-celd-total' scope="col">${props.total}.00</th>            
               </tr>                   
-            </thead>
+            </tbody>
         </table>
         <button type="submit" onClick={onSendOrder} className={`btn-send-order  ${props.total > 0 ? '' : 'hidden'}`}>
           Send order

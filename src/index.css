@@ -200,6 +200,7 @@
   margin: 0px 5px;
   background-color: #706F6F;
   font-size: 20px;
+  font-weight: bold;
 }
 
 .btn-breakfast{
@@ -270,13 +271,22 @@
   overflow: auto;  
 }
 
+.status-container{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;  
+  width: 100vw;  
+  height: 70vh;
+  overflow: auto;  
+}
+
 .delete-icon{
   color: white;
   position: absolute;
   right: 20px;
 }
 
-.icon-close-order{
+.icon-close-order, .icon-close-status{
   position: absolute;
   top: 13px;
   right: 20px;
@@ -284,7 +294,7 @@
   font-size: 60px;    
 }
 
-.order-title{
+.order-title, .status-title{
   margin-top: 25px;
   font-size: 45px;
   color:white;
@@ -298,51 +308,70 @@
   font-size: 38px;
   color: white;
 }
-.titles-orders-table{
+.titles-orders-table, .titles-status-table{
   font-size: 30px;
 }
-.section-orders{
+.section-orders, .section-status{
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }  
 
-.orders-title-table{
+.orders-title-table, .status-title-table{
   width: 90%;
 }
 
-.orders-content-table{
+.status-title-table{
+  margin-top: 50px;
+}
+
+.orders-content-table, .status-content-table{
   margin-top: 50px;
   width: 90%;
-}
-
-.content-orders-table{
   font-size: 30px;
 }
 
-.order-celd1, .order-celd2, .order-celd3 {
+.order-celd1, .order-celd2, .order-celd3, .status-celd1, .status-celd3 {
   background-color:#9A601B;
+  color: black;
   text-align: center;
   width:30%;
 }
 
-.order-celd1{
+.order-celd1, .status-celd1{
   border-radius: 13px 0 0 13px;
+}
+.order-celd3, .status-celd3{
+  border-radius: 0 13px 13px 0;
 }
 .hidden{
   display: none;
 }
-.order-celd3{
-  border-radius: 0 13px 13px 0;
-}
 
-.order-celd4, .order-celd5, .order-celd6, .order-celd-total {
+.order-celd4, .order-celd5, .order-celd6, .order-celd-total, .status-celd5, .status-celd4 {
   color: white;
   text-align: center;
   width:30%;
 }
 
+.status-celd4 {
+  border-right: 2px solid #d89542;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+
+}
+.tr-status-order{
+  display: flex;
+}
+.status-celd5{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;  
+}
 .order-celd5 {
   border-left: 2px solid #d89542;
   border-right: 2px solid #d89542;
@@ -395,6 +424,58 @@
   flex-direction: column;
 }
 .icons-modal-order{
+  font-size: 40px;
+}
+
+/*Status*/
+
+.container-status-order{
+  background-color: white;
+  color: black;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  padding: 15px 5px;
+  width: 80%;
+  font-size: 25px;
+  position: relative;
+  margin: 8px 0;
+}
+.order-num{
+  position: absolute;
+  background-color: #D9D9D9;
+  top: -26px;
+  right:10px;
+  font-size: 15px;
+  padding: 5px 10px;
+  border-radius: 18px 18px 0 0;
+  z-index: -1;
+}
+.container-status{
+  display: flex;
+}
+
+.ready-to-deliver-column,.delivered-column{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ready-to-deliver-column{
+ border-right: 2px solid #D68C1C;
+}
+
+.ready-to-deliver-row,.delivered-row{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0
+
+}
+
+.icon-check-status{
+  margin-top: 8px;
   font-size: 40px;
 }
 @media (min-width: 835px) {
@@ -471,5 +552,9 @@
 
   .order-container{
     height: 27vh;
+  }
+
+  .status-container{
+    height: 60vh;   
   }
 }
