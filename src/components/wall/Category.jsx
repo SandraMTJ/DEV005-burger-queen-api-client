@@ -19,8 +19,7 @@ const Category = (props) => {
         </button>
         <button
           className={`btn-lunch ${selectedButton === 'lunch' ? 'selected' : ''}`}
-          onClick={() => handleButtonClick('lunch')}
-        >
+          onClick={() => handleButtonClick('lunch')}>
           Lunch - Dinner
         </button>
       </div>

@@ -4,6 +4,8 @@ import NavBar from '../components/wall/NavBar.jsx';
 import MenuPage from '../components/MenuPage.jsx';
 import Order from '../components/wall/Order.jsx';
 import Status from '../components/wall/Status.jsx';
+import StatusOrderChef from '../components/wall/StatusOrderChef.jsx';
+import ChefOrders from '../components/wall/ChefOrders.jsx';
 
 const Wall = () => {
     const userRole = localStorage.getItem('userRole');
@@ -15,7 +17,7 @@ const Wall = () => {
     const [clientNameError, setClientNameError] = useState('');
     const [showModalOrder, setShowModalOrder] = useState(false);
     const [showStatus, setShowStatus] = useState(false);
-
+    
   
     let componentToRender;
 
@@ -37,7 +39,7 @@ const Wall = () => {
             componentToRender = (
                 <Status setShowStatus = {setShowStatus}/>
             );
-        }else {
+        } else {
             componentToRender = (
                 <>
                     <NavBar 
@@ -47,6 +49,8 @@ const Wall = () => {
                         setClientNameError={setClientNameError}
                         setShowStatus={setShowStatus}
                     />
+
+
                     {(userRole === 'waiter' || userRole === 'admin') && (
                         <MenuPage 
                             allProducts={allProducts}
@@ -62,6 +66,13 @@ const Wall = () => {
                             setShowModalOrder={setShowModalOrder}
                         />
                     )}
+
+                    {(userRole === 'chef') && (
+                        <>
+                            <StatusOrderChef />
+                            <ChefOrders />
+                        </>
+                    )}
                 </>
             );
         }
@@ -70,6 +81,7 @@ const Wall = () => {
             <>
                 <Background />
                 {componentToRender}
+                
             </>
         );
 
