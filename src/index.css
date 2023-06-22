@@ -184,7 +184,7 @@
   width: 280px;
 }
 
-.container-category{
+.container-category, .container-status-chef{
   display: flex;
   margin-top: 25%;
   display:flex;
@@ -192,8 +192,14 @@
   justify-content: center;
   color: white;
 }
+.container-status-chef{
+  margin-top:8%;
+  margin-left: 30%;
+  flex-direction: column;
+  gap: 30px;
+}
 
-.btn-lunch, .btn-breakfast{
+.btn-lunch, .btn-breakfast, .btn-pending, .btn-delivering{
   border-radius: 15px;
   width: 250px;
   height: 50px;
@@ -203,7 +209,7 @@
   font-weight: bold;
 }
 
-.btn-breakfast{
+.btn-breakfast, .btn-pending{
   margin-left: 15px;
 }
 
@@ -474,6 +480,14 @@
 
 }
 
+/* Chef view */
+.container-chef-orders{
+  border:2px solid #D68C1C;
+  margin-top: 10px;
+  width: 100vw;
+  height: 65vh;
+}
+
 .icon-check-status{
   margin-top: 8px;
   font-size: 40px;
@@ -502,10 +516,6 @@
     align-items: start;
   }
 
-  .container-category{
-    align-items: start;
-    margin-top:5%;
-  }
 
   .name-client-input{
     width: 245px;
@@ -513,16 +523,26 @@
     margin-top: 5px;
   }
 
-  .container-category{
+  .container-category, .container-status-chef{
     position: absolute;
     top: 360px;
     left: 110px; 
     display:flex;
     flex-direction: column;
     color: white;
+    align-items: start;
+    margin-top:5%;
   }
-  
-  .btn-lunch, .btn-breakfast{
+  .container-status-chef{
+    position: absolute;
+    top: 250px;
+    left: -300px;     
+  }
+  .container-btns-chef{
+    display:flex;
+    flex-direction: column;
+  }
+  .btn-lunch, .btn-breakfast, .btn-pending, .btn-delivering{
     border-radius: 15px;
     width: 245px;
     height: 55px;
@@ -556,5 +576,13 @@
 
   .status-container{
     height: 60vh;   
+  }
+
+  .container-chef-orders{
+    border:2px solid #D68C1C;
+    margin-top: 60px;
+    margin-left: 35%;
+    width: 60vw;
+    height: 70vh;
   }
 }
