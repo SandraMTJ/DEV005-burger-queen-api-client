@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1687472676499" clover="3.2.0">
-  <project timestamp="1687472676499" name="All files">
-    <metrics statements="570" coveredstatements="418" conditionals="52" coveredconditionals="49" methods="28" coveredmethods="19" elements="650" coveredelements="486" complexity="0" loc="570" ncloc="570" packages="3" files="7" classes="7"/>
+<coverage generated="1687473174888" clover="3.2.0">
+  <project timestamp="1687473174889" name="All files">
+    <metrics statements="570" coveredstatements="417" conditionals="51" coveredconditionals="48" methods="28" coveredmethods="19" elements="649" coveredelements="484" complexity="0" loc="570" ncloc="570" packages="3" files="7" classes="7"/>
     <package name="components">
-      <metrics statements="93" coveredstatements="70" conditionals="10" coveredconditionals="10" methods="4" coveredmethods="3"/>
-      <file name="MenuPage.jsx" path="C:\Users\USUARIO\code\DEV005-burger-queen-api-client\src\components\MenuPage.jsx">
-        <metrics statements="93" coveredstatements="70" conditionals="10" coveredconditionals="10" methods="4" coveredmethods="3"/>
+      <metrics statements="93" coveredstatements="69" conditionals="9" coveredconditionals="9" methods="4" coveredmethods="3"/>
+      <file name="MenuPage.jsx" path="D:\BOOTCAMP\DEV005-burger-queen-api-client\src\components\MenuPage.jsx">
+        <metrics statements="93" coveredstatements="69" conditionals="9" coveredconditionals="9" methods="4" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -42,12 +42,12 @@
         <line num="34" count="8" type="stmt"/>
         <line num="35" count="8" type="cond" truecount="1" falsecount="0"/>
         <line num="36" count="8" type="cond" truecount="1" falsecount="0"/>
-        <line num="37" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="38" count="2" type="stmt"/>
-        <line num="39" count="2" type="stmt"/>
+        <line num="37" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
         <line num="40" count="8" type="stmt"/>
-        <line num="41" count="8" type="cond" truecount="1" falsecount="0"/>
-        <line num="42" count="1" type="stmt"/>
+        <line num="41" count="8" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
         <line num="43" count="8" type="stmt"/>
         <line num="44" count="8" type="stmt"/>
         <line num="45" count="8" type="stmt"/>
@@ -103,7 +103,7 @@
     </package>
     <package name="components.login">
       <metrics statements="81" coveredstatements="55" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="1"/>
-      <file name="LoginForm.jsx" path="C:\Users\USUARIO\code\DEV005-burger-queen-api-client\src\components\login\LoginForm.jsx">
+      <file name="loginform.jsx" path="D:\BOOTCAMP\DEV005-burger-queen-api-client\src\components\login\loginform.jsx">
         <metrics statements="81" coveredstatements="55" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -190,7 +190,7 @@
     </package>
     <package name="components.wall">
       <metrics statements="396" coveredstatements="293" conditionals="39" coveredconditionals="36" methods="22" coveredmethods="15"/>
-      <file name="Category.jsx" path="C:\Users\USUARIO\code\DEV005-burger-queen-api-client\src\components\wall\Category.jsx">
+      <file name="Category.jsx" path="D:\BOOTCAMP\DEV005-burger-queen-api-client\src\components\wall\Category.jsx">
         <metrics statements="30" coveredstatements="30" conditionals="7" coveredconditionals="7" methods="4" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -223,7 +223,7 @@
         <line num="29" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
       </file>
-      <file name="ClientName.jsx" path="C:\Users\USUARIO\code\DEV005-burger-queen-api-client\src\components\wall\ClientName.jsx">
+      <file name="ClientName.jsx" path="D:\BOOTCAMP\DEV005-burger-queen-api-client\src\components\wall\ClientName.jsx">
         <metrics statements="18" coveredstatements="18" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="2" count="9" type="stmt"/>
@@ -244,7 +244,7 @@
         <line num="17" count="1" type="stmt"/>
         <line num="18" count="1" type="stmt"/>
       </file>
-      <file name="ModalOrder.jsx" path="C:\Users\USUARIO\code\DEV005-burger-queen-api-client\src\components\wall\ModalOrder.jsx">
+      <file name="ModalOrder.jsx" path="D:\BOOTCAMP\DEV005-burger-queen-api-client\src\components\wall\ModalOrder.jsx">
         <metrics statements="26" coveredstatements="24" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -273,7 +273,7 @@
         <line num="25" count="1" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
       </file>
-      <file name="Order.jsx" path="C:\Users\USUARIO\code\DEV005-burger-queen-api-client\src\components\wall\Order.jsx">
+      <file name="Order.jsx" path="D:\BOOTCAMP\DEV005-burger-queen-api-client\src\components\wall\Order.jsx">
         <metrics statements="191" coveredstatements="146" conditionals="25" coveredconditionals="22" methods="10" coveredmethods="8"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -467,7 +467,7 @@
         <line num="190" count="15" type="stmt"/>
         <line num="191" count="1" type="stmt"/>
       </file>
-      <file name="Status.jsx" path="C:\Users\USUARIO\code\DEV005-burger-queen-api-client\src\components\wall\Status.jsx">
+      <file name="Status.jsx" path="D:\BOOTCAMP\DEV005-burger-queen-api-client\src\components\wall\Status.jsx">
         <metrics statements="131" coveredstatements="75" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -490,15 +490,15 @@
         <line num="19" count="5" type="stmt"/>
         <line num="20" count="5" type="cond" truecount="1" falsecount="0"/>
         <line num="21" count="5" type="cond" truecount="1" falsecount="0"/>
-        <line num="22" count="3" type="stmt"/>
-        <line num="23" count="3" type="stmt"/>
-        <line num="24" count="3" type="stmt"/>
-        <line num="25" count="3" type="stmt"/>
-        <line num="26" count="3" type="stmt"/>
-        <line num="27" count="3" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
         <line num="28" count="5" type="stmt"/>
         <line num="29" count="5" type="cond" truecount="1" falsecount="0"/>
-        <line num="30" count="2" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
         <line num="31" count="5" type="stmt"/>
         <line num="32" count="5" type="stmt"/>
         <line num="33" count="5" type="stmt"/>
