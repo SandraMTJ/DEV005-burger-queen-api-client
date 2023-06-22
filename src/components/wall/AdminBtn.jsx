@@ -6,8 +6,7 @@ const AdminBtn = () => {
 
     return (
             <button className="btn-admin" >
-                <RiAdminFill className="navBar-icon" />
-                
+                <RiAdminFill className="navBar-icon" />                
             </button>
     );
 };

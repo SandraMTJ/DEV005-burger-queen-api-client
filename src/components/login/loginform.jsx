@@ -1,13 +1,9 @@
 import { AiOutlineMail, AiOutlineLock } from 'react-icons/ai';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
-import { useState } from 'react';
+
 
 const LoginForm = () => {
-    // Creación de estados para toke, rol del usuario y id
-    const [token, setToken] = useState('');
-    const [userRole, setUserRole] = useState('');
-    const [userId, setUserId] = useState('');
     
     // Llamado a funciones para formularios
     const { register, handleSubmit, formState: { errors }, setError } = useForm()
@@ -30,9 +26,7 @@ const LoginForm = () => {
             return res.json();
         })
         .then((data) =>{              
-            setToken(data.accessToken);
-            setUserRole(data.user.role);
-            setUserId(data.user.id);
+
             // Guardar datos en el localStorage
             localStorage.setItem('token', data.accessToken);
             localStorage.setItem('userRole', data.user.role); 
