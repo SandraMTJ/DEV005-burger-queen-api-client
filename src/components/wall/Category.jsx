@@ -30,5 +30,5 @@ const Category = (props) => {
 export default Category;
 
 Category.propTypes = {
-  onSelect: PropTypes.bool,  
+  onSelect: PropTypes.func,  
 };
