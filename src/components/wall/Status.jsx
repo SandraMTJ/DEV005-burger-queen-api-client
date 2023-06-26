@@ -2,6 +2,8 @@ import { CgClose } from 'react-icons/cg';
 import { BsSquare, BsCheckSquare } from 'react-icons/bs';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import handleChangeStatus from './handleChangeStatus';
+
 
 const Status = (props) => { 
 
@@ -12,6 +14,7 @@ const Status = (props) => {
    
   // Llamar al token almacenado
   const token = localStorage.getItem('token');
+
     // Solicitud a la API para traer las órdenes
     fetch('http://localhost:8080/orders', {
       headers: {
@@ -31,32 +34,7 @@ const Status = (props) => {
         console.error('API error:', error);
       });
 
-
-  // Función para cambiar status de "delivering" a "delivered"
-  const handleChangeToDelivered = (order) => {
-    fetch(`http://localhost:8080/orders/${order.id}`,{
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        // Se envía token de autorización
-        'Authorization': `Bearer ${token}`,
-      },
-      body: JSON.stringify({status: "delivered"})
-    })
-  }
-
-  // Función para cambiar status de "delivered" a "delivering"
-  const handleChangeToDelivering = (order) => {
-    fetch(`http://localhost:8080/orders/${order.id}`,{
-      method: 'PATCH',
-      headers: {
-        'Content-Type': 'application/json',
-        // Se envía token de autorización
-        'Authorization': `Bearer ${token}`,
-      },
-      body: JSON.stringify({status: "delivering"})
-    })
-  }
+  
   // Cerrar vista de status
   const handleClick = () => {
     props.setShowStatus(false)
@@ -93,7 +71,7 @@ const Status = (props) => {
                           ))}
                         </ul>
                         <span>Total: ${order.total}.00</span>
-                        <BsSquare className="icon-check-status"onClick={() => handleChangeToDelivered(order)}/>
+                        <BsSquare className="icon-check-status"onClick={() => handleChangeStatus(order, 'delivered')}/>
                       </div>
                     </tr>                  
                   )
@@ -115,7 +93,7 @@ const Status = (props) => {
                           ))}
                         </ul>
                         <span>Total: ${order.total}.00</span>
-                        <BsCheckSquare className="icon-check-status" onClick={() => handleChangeToDelivering(order)} />
+                        <BsCheckSquare className="icon-check-status" onClick={() => handleChangeStatus(order, 'delivering')} />
                       </div>
                     </tr>                  
                   )

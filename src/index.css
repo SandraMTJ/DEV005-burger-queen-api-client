@@ -487,10 +487,12 @@
   width: 100vw;
   height: 65vh;
   display:flex;
-  justify-content: center;
-  align-items: start;
+  justify-content: start;
+  align-items: center;
   padding-top: 10px;
   overflow: auto;  
+  flex-direction: column;
+  gap: 20px
 }
 
 .icon-check-status{
