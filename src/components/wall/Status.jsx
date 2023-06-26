@@ -71,7 +71,7 @@ const Status = (props) => {
                           ))}
                         </ul>
                         <span>Total: ${order.total}.00</span>
-                        <BsSquare className="icon-check-status"onClick={() => handleChangeStatus(order, 'delivered')}/>
+                        <BsSquare className="icon-check-status"onClick={() => handleChangeStatus(order, 'delivered', token)}/>
                       </div>
                     </tr>                  
                   )
@@ -93,7 +93,7 @@ const Status = (props) => {
                           ))}
                         </ul>
                         <span>Total: ${order.total}.00</span>
-                        <BsCheckSquare className="icon-check-status" onClick={() => handleChangeStatus(order, 'delivering')} />
+                        <BsCheckSquare className="icon-check-status" onClick={() => handleChangeStatus(order, 'delivering', token)} />
                       </div>
                     </tr>                  
                   )

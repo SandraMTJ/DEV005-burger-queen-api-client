@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { RiLogoutBoxRLine } from 'react-icons/ri';
 
 const Logout = () => {
+    //localStorage.setItem('token', ''); 
     const navigate = useNavigate();
 
     const logout = () => {
