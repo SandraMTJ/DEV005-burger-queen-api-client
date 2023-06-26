@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 const ClientName = (props) => {
 
     const handleInputChange = (event) => {
@@ -16,3 +17,9 @@ const ClientName = (props) => {
 };
 
 export default ClientName;
+
+ClientName.propTypes = {
+  setClientName: PropTypes.func,  
+  setClientNameError: PropTypes.func, 
+  clientNameError: PropTypes.string, 
+};

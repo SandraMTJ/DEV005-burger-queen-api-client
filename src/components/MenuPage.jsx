@@ -3,6 +3,8 @@ import Category from './wall/Category';
 import ClientName from './wall/ClientName';
 import { BiPlusMedical } from 'react-icons/bi';
 import ModalOrder from './wall/ModalOrder';
+import PropTypes from 'prop-types';
+
 
 const ProductContainer = (props) => {
   const [products, setProducts] = useState([]);
@@ -35,7 +37,6 @@ const ProductContainer = (props) => {
       .then(response => response.json())
       .then(data => {
         const filteredProducts = data.filter(product => product.type === props.selectedMenu);
-
         setProducts(filteredProducts);
       })
       .catch(error => {
@@ -91,3 +92,28 @@ const MenuPage = (props) => {
 };
 
 export default MenuPage;
+
+MenuPage.propTypes = {
+  allProducts: PropTypes.array,
+  setAllProducts: PropTypes.func,
+  showModalOrder: PropTypes.bool,
+  setShowModalOrder: PropTypes.func,
+  setClientName: PropTypes.func,
+  clientNameError: PropTypes.string,
+  setClientNameError: PropTypes.func,
+  productsSelected: PropTypes.objectOf(PropTypes.number),
+  total: PropTypes.number,
+  setTotal: PropTypes.func,
+  countProducts: PropTypes.number,
+  setCountProducts: PropTypes.func,
+};
+
+ProductContainer.propTypes = {
+  allProducts: PropTypes.array,
+  setAllProducts: PropTypes.func,  
+  total: PropTypes.number,
+  setTotal: PropTypes.func,
+  countProducts: PropTypes.number,
+  setCountProducts: PropTypes.func,
+  selectedMenu: PropTypes.string,
+};

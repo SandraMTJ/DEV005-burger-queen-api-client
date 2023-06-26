@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 
 const Category = (props) => {
     const [selectedButton, setSelectedButton] = useState('breakfast');
@@ -27,3 +28,7 @@ const Category = (props) => {
   };
 
 export default Category;
+
+Category.propTypes = {
+  onSelect: PropTypes.bool,  
+};
