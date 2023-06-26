@@ -17,6 +17,7 @@ const Wall = () => {
     const [clientNameError, setClientNameError] = useState('');
     const [showModalOrder, setShowModalOrder] = useState(false);
     const [showStatus, setShowStatus] = useState(false);
+    const [selectedOrderStatusChef, setSelectedOrderStatusChef] = useState('pending');
     
   
     let componentToRender;
@@ -69,8 +70,8 @@ const Wall = () => {
 
                     {(userRole === 'chef') && (
                         <>
-                            <StatusOrderChef />
-                            <ChefOrders />
+                            <StatusOrderChef selectedOrderStatusChef = {selectedOrderStatusChef} setSelectedOrderStatusChef = {setSelectedOrderStatusChef}/>
+                            <ChefOrders selectedOrderStatusChef = {selectedOrderStatusChef} />
                         </>
                     )}
                 </>

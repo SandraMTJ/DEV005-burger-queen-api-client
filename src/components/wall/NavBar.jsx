@@ -3,6 +3,7 @@ import OrderBtn from './OrderBtn.jsx';
 import StatusBtn from './StatusBtn.jsx';
 import AdminBtn from './AdminBtn.jsx';
 import LogoWall from './LogoWall.jsx';
+import PropTypes from 'prop-types';
 
 const NavBar = ( props ) => {
     const userRole = localStorage.getItem('userRole');
@@ -21,4 +22,12 @@ const NavBar = ( props ) => {
 
 export default NavBar;
 
+
+NavBar.propTypes = {
+    setShowStatus: PropTypes.func,  
+    setShowOrder: PropTypes.func, 
+    setClientNameError: PropTypes.func, 
+    countProducts: PropTypes.number, 
+    clientName: PropTypes.string, 
+};
 

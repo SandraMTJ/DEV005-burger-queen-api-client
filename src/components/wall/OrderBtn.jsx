@@ -1,5 +1,6 @@
 
 import { BiFoodMenu } from 'react-icons/bi';
+import PropTypes from 'prop-types';
 
 const OrderBtn = (props) => {
 
@@ -20,3 +21,10 @@ const OrderBtn = (props) => {
 };
 
 export default OrderBtn;
+
+OrderBtn.propTypes = {
+    setShowOrder: PropTypes.func,
+    clientName: PropTypes.string,
+    setClientNameError: PropTypes.func,
+    countProducts: PropTypes.number, 
+};

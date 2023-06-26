@@ -1,5 +1,6 @@
 
 import { FiCheckSquare } from 'react-icons/fi';
+import PropTypes from 'prop-types';
 
 const StatusBtn = (props) => {
 
@@ -16,3 +17,7 @@ const StatusBtn = (props) => {
 };
 
 export default StatusBtn;
+
+StatusBtn.propTypes = {
+    setShowStatus: PropTypes.func,
+};

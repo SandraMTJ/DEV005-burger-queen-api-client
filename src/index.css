@@ -486,12 +486,57 @@
   margin-top: 10px;
   width: 100vw;
   height: 65vh;
+  display:flex;
+  justify-content: center;
+  align-items: start;
+  padding-top: 10px;
+  overflow: auto;  
 }
 
 .icon-check-status{
   margin-top: 8px;
   font-size: 40px;
 }
+
+.card-order-chef{
+  background-color: white;
+  width: 80%;
+  border-radius: 15px;
+  padding: 25px 50px;
+  font-size: 25px;
+  position: relative;
+}
+
+.check-and-hour{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 0px;
+  right: 10%;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.icon-check-status-chef{
+  font-size: 70px;
+  margin-bottom: 30px;
+  border: 4px solid rgb(0, 0, 0);
+  border-radius: 10px;
+}
+
+.hour{
+  font-size: 20px;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.client-name-chef-orders{
+  font-size: 30px;
+  font-weight: bold;
+}
+
 @media (min-width: 835px) {
   .login-container{  
     width: 100%; 

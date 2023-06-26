@@ -3,6 +3,7 @@ import { CgClose } from 'react-icons/cg';
 import { RiDeleteBin5Line } from 'react-icons/ri';
 import { BiPlusMedical } from 'react-icons/bi';
 import { FaMinus } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
 
 const Order = (props) => { 
@@ -17,18 +18,19 @@ const Order = (props) => {
     props.setShowOrder(false); 
   };
 
-  // Actualizar los productos que hay en la orden y sus cantidades
-  const updateOrderProducts = () => {
-    const products = props.allProducts.map((product) => ({
-      id: product.id,
-      name: product.name,
-      qty: product.qty,
-    }));
-    setOrderProducts(products);
-  };
-  
+ 
   // Cuando haya cambios en los productos de la orden, se actualicen con updateOrderProducts
   useEffect(() => {
+     // Actualizar los productos que hay en la orden y sus cantidades
+    const updateOrderProducts = () => {
+      const products = props.allProducts.map((product) => ({
+        id: product.id,
+        name: product.name,
+        qty: product.qty,
+      }));
+      setOrderProducts(products);
+    };
+    
     updateOrderProducts(); // Initialize orderItems
   }, [props.allProducts]);
 
@@ -189,3 +191,16 @@ const Order = (props) => {
   );
 };
 export default Order;
+
+
+Order.propTypes = {
+  allProducts: PropTypes.array,
+  setAllProducts: PropTypes.func,
+  total: PropTypes.number,  
+  setShowOrder: PropTypes.func,
+  clientName: PropTypes.string,
+  setCountProducts: PropTypes.func,
+  setTotal: PropTypes.func,
+  countProducts: PropTypes.number,
+  setShowModalOrder: PropTypes.func,
+};

@@ -2,6 +2,7 @@ import { CgClose } from 'react-icons/cg';
 import { IoFastFoodOutline } from 'react-icons/io5';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { LuChefHat } from 'react-icons/lu';
+import PropTypes from 'prop-types';
 
 const ModalOrder = (props) => {
 
@@ -24,3 +25,8 @@ const ModalOrder = (props) => {
 };
 
 export default ModalOrder;
+
+ModalOrder.propTypes = {
+    setShowModalOrder: PropTypes.func,  
+};
+

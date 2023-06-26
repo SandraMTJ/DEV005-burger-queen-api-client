@@ -1,23 +1,18 @@
-import { useState } from "react";
-const StatusOrderChef = () => {
-    const [selectedButton, setSelectedButton] = useState('pending');
-    
-    const handleButtonClick = (status) => {
-        setSelectedButton(status);
-      };
-    
+import PropTypes from 'prop-types';
+const StatusOrderChef = (props) => {
+   
     return (
       <div className="container-status-chef">
         <label className="name-client-label">Status: </label>
         <div className="container-btns-chef">
             <button
-             className={`btn-pending ${selectedButton === 'pending' ? 'selected' : ''}`}
-             onClick={() => handleButtonClick('pending')}>
+             className={`btn-pending ${props.selectedOrderStatusChef === 'pending' ? 'selected' : ''} `}
+             onClick={() => props.setSelectedOrderStatusChef('pending')}>
                 Pending
             </button>
             <button
-             className={`btn-delivering ${selectedButton === 'delivering' ? 'selected' : ''}`}
-             onClick={() => handleButtonClick('delivering')}>
+             className={`btn-delivering ${props.selectedOrderStatusChef === 'delivering' ? 'selected' : ''}`}
+             onClick={() => props.setSelectedOrderStatusChef('delivering')}>
                 Delivering
             </button>
         </div>
@@ -26,3 +21,9 @@ const StatusOrderChef = () => {
   };
 
 export default StatusOrderChef;
+
+
+StatusOrderChef.propTypes = {
+  selectedOrderStatusChef: PropTypes.string,
+  setSelectedOrderStatusChef: PropTypes.func,
+};

@@ -1,6 +1,7 @@
 import { CgClose } from 'react-icons/cg';
 import { BsSquare, BsCheckSquare } from 'react-icons/bs';
 import { useState } from 'react';
+import PropTypes from 'prop-types';
 
 const Status = (props) => { 
 
@@ -129,3 +130,7 @@ const Status = (props) => {
   );
 };
 export default Status;
+
+Status.propTypes = {
+  setShowStatus: PropTypes.func,
+};
