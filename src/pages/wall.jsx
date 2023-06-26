@@ -17,7 +17,7 @@ const Wall = () => {
     const [clientNameError, setClientNameError] = useState('');
     const [showModalOrder, setShowModalOrder] = useState(false);
     const [showStatus, setShowStatus] = useState(false);
-    const [selectedOrderStatusChef, setSelectedOrderStatusChef] = useState('pending');
+    const [selectedOrderStatusChef, setSelectedOrderStatusChef] = useState('pending');  
     
   
     let componentToRender;

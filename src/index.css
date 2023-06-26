@@ -482,7 +482,6 @@
 
 /* Chef view */
 .container-chef-orders{
-  border:2px solid #D68C1C;
   margin-top: 10px;
   width: 100vw;
   height: 65vh;
@@ -507,6 +506,7 @@
   padding: 25px 50px;
   font-size: 25px;
   position: relative;
+  margin: 20px 0;
 }
 
 .check-and-hour{
@@ -626,7 +626,6 @@
   }
 
   .container-chef-orders{
-    border:2px solid #D68C1C;
     margin-top: 60px;
     margin-left: 35%;
     width: 60vw;
