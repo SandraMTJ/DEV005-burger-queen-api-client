@@ -1,7 +1,7 @@
 import Background from '../components/Background.jsx';
 import { useState } from 'react';
 import NavBar from '../components/wall/NavBar.jsx';
-import MenuPage from '../components/MenuPage.jsx';
+import { MenuPage } from '../components/MenuPage.jsx';
 import Order from '../components/wall/Order.jsx';
 import Status from '../components/wall/Status.jsx';
 import StatusOrderChef from '../components/wall/StatusOrderChef.jsx';

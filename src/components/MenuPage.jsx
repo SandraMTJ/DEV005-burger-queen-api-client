@@ -104,7 +104,8 @@ const MenuPage = (props) => {
   );
 };
 
-export default MenuPage;
+export { MenuPage, ProductContainer };
+
 
 MenuPage.propTypes = {
   allProducts: PropTypes.array,

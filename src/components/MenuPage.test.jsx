@@ -1,6 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import MenuPage from './MenuPage';
-import ProductContainer from './MenuPage';
+import { MenuPage, ProductContainer } from './MenuPage';
 import ClientName from './wall/ClientName';
 import { vi } from 'vitest';
 
@@ -103,3 +102,67 @@ describe('MenuPage', () => {
     });
   });      
 });
+
+describe('ProductContainer', () => {
+  it('test_fetch_products', async () => {
+    const mockProducts = [
+        {
+            id: 1,
+            name: 'Product 1',
+            image: 'image1.jpg',
+            price: 10,
+            type: 'breakfast'
+        },
+        {
+            id: 2,
+            name: 'Product 2',
+            image: 'image2.jpg',
+            price: 20,
+            type: 'lunch'
+        }
+    ];
+    const mockResponse = { json: vi.fn().mockResolvedValue(mockProducts) };
+    window.fetch = vi.fn().mockResolvedValue(mockResponse);
+    const { findByText } = render(<ProductContainer selectedMenu='breakfast' />);
+    const product1 = await findByText('Product 1');
+    const product2 = screen.queryByText('Product 2');
+    expect(product1).toBeInTheDocument();
+    expect(product2).not.toBeInTheDocument();
+  });
+
+  it('test_add_product_to_cart', async () => {
+    const mockProducts = [
+      {
+        id: 1,
+        name: 'Product 1',
+        image: 'image1.jpg',
+        price: 10,
+        type: 'breakfast',
+        qty: 1
+      }
+    ];
+    const mockResponse = { json: vi.fn().mockResolvedValue(mockProducts) };
+    window.fetch = vi.fn().mockResolvedValue(mockResponse);
+    const setAllProducts = vi.fn();
+    const setTotal = vi.fn();
+    const setCountProducts = vi.fn();
+    const { findByRole } = render(
+      <ProductContainer
+        selectedMenu='breakfast'
+        allProducts={[]}
+        setAllProducts={setAllProducts}
+        total={0}
+        setTotal={setTotal}
+        countProducts={0}
+        setCountProducts={setCountProducts}
+      />
+    );
+    const addButton = await findByRole('button', { class: 'btn-add-product' });
+    fireEvent.click(addButton);
+    expect(setAllProducts).toHaveBeenCalledWith([{ ...mockProducts[0], qty: 1 }]);
+    expect(setTotal).toHaveBeenCalledWith(10);
+    expect(setCountProducts).toHaveBeenCalledWith(1);
+  });
+
+ 
+})
