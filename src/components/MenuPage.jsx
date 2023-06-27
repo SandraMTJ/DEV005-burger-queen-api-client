@@ -5,28 +5,37 @@ import { BiPlusMedical } from 'react-icons/bi';
 import ModalOrder from './wall/ModalOrder';
 import PropTypes from 'prop-types';
 
-
+// Contenedor de los productos del menú
 const ProductContainer = (props) => {
+  // Creación de estado para almacenar la lista de productos
   const [products, setProducts] = useState([]);
 
+  // Función para añadir productos a la orden
   const onAddProduct = product => {
+    // Compara el id del producto elegido con los id de los productos presentes en la orden
+    // Si el producto ya está, se le añade +1 a la cantidad, si no, se guarda 
 		if (props.allProducts.find(item => item.id === product.id)) {
 			const products = props.allProducts.map(item =>
 				item.id === product.id
 					? { ...item, qty: item.qty + 1 }
 					: item
 			);
+      // Actualizamos el total, la cantidad de prodyctos y la lista de productos
       props.setTotal(props.total + product.price * product.qty);
 			props.setCountProducts(props.countProducts + product.qty);
 			return props.setAllProducts([...products]);
 		}
 
+    // Actualizamos el total, la cantidad de prodyctos y la lista de productos
     props.setTotal(props.total + product.price * product.qty);
 		props.setCountProducts(props.countProducts + product.qty);
 		props.setAllProducts([...props.allProducts, product]);
 	};
 
+  // Mandamos solicitud a la api para traer todos los productos cada que haya un cambio de elección categoría menú 
   useEffect(() => {
+
+    // Obtenemos el token 
     const token = localStorage.getItem('token');
 
     fetch('http://localhost:8080/products', {
@@ -36,6 +45,7 @@ const ProductContainer = (props) => {
     })
       .then(response => response.json())
       .then(data => {
+        // Filtramos los productos dependiendo del menú elegido
         const filteredProducts = data.filter(product => product.type === props.selectedMenu);
         setProducts(filteredProducts);
       })
@@ -63,14 +73,17 @@ const ProductContainer = (props) => {
 };
 
 const MenuPage = (props) => {
+  // Estado para almacenar la categoría de menú seleccionado
   const [selectedMenu, setSelectedMenu] = useState('breakfast');
 
+  // Función encargada de cambiar la categoría del menú
   const handleMenuSelect = (menu) => {
     setSelectedMenu(menu);
   };  
 
   return (
     <>    
+      {/* Si showModal es verdadero se muestra */}
       {(props.showModalOrder ? <ModalOrder setShowModalOrder = {props.setShowModalOrder}/> : '')}                   
       <Category onSelect={handleMenuSelect} />
       <ClientName 
@@ -91,7 +104,8 @@ const MenuPage = (props) => {
   );
 };
 
-export default MenuPage;
+export { MenuPage, ProductContainer };
+
 
 MenuPage.propTypes = {
   allProducts: PropTypes.array,

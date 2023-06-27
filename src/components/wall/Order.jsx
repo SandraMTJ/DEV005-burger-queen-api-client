@@ -5,7 +5,6 @@ import { BiPlusMedical } from 'react-icons/bi';
 import { FaMinus } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 
-
 const Order = (props) => { 
 
   // Obtener token almacenado en localStorage
@@ -17,7 +16,6 @@ const Order = (props) => {
   const handleClick = () => {
     props.setShowOrder(false); 
   };
-
  
   // Cuando haya cambios en los productos de la orden, se actualicen con updateOrderProducts
   useEffect(() => {
@@ -36,6 +34,7 @@ const Order = (props) => {
 
   // Guardar orden en la API
   const onSendOrder = () =>{
+    // Obtenemos el id del usuario que realizó la orden
     const userId = localStorage.getItem('userId');
 
     //Información del body que se envía en la solicitud a la API
@@ -65,14 +64,13 @@ const Order = (props) => {
       props.setTotal(0)
       // Cerrar ventada de order
       handleClick();
+      // Mostrar el modal de enviado exitoso
       props.setShowModalOrder(true)
     })
     .catch((err) => {
       console.log(err)
     })
-  }
-  
-  
+  }  
 
   // Eliminar producto de la orden (ícono de basura)
   const onDeleteProduct = product => {
@@ -188,7 +186,6 @@ const Order = (props) => {
         <button type="submit" onClick={onSendOrder} className={`btn-send-order  ${props.total > 0 ? '' : 'hidden'}`}>
           Send order
         </button>
-
       </section>
     </>
   );

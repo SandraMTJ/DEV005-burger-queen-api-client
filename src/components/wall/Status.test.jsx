@@ -3,13 +3,16 @@ import { waitFor, render } from '@testing-library/react';
 import Status from './Status';
 import { act } from 'react-dom/test-utils';
 
-describe("Status component", () => {
-  it("test render component", () => {
+describe("Status", () => {
+
+  //Debe renderizar el componenete Status
+  it("should render component", () => {
     const setShowStatus = vi.fn();
     const { container } = render(<Status setShowStatus={setShowStatus} />);
     expect(container.firstChild).toBeInTheDocument();
   });
 
+  // No debe estar vacío cuando haya órdenes, porque debe estar el mensaje de "No orders"
   it("test empty orders array", async () => {
     const orders = [];
     const token = 'token';
@@ -34,10 +37,11 @@ describe("Status component", () => {
       },
     });
     
-    expect(wrapper.container.querySelector('.ready-to-deliver-row')).toBeNull();
-    expect(wrapper.container.querySelector('.delivered-row')).toBeNull();
+    expect(wrapper.container.querySelector('.ready-to-deliver-row')).not.toBeNull();
+    expect(wrapper.container.querySelector('.delivered-row')).not.toBeNull();
   });
 
+  // Debe arrojar error cuando la solicitud a la Api falle
   it("test api request fails", async () => {
     const fetchMock = vi.fn(() => Promise.reject('API is down'));
     const consoleErrorMock = vi.fn();

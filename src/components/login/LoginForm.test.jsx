@@ -10,8 +10,7 @@ vi.mock('react-router-dom', () =>{
 })  
 
 describe("LoginForm", () =>{
-
-    // Tests that an error message is displayed when an invalid email is submitted
+    // Testea que se muestre un mensaje de error cuando se envía un correo inválido
     it("Email invalid", async () => {
         const { getByPlaceholderText, getByText} = render(<LoginForm />);
     
@@ -22,7 +21,7 @@ describe("LoginForm", () =>{
         await waitFor(() => expect(getByText('Invalid email')).toBeInTheDocument());
     });
 
-    // Tests that an error message is displayed when an invalid password is submitted
+    // Testea que se muestre un mensaje de error cuando se envía una contrasedña inválido
     it("password invalid", async () => {
         const { getByPlaceholderText, getByText } = render(<LoginForm />);
     
@@ -33,6 +32,7 @@ describe("LoginForm", () =>{
         await waitFor(() => expect(getByText('Password required')).toBeInTheDocument());
     });
 
+    // Debe renderizar el formulario
     it("should render the form", () => {
         render(<LoginForm />);
         const emailInput = screen.getByPlaceholderText('Email');
@@ -43,6 +43,7 @@ describe("LoginForm", () =>{
         expect(submitButton).toBeInTheDocument();
     }); 
 
+    // Testea que el input de password tenga atributos
     it("test password input attributes", () => {
         const { getByPlaceholderText } = render(<LoginForm />);
         const passwordInput = getByPlaceholderText('Password');
@@ -50,7 +51,7 @@ describe("LoginForm", () =>{
         expect(passwordInput).toHaveAttribute('type', 'password');
         expect(passwordInput).toHaveAttribute('id', 'password');
         expect(passwordInput).toHaveAttribute('placeholder', 'Password');
-    });
+    });    
 })
 
 

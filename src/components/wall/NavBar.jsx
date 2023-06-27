@@ -6,6 +6,8 @@ import LogoWall from './LogoWall.jsx';
 import PropTypes from 'prop-types';
 
 const NavBar = ( props ) => {
+
+    // Obtenemos el role del usuario para saber qué componentes mostrar
     const userRole = localStorage.getItem('userRole');
     return (
         <>

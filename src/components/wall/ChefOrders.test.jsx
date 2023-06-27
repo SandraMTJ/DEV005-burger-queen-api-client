@@ -1,15 +1,41 @@
-import { render, fireEvent, waitFor } from '@testing-library/react';
+import { render } from "@testing-library/react";
+import ChefOrders from "./ChefOrders";
 import { vi } from 'vitest';
-import ChefOrders from './ChefOrders';
 
 describe('ChefOrders', () => {
-  it('test_no_orders_message_when_ordersChef_is_empty', async () => {
-    const mockOrders = [];
-    const mockResponse = {json: vi.fn().mockResolvedValue(mockOrders)};
-    vi.spyOn(window, 'fetch').mockResolvedValue(mockResponse);
-    localStorage.setItem('token', 'mockToken');
-    const {findByText} = render(<ChefOrders selectedOrderStatusChef='pending' />);
-    const noOrdersMessage = await findByText('No orders');
-    expect(noOrdersMessage).toBeInTheDocument();
-});
+    // Prueba que los pedidos se obtengan correctamente desde la API y el estado se establezca correctamente
+    it('test fetch orders success', async () => {
+        const mockData = [
+            { id: 1, client: 'Fake', products: [{ id: 1, qty: 2, name: 'Onion rings' }], status: 'pending', dateEntry: '12:00' }
+        ];
+        const mockResponse = { json: vi.fn().mockResolvedValue(mockData) };
+        vi.spyOn(window, 'fetch').mockResolvedValue(mockResponse);
+        const { container } = render(<ChefOrders selectedOrderStatusChef='pending' />);
+        await new Promise(resolve => setTimeout(resolve));
+        expect(container.getElementsByClassName('card-order-chef')).toHaveLength(1);
+        expect(container.getElementsByClassName('client-name-chef-orders')[0].textContent).toEqual('Client: Fake');
+        window.fetch.mockRestore();
+    });
+
+   // Prueba que se muestre el mensaje 'No orders' cuando no hay pedidos
+   it('test no orders message displayed', async () => {
+        const mockData = [];
+        const mockResponse = { json: vi.fn().mockResolvedValue(mockData) };
+        vi.spyOn(window, 'fetch').mockResolvedValue(mockResponse);
+        const { container } = render(<ChefOrders selectedOrderStatusChef='pending' />);
+        await new Promise(resolve => setTimeout(resolve));
+        expect(container.getElementsByClassName('no-orders-message')).toHaveLength(1);
+        window.fetch.mockRestore();
+    });
+
+    // Prueba que el error de la API se maneje correctamente
+    it('test_fetch_orders_failure', async () => {
+        const mockError = new Error('API error');
+        vi.spyOn(window, 'fetch').mockRejectedValue(mockError);
+        console.error = vi.fn();
+        const { container } = render(<ChefOrders selectedOrderStatusChef='pending' />);
+        await new Promise(resolve => setTimeout(resolve));
+        expect(console.error).toHaveBeenCalledWith('API error:', mockError);
+        vi.restoreAllMocks();
+    });
 });
