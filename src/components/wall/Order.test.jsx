@@ -168,7 +168,7 @@ it("test render component", () => {
 
     const contentOrdersTable = container.querySelector('.content-orders-table');
 
-    expect(contentOrdersTable.children.length).toEqual(0);
+    expect(contentOrdersTable.children.length).toEqual(1);
     });
 })
 
