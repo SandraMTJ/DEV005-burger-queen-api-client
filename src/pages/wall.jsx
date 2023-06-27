@@ -22,74 +22,74 @@ const Wall = () => {
     
   
     let componentToRender;
-
-        if (showOrder) {
-            componentToRender = (
-                <Order 
-                    setShowOrder={setShowOrder}
-                    allProducts={allProducts}
-                    setAllProducts={setAllProducts}
-                    total={total}
-                    setTotal={setTotal}
-                    countProducts={countProducts}
-                    setCountProducts={setCountProducts}
-                    clientName={clientName}
-                    setShowModalOrder={setShowModalOrder}
-                    
-                />
-            );
-        } else if (showStatus){
-            componentToRender = (
-                <Status setShowStatus = {setShowStatus} />
-            );
-        } else {
-            componentToRender = (
-                <>
-                    <NavBar 
-                        setShowOrder={setShowOrder}
-                        countProducts={countProducts}
-                        clientName={clientName}
-                        setClientNameError={setClientNameError}
-                        setShowStatus={setShowStatus}
-                        countOrdersReady = {countOrdersReady}
-                        setCountOrdersReady = {setCountOrdersReady}
-                    />
-
-
-                    {(userRole === 'waiter' || userRole === 'admin') && (
-                        <MenuPage 
-                            allProducts={allProducts}
-                            setAllProducts={setAllProducts}
-                            total={total}
-                            setTotal={setTotal}
-                            countProducts={countProducts}
-                            setCountProducts={setCountProducts}
-                            setClientName={setClientName}
-                            clientNameError={clientNameError}
-                            setClientNameError={setClientNameError}
-                            showModalOrder={showModalOrder}
-                            setShowModalOrder={setShowModalOrder}
-                        />
-                    )}
-
-                    {(userRole === 'chef') && (
-                        <>
-                            <StatusOrderChef selectedOrderStatusChef = {selectedOrderStatusChef} setSelectedOrderStatusChef = {setSelectedOrderStatusChef}/>
-                            <ChefOrders selectedOrderStatusChef = {selectedOrderStatusChef}/>
-                        </>
-                    )}
-                </>
-            );
-        }
-
-        return (
+    // Si showOrder es verdadero, se muestra
+    if (showOrder) {
+        componentToRender = (
+            <Order 
+                setShowOrder={setShowOrder}
+                allProducts={allProducts}
+                setAllProducts={setAllProducts}
+                total={total}
+                setTotal={setTotal}
+                countProducts={countProducts}
+                setCountProducts={setCountProducts}
+                clientName={clientName}
+                setShowModalOrder={setShowModalOrder}                    
+            />
+        );
+    } 
+    //Si showStatus es verdadero, se muestra 
+    else if (showStatus){
+        componentToRender = (
+            <Status setShowStatus = {setShowStatus} />
+        );
+    } else {
+        componentToRender = (
             <>
-                <Background />
-                {componentToRender}
-                
+                <NavBar 
+                    setShowOrder={setShowOrder}
+                    countProducts={countProducts}
+                    clientName={clientName}
+                    setClientNameError={setClientNameError}
+                    setShowStatus={setShowStatus}
+                    countOrdersReady = {countOrdersReady}
+                    setCountOrdersReady = {setCountOrdersReady}
+                />
+
+                {/* Si el role del usuario es waiter o admin, se muestra menupage */}
+                {(userRole === 'waiter' || userRole === 'admin') && (
+                    <MenuPage 
+                        allProducts={allProducts}
+                        setAllProducts={setAllProducts}
+                        total={total}
+                        setTotal={setTotal}
+                        countProducts={countProducts}
+                        setCountProducts={setCountProducts}
+                        setClientName={setClientName}
+                        clientNameError={clientNameError}
+                        setClientNameError={setClientNameError}
+                        showModalOrder={showModalOrder}
+                        setShowModalOrder={setShowModalOrder}
+                    />
+                )}
+                {/* Si el role del usuario es chef, se muestra StatusOrderChef y ChefOrders */}
+                {(userRole === 'chef') && (
+                    <>
+                        <StatusOrderChef selectedOrderStatusChef = {selectedOrderStatusChef} setSelectedOrderStatusChef = {setSelectedOrderStatusChef}/>
+                        <ChefOrders selectedOrderStatusChef = {selectedOrderStatusChef}/>
+                    </>
+                )}
             </>
         );
+    }
 
+    return (
+        <>
+            <Background />
+            {componentToRender}
+            
+        </>
+    );
 };
 
 export default Wall;
