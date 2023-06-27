@@ -13,7 +13,7 @@ const StatusOrderChef = (props) => {
             <button
              className={`btn-delivering ${props.selectedOrderStatusChef === 'delivering' ? 'selected' : ''}`}
              onClick={() => props.setSelectedOrderStatusChef('delivering')}>
-                Delivering
+                Ready to deliver
             </button>
         </div>
       </div>

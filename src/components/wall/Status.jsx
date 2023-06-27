@@ -56,49 +56,64 @@ const Status = (props) => {
         <div className="status-container">         
           <table className="status-content-table">
             <tbody className="container-status"> 
-             <th className= "ready-to-deliver-column" scope="col">
-                {ordersReady.map(order =>{
-                return(                                     
-                    <tr  className="ready-to-deliver-row" key = {order.id}  scope="col">
+              <th className="ready-to-deliver-column" scope="col">
+                {ordersReady.length === 0 ? (
+                  <tr className="ready-to-deliver-row">
+                    <td colSpan="5" className='no-orders-message-waiter'>No orders</td>
+                  </tr>
+                ) : (
+                  ordersReady.map((order) => (
+                    <tr className="ready-to-deliver-row" key={order.id} scope="col">
                       <div className="container-status-order">
-                        <div className="order-num"> N° Order: {order.id}</div>
+                        <div className="order-num">N° Order: {order.id}</div>
                         <span>Client: {order.client}</span>
                         <ul>
-                          {order.products.map(product => (
+                          {order.products.map((product) => (
                             <li key={product.id}>
                               {product.qty} {product.name}
                             </li>
                           ))}
                         </ul>
                         <span>Total: ${order.total}.00</span>
-                        <BsSquare className="icon-check-status"onClick={() => handleChangeStatus(order, 'delivered', token)}/>
+                        <BsSquare
+                          className="icon-check-status"
+                          onClick={() => handleChangeStatus(order, 'delivered', token)}
+                        />
                       </div>
-                    </tr>                  
-                  )
-              })}
-              </th> 
+                    </tr>
+                  ))
+                )}
+            </th>
                
-              <th className= "delivered-column" scope="col">
-              {ordersDelivered.map(order =>{
-                return(                                     
-                    <tr  className="delivered-row" key = {order.id}  scope="col">
+            <th className="delivered-column" scope="col">
+                {ordersDelivered.length === 0 ? (
+                  <tr className="delivered-row">
+                    <td colSpan="5" className='no-orders-message-waiter'>No orders</td>
+                  </tr>
+                ) : (
+                  ordersDelivered.map((order) => (
+                    <tr className="delivered-row" key={order.id} scope="col">
                       <div className="container-status-order">
-                        <div className="order-num"> N° Order: {order.id}</div>
+                        <div className="order-num">N° Order: {order.id}</div>
                         <span>Client: {order.client}</span>
                         <ul>
-                          {order.products.map(product => (
+                          {order.products.map((product) => (
                             <li key={product.id}>
-                              {product.qty} {product.name} 
+                              {product.qty} {product.name}
                             </li>
                           ))}
                         </ul>
                         <span>Total: ${order.total}.00</span>
-                        <BsCheckSquare className="icon-check-status" onClick={() => handleChangeStatus(order, 'delivering', token)} />
+                        <BsCheckSquare
+                          className="icon-check-status"
+                          onClick={() => handleChangeStatus(order, 'delivering', token)}
+                        />
                       </div>
-                    </tr>                  
-                  )
-              })}
-              </th>  
+                    </tr>
+                  ))
+                )}
+              </th>
+ 
                                                                
             </tbody>
           </table>

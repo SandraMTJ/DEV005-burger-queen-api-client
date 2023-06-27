@@ -12,7 +12,7 @@ const NavBar = ( props ) => {
         <LogoWall />        
             <div className='container-btns'>
                 {userRole === 'admin' && <AdminBtn />}
-                {(userRole === 'waiter' || userRole === 'admin') && <StatusBtn setShowStatus = {props.setShowStatus}/>}
+                {(userRole === 'waiter' || userRole === 'admin') && <StatusBtn setShowStatus = {props.setShowStatus} countOrdersReady = {props.countOrdersReady} setCountOrdersReady = {props.setCountOrdersReady}/>}
                 {(userRole === 'waiter' || userRole === 'admin') && <OrderBtn setShowOrder={props.setShowOrder} countProducts={props.countProducts}  clientName = {props.clientName} setClientNameError = {props.setClientNameError}/>}
                 <Logout />
             </div>
@@ -29,5 +29,7 @@ NavBar.propTypes = {
     setClientNameError: PropTypes.func, 
     countProducts: PropTypes.number, 
     clientName: PropTypes.string, 
+    countOrdersReady:  PropTypes.number,
+    setCountOrdersReady: PropTypes.func,
 };
 
