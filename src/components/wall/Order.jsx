@@ -150,26 +150,29 @@ const Order = (props) => {
               </tr>                   
             </thead>
         </table>
-        <div className="order-container">         
+        <div className="order-container">
           <table className="orders-content-table">
             <tbody className="content-orders-table">
-              {props.allProducts.map(product =>{
-                return(
-                <tr key = {product.id}>
-                  <th className='order-celd4' scope="col">{product.name}</th>
-                  <th className='order-celd5' scope="col">
+              {props.allProducts.length === 0 ? (
+                <tr>
+                  <td colSpan="3" className="no-products-message">Add products</td>
+                </tr>
+              ) : (
+                props.allProducts.map(product => (
+                  <tr key={product.id}>
+                    <th className='order-celd4' scope="col">{product.name}</th>
+                    <th className='order-celd5' scope="col">
                       <FaMinus className='minus-icon' onClick={() => onReduceProduct(product)}/>
                       <span className='qty-span'>{product.qty}</span>
                       <BiPlusMedical className='plus-icon' onClick={() => onIncreaseProduct(product)}/>
-                  
-                  </th>
-                  <th className='order-celd6' scope="col">
-                    ${product.qty * product.price}.00
-                    <RiDeleteBin5Line className='delete-icon' onClick={() => onDeleteProduct(product)}/>
-                  </th>            
-                </tr> 
-                )
-              })}                                 
+                    </th>
+                    <th className='order-celd6' scope="col">
+                      ${product.qty * product.price}.00
+                      <RiDeleteBin5Line className='delete-icon' onClick={() => onDeleteProduct(product)}/>
+                    </th>            
+                  </tr>
+                ))
+              )}
             </tbody>
           </table>
         </div>
@@ -203,4 +206,5 @@ Order.propTypes = {
   setTotal: PropTypes.func,
   countProducts: PropTypes.number,
   setShowModalOrder: PropTypes.func,
+  setOrdersReady:  PropTypes.func,
 };
