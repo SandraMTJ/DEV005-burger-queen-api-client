@@ -2,16 +2,22 @@ import PropTypes from 'prop-types';
 const OptionsAdmin = (props) => {
    
     return (
-      <div className="container-options-chef">
-        <div className="container-btns-chef">
+      <div className="container-options-admin">
+        <div className="container-btns-admin">
             <button
-             className={`btn-pending ${props.selectedOptionsAdmin === 'employees' ? 'selected' : ''} `}
-             onClick={() => props.setSelectedOptionsAdmin('employees')}>
+             className={`btn-employee ${props.selectedOptionsAdmin === 'employees' ? 'selected' : ''} `}
+             onClick={() => {
+                              props.setSelectedOptionsAdmin('employees');
+                              props.setOptionCreate('employee')
+                            }}>
                 Employees
             </button>
             <button
-             className={`btn-delivering ${props.selectedOptionsAdmin === 'products' ? 'selected' : ''}`}
-             onClick={() => props.setSelectedOptionsAdmin('products')}>
+             className={`btn-product ${props.selectedOptionsAdmin === 'products' ? 'selected' : ''}`}
+             onClick={() => {
+                              props.setSelectedOptionsAdmin('products'); 
+                              props.setOptionCreate('product')
+                            }}>
                 Products
             </button>
         </div>

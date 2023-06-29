@@ -1,10 +1,12 @@
 
-const BtnCreateElement = () => {
+const BtnCreateElement = (props) => {
 
     return (
-        <button className="btn-option-create" >
-           Create             
-        </button>
+        <div className="container-btn-option-create">
+            <button className="btn-option-create" >
+            Create  {props.optionCreate}           
+            </button>
+        </div>
     );
 };
 

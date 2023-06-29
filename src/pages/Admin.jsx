@@ -16,7 +16,7 @@ const Admin = (props) => {
                 optionCreate ={ optionCreate }
                 setOptionCreate ={ setOptionCreate }
                 setShowAdminView = {props.setShowAdminView}
-      /> 
+            /> 
             
         </>
     );
