@@ -69,9 +69,10 @@
 .submit-btn, .btn-send-order {
   font-family: 'Jacques Francois', serif;
   font-size: 40px;
-  background: #9A601B;
-  color: white;
-  border: none;
+  background: #D68C1C;
+  color: black;
+  border: 2px solid white;
+  font-weight: bold;
   border-radius: 15px;
   margin-top: 20px;
   height: 60px;
@@ -79,10 +80,11 @@
   display:flex;
   justify-content: center;
   align-items: center;
+  box-shadow: inset 3px 3px 3px rgba(255,255,255,.7), inset -2px -2px 3px rgba(0,0,0,.1), 2px 2px 10px rgba(0,0,0,.1);
 }
 
-.submit-btn:hover {
-  background: #d89542;
+.submit-btn:active {
+  background: #9A601B;
 
 }
 
@@ -99,8 +101,7 @@
   top: 5px;
   left: 36px;
   width: 260px;
-  height: 210px;
-  
+  height: 210px;  
 }
 
 .btn-navBar{  
@@ -113,7 +114,8 @@
   font-size: 20px;
   margin-right: 10px;
   position: relative;
-
+  font-weight: bold;
+  box-shadow: inset 3px 3px 3px rgba(44, 44, 44, 0.7), inset -2px -2px 3px rgba(0,0,0,.1), 2px 2px 10px rgba(0,0,0,.1);
 }
 
 .btn-admin {
@@ -122,6 +124,7 @@
   width: 70px;
   border-radius: 10px;
   margin-right: 10px;
+  box-shadow: inset 3px 3px 3px rgba(44, 44, 44, 0.7), inset -2px -2px 3px rgba(0,0,0,.1), 2px 2px 10px rgba(0,0,0,.1);
 }
 
 .navBar-icon{
@@ -152,16 +155,20 @@
   display:flex;
   align-items: center;
   justify-content: center;
+   box-shadow: inset 3px 3px 3px rgba(255, 255, 255, 0.7), inset -2px -2px 3px rgba(0,0,0,.1), 2px 2px 10px rgba(0,0,0,.1);
 }
 
-
+.btn-add-product:active{
+  background-color:#9A601B;
+}
 
 .name-client-input{
   border-radius: 15px;
-  width: 290px;
-  height: 50px;
+  width: 300px;
+  height: 60px;
   margin-top: 8px;
   padding-left: 15px;
+  font-size: 20px;
 }
 
 .name-client-label{
@@ -186,7 +193,7 @@
   width: 280px;
 }
 
-.container-category, .container-status-chef{
+.container-category, .container-status-chef, .container-options-admin{
   display: flex;
   margin-top: 25%;
   display:flex;
@@ -194,21 +201,39 @@
   justify-content: center;
   color: white;
 }
-.container-status-chef{
+.container-status-chef, .container-options-admin{
   margin-top:8%;
   margin-left: 30%;
   flex-direction: column;
   gap: 30px;
 }
 
+.container-options-admin{
+  margin-top:20%;
+}
+
 .btn-lunch, .btn-breakfast, .btn-pending, .btn-delivering{
   border-radius: 15px;
   width: 250px;
-  height: 50px;
+  height: 60px;
   margin: 0px 5px;
-  background-color: #706F6F;
+  background-color:  #0f0f0f;
+  color: white;
+  border: 1px solid white;
+  box-shadow: inset 3px 3px 3px rgba(255,255,255,.7), inset -2px -2px 3px rgba(0,0,0,.1), 2px 2px 10px rgba(0,0,0,.1);
+  font-size: 23px;
+
+}
+.btn-employee, .btn-product {
+  border-radius: 15px;
+  width: 210px;
+  height: 60px;
+  margin: 0px 8px;
+  background-color:  #0f0f0f;
   font-size: 20px;
-  font-weight: bold;
+  border: 1px solid white;
+  color: white;
+  box-shadow: inset 3px 3px 3px rgba(255,255,255,.7), inset -2px -2px 3px rgba(0,0,0,.1), 2px 2px 10px rgba(0,0,0,.1);
 }
 
 .btn-breakfast, .btn-pending{
@@ -253,6 +278,8 @@
 
 .selected{
   background-color: #D68C1C;
+  color: black;
+  font-weight: bold;
 }
 
 /* orders */
@@ -348,7 +375,7 @@
 }
 
 .order-celd1, .order-celd2, .order-celd3, .status-celd1, .status-celd3 {
-  background-color:#9A601B;
+  background-color: #D68C1C;
   color: black;
   text-align: center;
   width:30%;
@@ -562,8 +589,25 @@
   display:flex;
   align-items: center;  
 }
+/*Admin*/
+.btn-option-create{
+  background-color: #0f0f0f;
+  width: 210px;
+  height: 60px;
+  border-radius: 12px;
+  border: 2px solid #D68C1C;
+  color: #D68C1C;
+  font-weight: bold;
+  font-size: 20px;
+  box-shadow: inset 3px 3px 3px rgba(255,255,255,.7), inset -2px -2px 3px rgba(0,0,0,.1), 2px 2px 10px rgba(0,0,0,.1);
+}
 
-
+.container-btn-option-create{
+  display: flex;
+  justify-content: end;
+  margin: 30px;
+  padding-right: 5%;
+}
 @media (min-width: 835px) {
   .login-container{  
     width: 100%; 
@@ -595,7 +639,7 @@
     margin-top: 5px;
   }
 
-  .container-category, .container-status-chef{
+  .container-category, .container-status-chef, .container-options-admin{
     position: absolute;
     top: 360px;
     left: 110px; 
@@ -605,21 +649,23 @@
     align-items: start;
     margin-top:5%;
   }
-  .container-status-chef{
+  .container-status-chef, .container-options-admin{
     position: absolute;
     top: 250px;
     left: -300px;     
   }
-  .container-btns-chef{
+ 
+  .container-btns-chef, .container-btns-admin{
     display:flex;
     flex-direction: column;
   }
-  .btn-lunch, .btn-breakfast, .btn-pending, .btn-delivering{
+
+  .btn-lunch, .btn-breakfast, .btn-pending, .btn-delivering, .btn-product, .btn-employee{
     border-radius: 15px;
     width: 245px;
     height: 55px;
     margin: 8px 0px;
-  }
+  }  
   
   .btn-admin {
     height: 50px;
