@@ -29,7 +29,7 @@ describe('ChefOrders', () => {
     });
 
     // Prueba que el error de la API se maneje correctamente
-    it('test_fetch_orders_failure', async () => {
+    it('test fetch orders failure', async () => {
         const mockError = new Error('API error');
         vi.spyOn(window, 'fetch').mockRejectedValue(mockError);
         console.error = vi.fn();

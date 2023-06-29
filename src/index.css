@@ -186,7 +186,7 @@
   width: 280px;
 }
 
-.container-category, .container-status-chef{
+.container-category, .container-status-chef, .container-options-admin{
   display: flex;
   margin-top: 25%;
   display:flex;
@@ -194,11 +194,15 @@
   justify-content: center;
   color: white;
 }
-.container-status-chef{
+.container-status-chef, .container-options-admin{
   margin-top:8%;
   margin-left: 30%;
   flex-direction: column;
   gap: 30px;
+}
+
+.container-options-admin{
+  margin-top:15%;
 }
 
 .btn-lunch, .btn-breakfast, .btn-pending, .btn-delivering{
@@ -595,7 +599,7 @@
     margin-top: 5px;
   }
 
-  .container-category, .container-status-chef{
+  .container-category, .container-status-chef, .container-options-admin{
     position: absolute;
     top: 360px;
     left: 110px; 
@@ -605,11 +609,12 @@
     align-items: start;
     margin-top:5%;
   }
-  .container-status-chef{
+  .container-status-chef, .container-options-admin{
     position: absolute;
     top: 250px;
     left: -300px;     
   }
+ 
   .container-btns-chef{
     display:flex;
     flex-direction: column;

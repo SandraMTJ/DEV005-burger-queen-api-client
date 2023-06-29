@@ -104,7 +104,7 @@ describe('MenuPage', () => {
 });
 
 describe('ProductContainer', () => {
-  it('test_fetch_products', async () => {
+  it('test fetch products', async () => {
     const mockProducts = [
         {
             id: 1,
@@ -130,7 +130,8 @@ describe('ProductContainer', () => {
     expect(product2).not.toBeInTheDocument();
   });
 
-  it('test_add_product_to_cart', async () => {
+  // Debería añadir productos al carrito
+  it('should add product to cart', async () => {
     const mockProducts = [
       {
         id: 1,

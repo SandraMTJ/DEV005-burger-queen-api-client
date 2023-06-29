@@ -6,8 +6,12 @@ import Order from '../components/wall/Order.jsx';
 import Status from '../components/wall/Status.jsx';
 import StatusOrderChef from '../components/wall/StatusOrderChef.jsx';
 import ChefOrders from '../components/wall/ChefOrders.jsx';
+import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import PropTypes from 'prop-types';
 
-const Wall = () => {
+const Wall = (props) => {
+    const navigate = useNavigate();
     const userRole = localStorage.getItem('userRole');
     const [showOrder, setShowOrder] = useState(false);
     const [allProducts, setAllProducts] = useState([]);
@@ -20,7 +24,14 @@ const Wall = () => {
     const [selectedOrderStatusChef, setSelectedOrderStatusChef] = useState('pending');  
     const [countOrdersReady, setCountOrdersReady] = useState(0);  
     
-  
+    
+    // Si showAdmin view es verdadero, mostrarlo
+    useEffect(() => {
+        if (props.showAdminView) {
+            navigate('/admin');
+        }
+    }, [props.showAdminView, navigate]);
+
     let componentToRender;
     // Si showOrder es verdadero, se muestra
     if (showOrder) {
@@ -43,9 +54,12 @@ const Wall = () => {
         componentToRender = (
             <Status setShowStatus = {setShowStatus} />
         );
-    } else {
+    // Si showAdminView es verdadero, se muestra el navbar y el AdminView
+    
+    }else {
         componentToRender = (
-            <>
+            <>  
+                
                 <NavBar 
                     setShowOrder={setShowOrder}
                     countProducts={countProducts}
@@ -54,6 +68,7 @@ const Wall = () => {
                     setShowStatus={setShowStatus}
                     countOrdersReady = {countOrdersReady}
                     setCountOrdersReady = {setCountOrdersReady}
+                    setShowAdminView = { props.setShowAdminView }
                 />
 
                 {/* Si el role del usuario es waiter o admin, se muestra menupage */}
@@ -93,3 +108,9 @@ const Wall = () => {
 };
 
 export default Wall;
+
+
+Wall.propTypes = {
+    setShowAdminView: PropTypes.func,
+    showAdminView: PropTypes.bool
+};
