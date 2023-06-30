@@ -1,6 +1,7 @@
 import Background from "../components/Background.jsx";
 import AdminView from "../components/admin/AdminView.jsx";
 import FormNewUser from "../components/admin/FormNewUser.jsx";
+import FormNewProduct from "../components/admin/FormNewProduct.jsx";
 import { useState } from "react";
 import PropTypes from 'prop-types';
 
@@ -14,8 +15,13 @@ const Admin = (props) => {
     if(showFormUser){
        componentToRender = (
             <FormNewUser setShowFormUser = {setShowFormUser}/>
+        
        ) 
-    } else {
+    } else if (showFormProduct){
+        componentToRender = (
+            <FormNewProduct setShowFormProduct = {setShowFormProduct} />
+        )
+    }else {
         componentToRender = (
             <AdminView 
             selectedOptionsAdmin = {selectedOptionsAdmin} 

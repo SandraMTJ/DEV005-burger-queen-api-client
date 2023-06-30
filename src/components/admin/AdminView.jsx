@@ -37,7 +37,7 @@ const AdminView = (props) => {
                 ) 
                 : (
                     <>
-                        <BtnCreateElement optionCreate ={ props.optionCreate }/>
+                        <BtnCreateElement optionCreate ={ props.optionCreate } setShowFormProduct = {props.setShowFormProduct}/>
                         <ListProducts type = {'breakfast'}/>
                         <ListProducts type = {'lunch'}/>
                     </>

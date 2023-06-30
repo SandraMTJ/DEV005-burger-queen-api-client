@@ -3,7 +3,9 @@ const BtnCreateElement = (props) => {
     const handleClick = () => {
         if(props.optionCreate === 'employee'){
             props.setShowFormUser(true)
-        }       
+        } else(props.optionCreate === 'product') {
+            props.setShowFormProduct(true)
+        }   
     }
     return (
         <div className="container-btn-option-create">

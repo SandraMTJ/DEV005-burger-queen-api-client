@@ -88,7 +88,7 @@
 
 }
 
-.email-icon, .password-icon{
+.email-icon, .password-icon, .burger-icon{
   font-size: 30px;
   position: absolute;
   margin: 50px 40px;
@@ -328,7 +328,7 @@
   right: 20px;
 }
 
-.icon-close-order, .icon-close-status, .icon-close-form-user{
+.icon-close-order, .icon-close-status, .icon-close-form-user, .icon-close-form-product{
   position: absolute;
   top: 13px;
   right: 20px;
@@ -336,7 +336,7 @@
   font-size: 60px;    
 }
 
-.order-title, .status-title, .new-employee-title{
+.order-title, .status-title, .new-employee-title, .new-product-title{
   margin-top: 25px;
   font-size: 45px;
   color:white;
@@ -353,7 +353,7 @@
 .titles-orders-table, .titles-status-table{
   font-size: 30px;
 }
-.section-orders, .section-status, .section-new-employee{
+.section-orders, .section-status, .section-new-employee, .section-new-product{
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -659,7 +659,7 @@
 }
 
 /*Formulario nuevo empleado*/
-.form-new-employee{
+.form-new-employee, .form-new-product{
   display: flex;
   flex-direction: column;
   align-items: center;
