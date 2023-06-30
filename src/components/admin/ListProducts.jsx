@@ -1,14 +1,14 @@
 import { useState } from "react";
 
-const ListEmployees = (props) => {
+const ListProducts = (props) => {
 
-    const [employees, setEmployees] = useState([]);
+    const [products, setProducts] = useState([]);
 
     // Llamar al token almacenado
     const token = localStorage.getItem('token');
 
-    // Solicitud a la API para traer los usuarios
-    fetch('http://localhost:8080/users', {
+    // Solicitud a la API para traer los productos
+    fetch('http://localhost:8080/products', {
         headers: {
         'Authorization': `Bearer ${token}`,
         },
@@ -16,8 +16,8 @@ const ListEmployees = (props) => {
     .then(response => response.json())
     .then(data => {
         // Filtramos los usuarios y guardamos las que tienen status delivering
-        const fetchEmployees = data.filter(user => user.role === props.role);
-        setEmployees(fetchEmployees);
+        const fetchProducts = data.filter(product => product.type === props.type);
+        setProducts(fetchProducts);
     })
     .catch(error => {
         console.error('API error:', error);
@@ -30,13 +30,13 @@ const ListEmployees = (props) => {
          <table className="table-employees">
             <thead>
                 <tr>
-                    <th colSpan="3" className = "title-tables-admin">{props.role[0].toUpperCase()+props.role.substring(1)}s</th>
+                    <th colSpan="3" className = "title-tables-admin">{props.type[0].toUpperCase()+props.type.substring(1)}</th>
                 </tr> 
             </thead>   
             <tbody>   
-            {employees.map((user) => (
-                <tr key={user.id} className="employees-row">
-                    <td className='celd-email'>{user.email}</td>
+            {products.map((product) => (
+                <tr key={product.id} className="employees-row">
+                    <td className='celd-email'>{product.name}</td>
                     <td className='celd-edit'><button className="btns-tables-edit">Edit</button></td>
                     <td className='celd-delete'><button className="btns-tables-delete">Delete</button></td>            
                 </tr>   
@@ -47,7 +47,7 @@ const ListEmployees = (props) => {
     );
 };
 
-export default ListEmployees;
+export default ListProducts;
 
 
 // AdminView.propTypes = {

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import PropTypes from 'prop-types';
 import LogoWall from "../wall/LogoWall";
 import ListEmployees from "./ListEmployees";
+import ListProducts from "./ListProducts";
 const AdminView = (props) => {
 
     const navigate = useNavigate()
@@ -23,10 +24,24 @@ const AdminView = (props) => {
                 setSelectedOptionsAdmin = {props.setSelectedOptionsAdmin} 
                 setOptionCreate = { props.setOptionCreate }   
             />
-            <BtnCreateElement optionCreate ={ props.optionCreate }/>
+            
             <CgClose  className="icon-close-status" onClick={handleClick}/>
-            <div>
-                {(props.selectedOptionsAdmin === 'employees') ? (<ListEmployees/>) : ('')}
+            <div className="container-tables">
+                {(props.selectedOptionsAdmin === 'employees') ? (
+                    <>
+                        <BtnCreateElement optionCreate ={ props.optionCreate } setShowFormUser = {props.setShowFormUser}/>
+                        <ListEmployees role = {'admin'}/>
+                        <ListEmployees role = {'chef'}/>
+                        <ListEmployees role = {'waiter'}/>
+                    </>
+                ) 
+                : (
+                    <>
+                        <BtnCreateElement optionCreate ={ props.optionCreate }/>
+                        <ListProducts type = {'breakfast'}/>
+                        <ListProducts type = {'lunch'}/>
+                    </>
+                )}
             </div>
         </>
     );
