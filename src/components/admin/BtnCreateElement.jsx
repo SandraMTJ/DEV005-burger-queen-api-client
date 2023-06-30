@@ -3,7 +3,7 @@ const BtnCreateElement = (props) => {
     const handleClick = () => {
         if(props.optionCreate === 'employee'){
             props.setShowFormUser(true)
-        } else(props.optionCreate === 'product') {
+        } else {
             props.setShowFormProduct(true)
         }   
     }

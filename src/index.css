@@ -47,7 +47,7 @@
   height: 420px;
 }
 
-.input-login, .input-new-employee,.select-role{
+.input-login{
   font-size: 35px;
   width: 380px;
   height: 90px;
@@ -55,7 +55,21 @@
   padding: 10px 20px 10px 60px;
   margin: 20px;
 }
+.input-new-employee, .input-new-product, .select-type, .select-role{
+  font-size: 35px;
+  width: 100%;
+  height: 100%;
+  max-height: 90px;
+  border-radius: 15px;
+  padding: 10px 20px 10px 60px;
+  margin: 20px 0;
+}
 
+.container-input-new-product, .container-input-new-employee{
+  width: 80%;
+  height: 15%;
+  margin: 10px;
+}
 .error-message{
   display: flex;
   font-weight: bold;
@@ -74,7 +88,7 @@
   border: 2px solid white;
   font-weight: bold;
   border-radius: 15px;
-  margin-top: 20px;
+  margin-top: 25px;
   height: 60px;
   padding: 40px 60px;
   display:flex;
@@ -88,10 +102,16 @@
 
 }
 
-.email-icon, .password-icon, .burger-icon{
+.email-icon, .password-icon{
   font-size: 30px;
   position: absolute;
   margin: 50px 40px;
+}
+
+.icon-form{
+  font-size: 35px;
+  position: absolute;
+  margin: 50px 3%;
 }
 
 /* NavBar */
@@ -359,7 +379,7 @@
   flex-direction: column;
   align-items: center;
 }  
-.section-new-employee{
+.section-new-employee, .section-new-product{
   justify-content: center;
   position: relative;
 }
@@ -663,32 +683,34 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 80%;
+  height: 70vh;
+  justify-content: center;
 }
 
-.new-employee-title{
+.new-employee-title, .new-product-title{
   position: absolute;
   top:0;
 }
 
-.select-role option {
+.select-role option, .select-type option {
   font-size: 20px;
 }
 .arrow-icon{
   position: absolute;
   font-size: 45px;
-  top: 33%;
-  right: 9%;
+  top: 40%;
+  right: 2%;
 }
-.select-role{
+.container-input-new-product, .container-input-new-employee{
+  position: relative;
+}
+.select-role, .select-type{
   -webkit-appearance: none; /* Oculta la flecha en navegadores webkit */
   -moz-appearance: none; /* Oculta la flecha en navegadores Gecko */
   appearance: none; /* Oculta la flecha en otros navegadores */
 }
-.select-container{
-  position: relative;
-}
-
-@media (min-width: 835px) {
+@media (min-width: 850px) {
   .login-container{  
     width: 100%; 
     display: flex;
@@ -803,6 +825,16 @@
   .btn-option-create{
     position: absolute;
     top: 5%;
+  }
+  .input-new-employee, .input-new-product, .select-type, .select-role{
+    margin: 2% 0;
+  }
+
+  .icon-form{
+    top: -10%;
+  }
+  .form-new-employee, .form-new-product{
+    width: 60%;
   }
   
 }

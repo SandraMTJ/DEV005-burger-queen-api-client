@@ -4,22 +4,29 @@ import FormNewUser from "../components/admin/FormNewUser.jsx";
 import FormNewProduct from "../components/admin/FormNewProduct.jsx";
 import { useState } from "react";
 import PropTypes from 'prop-types';
+import LogoWall from "../components/wall/LogoWall.jsx";
 
 const Admin = (props) => {    
     const [selectedOptionsAdmin, setSelectedOptionsAdmin] = useState('employees');  
     const [optionCreate, setOptionCreate] = useState('employee');
     const [showFormUser, setShowFormUser] = useState(false);
     const [showFormProduct, setShowFormProduct] = useState(false);
+    const [showModalConfirm, setShowModalConfirm] = useState(false);
     let componentToRender;
 
     if(showFormUser){
        componentToRender = (
-            <FormNewUser setShowFormUser = {setShowFormUser}/>
-        
+            <>
+                <LogoWall/>
+                <FormNewUser setShowFormUser = {setShowFormUser}/>
+            </>         
        ) 
     } else if (showFormProduct){
         componentToRender = (
-            <FormNewProduct setShowFormProduct = {setShowFormProduct} />
+            <>
+                <LogoWall/>
+                <FormNewProduct setShowFormProduct = {setShowFormProduct} />
+            </>
         )
     }else {
         componentToRender = (
@@ -33,6 +40,8 @@ const Admin = (props) => {
             setShowFormUser = {setShowFormUser}
             showFormProduct = {showFormProduct}
             setShowFormProduct = {setShowFormProduct}
+            setShowModalConfirm = {setShowModalConfirm}
+            showModalConfirm = {showModalConfirm}
             /> 
         )
     }

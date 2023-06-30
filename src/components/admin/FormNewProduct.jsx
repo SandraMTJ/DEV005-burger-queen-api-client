@@ -1,5 +1,5 @@
 import { CgClose } from "react-icons/cg";
-import { HiOutlineUsers } from 'react-icons/hi';
+import { CiViewList, CiImageOn } from 'react-icons/ci';
 import {MdKeyboardArrowDown, MdAttachMoney} from 'react-icons/md';
 import { IoFastFoodOutline } from 'react-icons/io5';
 import { useForm } from 'react-hook-form';
@@ -17,7 +17,13 @@ const FormNewProduct = (props) => {
 
     // Manejar el envío del formulario y hacer la solicitud de la api para iniciar sesión
     const onSubmit = (data) => {
-        
+        const newData = {
+            name : data.name,
+            type: data.type,
+            price: data.price,
+            image: data.image,
+            qty: 1
+        }
         //Solicitud a la api para crear usuario
 
         fetch('http://localhost:8080/products',{
@@ -27,11 +33,11 @@ const FormNewProduct = (props) => {
             // Se envía token de autorización
             'Authorization': `Bearer ${token}`,
             },
-            body: JSON.stringify(data)
+            body: JSON.stringify(newData)
         })
         .then((res) => {        
             if (res.status === 400) {
-                setError('email', { type: 'invalid', message: 'Email already exists' });          
+                setError('name', { type: 'invalid', message: 'Product already exists' });          
             } else{
                 handleClickClose();
             }
@@ -54,48 +60,56 @@ const FormNewProduct = (props) => {
                 <h1 className="new-product-title">New product</h1> 
                 <form className="form-new-product" onSubmit={handleSubmit(onSubmit)}> 
                     
-                    <div>           
-                        <IoFastFoodOutline className="burger-icon" />   
+                    <div className="container-input-new-product">           
+                        <IoFastFoodOutline className="icon-form" />   
                         <input
-                            {...register('email', {
-                                required: 'Email required',
-                                pattern: {
-                                value: /^\S+@\S+$/i,
-                                message: 'Invalid email'
-                                }
+                            {...register('name', {
+                                required: 'Name required',
                             })}
                             type="text"
-                            className="input-new-employee"
-                            id="email"
-                            placeholder="Email"
+                            className="input-new-product"
+                            id="name"
+                            placeholder="Name"
                             />     
-                        {errors.email && <p className="error-message">{errors.email.message}</p>}                  
+                        {errors.name && <p className="error-message">{errors.name.message}</p>}                  
                     </div>  
-                    <div className="select-container">  
-                        <HiOutlineUsers className="email-icon"/>
+                    <div className="container-input-new-product">  
+                        <CiViewList className="icon-form"/>
                         <select defaultValue={selectedType} {...register('type', { required: 'Type is required' })} className = "select-type">
-                            <option value="" disabled>Type</option>
+                            <option value=""  disabled>Type</option>
                             <option value="breakfast">Breakfast</option>
-                            <option value="lunch">Lunch - Dinner</option>
-                           
+                            <option value="lunch">Lunch - Dinner</option>                           
                         </select>
                         <MdKeyboardArrowDown className="arrow-icon"/>
                         {errors.role && <p className="error-message">{errors.role.message}</p>}1
                     </div>        
-                    <div>  
-                        <MdAttachMoney className="price-icon" />
+                    <div className="container-input-new-product">  
+                        <MdAttachMoney className="icon-form" />
                         <input
                             {...register('price', { 
                                 required: 'Price required',
+                             })}
+                            type="number"
+                            className="input-new-product"
+                            id="price"
+                            placeholder="Price"
+                        />
+                        {errors.price && <p className="error-message">{errors.price.message}</p>}                        
+                    </div>
+                    <div className="container-input-new-product">  
+                        <CiImageOn className="icon-form" />
+                        <input
+                            {...register('image', { 
+                                required: 'Image required',
                                 
                              })}
                             type="text"
-                            className="input-new-employee"
-                            id="password"
-                            placeholder="Password"
+                            className="input-new-product"
+                            id="image"
+                            placeholder="Image URL"
                         />
-                        {errors.password && <p className="error-message">{errors.password.message}</p>}                        
-                    </div>     
+                        {errors.image && <p className="error-message">{errors.image.message}</p>}                        
+                    </div>          
 
                     <button type="submit" className="submit-btn">Create</button>
                 </form>        

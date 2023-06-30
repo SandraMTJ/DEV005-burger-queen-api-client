@@ -53,10 +53,10 @@ const FormNewUser = (props) => {
                 <CgClose className="icon-close-form-user" onClick = {handleClickClose}/>
                 <h1 className="new-employee-title">New employee</h1> 
                 <form className="form-new-employee" onSubmit={handleSubmit(onSubmit)}> 
-                    <div className="select-container">  
-                        <HiOutlineUsers className="email-icon"/>
+                    <div className="container-input-new-employee">  
+                        <HiOutlineUsers className="icon-form"/>
                         <select defaultValue={selectedRole} {...register('role', { required: 'Role is required' })} className = "select-role">
-                            <option value="" disabled>Role</option>
+                            <option value=""  disabled>Role</option>
                             <option value="admin">Admin</option>
                             <option value="waiter">Waiter</option>
                             <option value="chef">Chef</option>
@@ -64,8 +64,8 @@ const FormNewUser = (props) => {
                         <MdKeyboardArrowDown className="arrow-icon"/>
                         {errors.role && <p className="error-message">{errors.role.message}</p>}1
                     </div> 
-                    <div>           
-                        <AiOutlineMail className="email-icon" />   
+                    <div className="container-input-new-employee">           
+                        <AiOutlineMail className="icon-form" />   
                         <input
                             {...register('email', {
                                 required: 'Email required',
@@ -82,8 +82,8 @@ const FormNewUser = (props) => {
                         {errors.email && <p className="error-message">{errors.email.message}</p>}                  
                     </div>  
             
-                    <div>  
-                        <AiOutlineLock className="password-icon" />
+                    <div className="container-input-new-employee">  
+                        <AiOutlineLock className="icon-form" />
                         <input
                             {...register('password', { 
                                 required: 'Password required',

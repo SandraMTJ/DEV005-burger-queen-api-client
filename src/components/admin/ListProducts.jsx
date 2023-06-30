@@ -1,8 +1,10 @@
 import { useState } from "react";
+import ModalConfirm from "./ModalConfirm";
 
 const ListProducts = (props) => {
 
     const [products, setProducts] = useState([]);
+    const [selectedProduct, setSelectedProduct] = useState(null);
 
     // Llamar al token almacenado
     const token = localStorage.getItem('token');
@@ -23,10 +25,15 @@ const ListProducts = (props) => {
         console.error('API error:', error);
     });
 
+    const handleDelete = (product) => {
+        setSelectedProduct(product);
+        props.setShowModalConfirm('true')
+    }
 
 
     return (
        <>
+        {(props.showModalConfirm ? <ModalConfirm product={selectedProduct} setShowModalConfirm = {props.setShowModalConfirm}/> : '')} 
          <table className="table-employees">
             <thead>
                 <tr>
@@ -38,7 +45,7 @@ const ListProducts = (props) => {
                 <tr key={product.id} className="employees-row">
                     <td className='celd-email'>{product.name}</td>
                     <td className='celd-edit'><button className="btns-tables-edit">Edit</button></td>
-                    <td className='celd-delete'><button className="btns-tables-delete">Delete</button></td>            
+                    <td className='celd-delete'><button className="btns-tables-delete" onClick={() => handleDelete(product)}>Delete</button></td>            
                 </tr>   
                 )) }       
             </tbody>                   
