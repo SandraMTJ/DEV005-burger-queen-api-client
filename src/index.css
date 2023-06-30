@@ -47,13 +47,13 @@
   height: 420px;
 }
 
-.input-login{
+.input-login, .input-new-employee,.select-role{
   font-size: 35px;
   width: 380px;
   height: 90px;
   border-radius: 15px;
-  padding: 10px 0px 10px 60px;
-  margin: 20px
+  padding: 10px 20px 10px 60px;
+  margin: 20px;
 }
 
 .error-message{
@@ -328,7 +328,7 @@
   right: 20px;
 }
 
-.icon-close-order, .icon-close-status{
+.icon-close-order, .icon-close-status, .icon-close-form-user{
   position: absolute;
   top: 13px;
   right: 20px;
@@ -336,7 +336,7 @@
   font-size: 60px;    
 }
 
-.order-title, .status-title{
+.order-title, .status-title, .new-employee-title{
   margin-top: 25px;
   font-size: 45px;
   color:white;
@@ -353,12 +353,16 @@
 .titles-orders-table, .titles-status-table{
   font-size: 30px;
 }
-.section-orders, .section-status{
+.section-orders, .section-status, .section-new-employee{
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }  
+.section-new-employee{
+  justify-content: center;
+  position: relative;
+}
 
 .orders-title-table, .status-title-table{
   width: 90%;
@@ -518,7 +522,7 @@
   align-items: center;
   justify-content: center;
   margin: 15px 0
-
+  
 }
 
 /* Chef view */
@@ -599,6 +603,8 @@
   color: #D68C1C;
   font-weight: bold;
   font-size: 20px;
+  position: absolute;
+  left: 66%;
   box-shadow: inset 3px 3px 3px rgba(255,255,255,.7), inset -2px -2px 3px rgba(0,0,0,.1), 2px 2px 10px rgba(0,0,0,.1);
 }
 
@@ -608,6 +614,80 @@
   margin: 30px;
   padding-right: 5%;
 }
+
+/*Table employees*/
+.container-tables{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 70vh;
+  overflow: auto;
+  position: relative;
+}
+.table-employees{
+  width: 90%;
+  color: white;
+  font-size: 28px;
+  margin: 1%;
+}
+.title-tables-admin{
+  color:#D68C1C;
+  border-bottom: 3px solid white;
+}
+
+.celd-email{
+  width: 60%;
+}
+.celd-edit, .celd-delete{
+  width: 20%;
+  text-align: center;
+  padding-top: 15px;
+}
+.btns-tables-delete, .btns-tables-edit{
+  width: 90%;
+  border-radius: 20px;
+  border: none;
+}
+.btns-tables-edit{
+  background-color: #D68C1C;
+  font-weight: bold;
+}
+.btns-tables-delete{
+  background-color: #640000;
+  color: white;
+}
+
+/*Formulario nuevo empleado*/
+.form-new-employee{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.new-employee-title{
+  position: absolute;
+  top:0;
+}
+
+.select-role option {
+  font-size: 20px;
+}
+.arrow-icon{
+  position: absolute;
+  font-size: 45px;
+  top: 33%;
+  right: 9%;
+}
+.select-role{
+  -webkit-appearance: none; /* Oculta la flecha en navegadores webkit */
+  -moz-appearance: none; /* Oculta la flecha en navegadores Gecko */
+  appearance: none; /* Oculta la flecha en otros navegadores */
+}
+.select-container{
+  position: relative;
+}
+
 @media (min-width: 835px) {
   .login-container{  
     width: 100%; 
@@ -710,4 +790,19 @@
     width: 30vw;
     height: 55vh;
   }
+
+  /* Admin view*/
+
+  .container-tables{
+    width: 70%;
+    height: 70vh;
+    margin-left: 30%;
+    margin-top: 10%;
+  }
+
+  .btn-option-create{
+    position: absolute;
+    top: 5%;
+  }
+  
 }
