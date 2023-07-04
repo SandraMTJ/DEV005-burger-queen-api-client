@@ -8,10 +8,11 @@ const ListEmployees = (props) => {
     const [selectedEmployee, setSelectedEmployee] = useState('');
     const [showModalConfirm, setShowModalConfirm] = useState(false);
 
-    // Llamar al token almacenado
-    const token = localStorage.getItem('token');
+    
 
     useEffect(() => {
+        // Llamar al token almacenado
+        const token = localStorage.getItem('token');
         // Solicitud a la API para traer los usuarios
         fetch('http://localhost:8080/users', {
             headers: {
@@ -67,4 +68,6 @@ export default ListEmployees;
 
 ListEmployees.propTypes = {
     role: PropTypes.string,
+    setShowFormEditUser: PropTypes.string,
+    setSelectedUser: PropTypes.string,
 };

@@ -6,12 +6,10 @@ const ListProducts = (props) => {
     const [selectedProduct, setSelectedProduct] = useState('');
     const [products, setProducts] = useState([]);
     const [showModalConfirm, setShowModalConfirm] = useState(false);
-  
-
-    // Llamar al token almacenado
-    const token = localStorage.getItem('token');
 
     useEffect(() => {
+        // Llamar al token almacenado
+        const token = localStorage.getItem('token');
     
         // Solicitud a la API para traer los productos
         fetch('http://localhost:8080/products', {
@@ -69,4 +67,6 @@ export default ListProducts;
 
 ListProducts.propTypes = {
     type: PropTypes.string,
+    setSelectedProductEdit: PropTypes.func,
+    setShowFormEditProduct: PropTypes.func,
 };

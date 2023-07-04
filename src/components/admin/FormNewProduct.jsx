@@ -37,8 +37,9 @@ const FormNewProduct = (props) => {
         .then((res) => {        
             if (res.status === 400) {
                 setError('name', { type: 'invalid', message: 'Product already exists' });          
-            } else{
-                handleClickClose();
+            } else{                 
+                props.setShowToastify(true);    
+                handleClickClose();                     
             }
         })
         .catch((err) => {
@@ -54,6 +55,7 @@ const FormNewProduct = (props) => {
     
     return (
         <>
+           
             <section className="section-new-product">
                 <CgClose className="icon-close-form-product" onClick = {handleClickClose}/>
                 <h1 className="new-product-title">New product</h1> 
@@ -121,4 +123,5 @@ export default FormNewProduct;
 
 FormNewProduct.propTypes = {
   setShowFormProduct: PropTypes.func,
+  setShowToastify: PropTypes.func,
 };

@@ -5,6 +5,9 @@ import { BiPlusMedical } from 'react-icons/bi';
 import ModalOrder from './wall/ModalOrder';
 import PropTypes from 'prop-types';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 // Contenedor de los productos del menú
 const ProductContainer = (props) => {
   // Creación de estado para almacenar la lista de productos
@@ -12,6 +15,17 @@ const ProductContainer = (props) => {
 
   // Función para añadir productos a la orden
   const onAddProduct = product => {
+    
+    toast.success('Product added successfully', {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+      });
     // Compara el id del producto elegido con los id de los productos presentes en la orden
     // Si el producto ya está, se le añade +1 a la cantidad, si no, se guarda 
 		if (props.allProducts.find(item => item.id === product.id)) {
@@ -30,6 +44,7 @@ const ProductContainer = (props) => {
     props.setTotal(props.total + product.price * product.qty);
 		props.setCountProducts(props.countProducts + product.qty);
 		props.setAllProducts([...props.allProducts, product]);
+
 	};
 
   // Mandamos solicitud a la api para traer todos los productos cada que haya un cambio de elección categoría menú 
@@ -55,20 +70,23 @@ const ProductContainer = (props) => {
   }, [props.selectedMenu]);
 
   return (
-    <section className='section-menu'>
-      <div className="container-products">
-        {products.map(product => (
-          <div key={product.id} className='card-product'>
-            <button className='btn-add-product' onClick={() => onAddProduct(product)}><BiPlusMedical/></button>
-            <span>{product.name}</span>
-            <div className='img-container'>
-              <img src={product.image} alt={product.name} className="product-image" />
+    <>
+      <ToastContainer />
+      <section className='section-menu'>
+        <div className="container-products">
+          {products.map(product => (
+            <div key={product.id} className='card-product'>
+              <button className='btn-add-product' onClick={() => onAddProduct(product)}><BiPlusMedical/></button>
+              <span>{product.name}</span>
+              <div className='img-container'>
+                <img src={product.image} alt={product.name} className="product-image" />
+              </div>
+              <span>${product.price}.00</span>
             </div>
-            <span>${product.price}.00</span>
-          </div>
-        ))}
-      </div>
-    </section>
+          ))}
+        </div>
+      </section>
+    </>
   );
 };
 
