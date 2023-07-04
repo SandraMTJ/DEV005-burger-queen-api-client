@@ -4,6 +4,7 @@ import ModalConfirm from "./ModalConfirm";
 const ListProducts = (props) => {
     const [selectedProduct, setSelectedProduct] = useState('');
     const [products, setProducts] = useState([]);
+    const [showModalConfirm, setShowModalConfirm] = useState(false);
   
 
     // Llamar al token almacenado
@@ -26,17 +27,17 @@ const ListProducts = (props) => {
         .catch(error => {
             console.error('API error:', error);
         });
-    }, []);
+    }, [products]);
 
     const handleDelete = (product) => {
         setSelectedProduct(product);
-        props.setShowModalConfirm(true)
+        setShowModalConfirm(true)
     }
 
 
     return (
        <>
-        {props.showModalConfirm && <ModalConfirm selectedProduct={selectedProduct} setShowModalConfirm={props.setShowModalConfirm} />}
+        {showModalConfirm && <ModalConfirm selectedProduct={selectedProduct} setShowModalConfirm={setShowModalConfirm} />}
          <table className="table-employees">
             <thead>
                 <tr>

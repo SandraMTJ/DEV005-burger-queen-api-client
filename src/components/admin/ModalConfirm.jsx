@@ -12,8 +12,8 @@ const ModalConfirm = (props) => {
     }
 
 
-    const onDelete = (event) => {
-        event.stopPropagation();
+    const onDelete = () => {
+
         // Solicitud a la API para modificar la información de la orden
         fetch(`http://localhost:8080/products/${props.selectedProduct.id}`,{
             method: 'DELETE',
