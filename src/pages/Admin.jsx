@@ -11,7 +11,7 @@ const Admin = (props) => {
     const [optionCreate, setOptionCreate] = useState('employee');
     const [showFormUser, setShowFormUser] = useState(false);
     const [showFormProduct, setShowFormProduct] = useState(false);
-    const [showModalConfirm, setShowModalConfirm] = useState(true);
+    const [showModalConfirm, setShowModalConfirm] = useState(false);
     let componentToRender;
 
     if(showFormUser){
