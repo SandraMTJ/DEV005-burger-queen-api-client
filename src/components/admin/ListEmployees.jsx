@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ListEmployees = (props) => {
 
@@ -7,21 +7,23 @@ const ListEmployees = (props) => {
     // Llamar al token almacenado
     const token = localStorage.getItem('token');
 
-    // Solicitud a la API para traer los usuarios
-    fetch('http://localhost:8080/users', {
-        headers: {
-        'Authorization': `Bearer ${token}`,
-        },
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Filtramos los usuarios y guardamos las que tienen status delivering
-        const fetchEmployees = data.filter(user => user.role === props.role);
-        setEmployees(fetchEmployees);
-    })
-    .catch(error => {
-        console.error('API error:', error);
-    });
+    useEffect(() => {
+        // Solicitud a la API para traer los usuarios
+        fetch('http://localhost:8080/users', {
+            headers: {
+            'Authorization': `Bearer ${token}`,
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Filtramos los usuarios y guardamos las que tienen status delivering
+            const fetchEmployees = data.filter(user => user.role === props.role);
+            setEmployees(fetchEmployees);
+        })
+        .catch(error => {
+            console.error('API error:', error);
+        });
+    }, []);
 
 
 

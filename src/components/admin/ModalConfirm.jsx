@@ -1,27 +1,29 @@
-import { CgClose } from 'react-icons/cg';
+//import { CgClose } from 'react-icons/cg';
 
 const ModalConfirm = (props) => {
-    console.log(props.product)
+    console.log(props.selectedProduct)
+  
     // Llamar al token almacenado
     const token = localStorage.getItem('token');
 
     // Función que maneja el cambio de estado se showModalOrder, para que no se muestre el modal
     const handleClick = () =>{
-
         props.setShowModalConfirm(false)
     }
 
-    const onDelete = () => {
+
+    const onDelete = (event) => {
+        event.stopPropagation();
         // Solicitud a la API para modificar la información de la orden
-        fetch(`http://localhost:8080/products/${props.product.id}`,{
+        fetch(`http://localhost:8080/products/${props.selectedProduct.id}`,{
             method: 'DELETE',
             headers: {
             // Se envía token de autorización
             'Authorization': `Bearer ${token}`,
             }
         })
-        .then(()=> props.setShowModalConfirm(false))
-        .catch((err) => console.log(err))
+        props.setShowModalConfirm(false)
+
     }
 
     return (

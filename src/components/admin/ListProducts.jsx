@@ -1,39 +1,42 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ModalConfirm from "./ModalConfirm";
 
 const ListProducts = (props) => {
-
+    const [selectedProduct, setSelectedProduct] = useState('');
     const [products, setProducts] = useState([]);
-    const [selectedProduct, setSelectedProduct] = useState(null);
+  
 
     // Llamar al token almacenado
     const token = localStorage.getItem('token');
 
-    // Solicitud a la API para traer los productos
-    fetch('http://localhost:8080/products', {
-        headers: {
-        'Authorization': `Bearer ${token}`,
-        },
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Filtramos los usuarios y guardamos las que tienen status delivering
-        const fetchProducts = data.filter(product => product.type === props.type);
-        setProducts(fetchProducts);
-    })
-    .catch(error => {
-        console.error('API error:', error);
-    });
+    useEffect(() => {
+    
+        // Solicitud a la API para traer los productos
+        fetch('http://localhost:8080/products', {
+            headers: {
+            'Authorization': `Bearer ${token}`,
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Filtramos los usuarios y guardamos las que tienen status delivering
+            const fetchProducts = data.filter(product => product.type === props.type);
+            setProducts(fetchProducts);
+        })
+        .catch(error => {
+            console.error('API error:', error);
+        });
+    }, []);
 
     const handleDelete = (product) => {
         setSelectedProduct(product);
-        props.setShowModalConfirm('true')
+        props.setShowModalConfirm(true)
     }
 
 
     return (
        <>
-        {(props.showModalConfirm ? <ModalConfirm product={selectedProduct} setShowModalConfirm = {props.setShowModalConfirm}/> : '')} 
+        {props.showModalConfirm && <ModalConfirm selectedProduct={selectedProduct} setShowModalConfirm={props.setShowModalConfirm} />}
          <table className="table-employees">
             <thead>
                 <tr>

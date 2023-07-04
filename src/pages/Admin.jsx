@@ -42,6 +42,7 @@ const Admin = (props) => {
             setShowFormProduct = {setShowFormProduct}
             setShowModalConfirm = {setShowModalConfirm}
             showModalConfirm = {showModalConfirm}
+
             /> 
         )
     }
