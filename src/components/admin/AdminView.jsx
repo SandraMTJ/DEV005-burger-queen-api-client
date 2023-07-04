@@ -38,7 +38,11 @@ const AdminView = (props) => {
                 : (
                     <>
                         <BtnCreateElement optionCreate ={ props.optionCreate } setShowFormProduct = {props.setShowFormProduct}/>
-                        <ListProducts type = {'breakfast'} setShowModalConfirm = {props.setShowModalConfirm} showModalConfirm = {props.showModalConfirm}/>
+                        <ListProducts 
+                        type = {'breakfast'} 
+                        setShowModalConfirm = {props.setShowModalConfirm} 
+                        showModalConfirm = {props.showModalConfirm}
+                        />
                         <ListProducts type = {'lunch'} setShowModalConfirm = {props.setShowModalConfirm} showModalConfirm = {props.showModalConfirm}/>
                     </>
                 )}
