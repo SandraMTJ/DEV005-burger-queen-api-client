@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ModalConfirm from "./ModalConfirm";
+import PropTypes from 'prop-types';
 
 const ListEmployees = (props) => {
 
@@ -29,9 +30,13 @@ const ListEmployees = (props) => {
     }, [employees]);
 
 
-    const handleDelete = (product) => {
-        setSelectedEmployee(product);
+    const handleDelete = (user) => {
+        setSelectedEmployee(user);
         setShowModalConfirm(true)
+    }
+    const handleEdit = (user) => {
+        props.setSelectedUser(user);
+        props.setShowFormEditUser(true)
     }
 
     return (
@@ -47,7 +52,7 @@ const ListEmployees = (props) => {
             {employees.map((user) => (
                 <tr key={user.id} className="employees-row">
                     <td className='celd-email'>{user.email}</td>
-                    <td className='celd-edit'><button className="btns-tables-edit">Edit</button></td>
+                    <td className='celd-edit'><button className="btns-tables-edit" onClick={() => handleEdit(user)}>Edit</button></td>
                     <td className='celd-delete'><button className="btns-tables-delete" onClick={() => handleDelete(user)}>Delete</button></td>            
                 </tr>   
                 )) }       
@@ -60,8 +65,6 @@ const ListEmployees = (props) => {
 export default ListEmployees;
 
 
-// AdminView.propTypes = {
-//     selectedOptionsAdmin: PropTypes.string,
-//     setSelectedOptionsAdmin: PropTypes.func,
-//     setShowAdminView: PropTypes.func,
-// };
+ListEmployees.propTypes = {
+    role: PropTypes.string,
+};

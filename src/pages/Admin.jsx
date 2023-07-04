@@ -5,12 +5,18 @@ import FormNewProduct from "../components/admin/FormNewProduct.jsx";
 import { useState } from "react";
 import PropTypes from 'prop-types';
 import LogoWall from "../components/wall/LogoWall.jsx";
+import FormEditUser from "../components/admin/FormEditUser.jsx";
+import FormEditProduct from "../components/admin/FormEditProduct.jsx";
 
 const Admin = (props) => {    
     const [selectedOptionsAdmin, setSelectedOptionsAdmin] = useState('employees');  
     const [optionCreate, setOptionCreate] = useState('employee');
     const [showFormUser, setShowFormUser] = useState(false);
     const [showFormProduct, setShowFormProduct] = useState(false);
+    const [showFormEditUser, setShowFormEditUser] = useState(false);
+    const [selectedUser, setSelectedUser] = useState('');
+    const [showFormEditProduct, setShowFormEditProduct] = useState(false);
+    const [selectedProductEdit, setSelectedProductEdit] = useState('');
   
     let componentToRender;
 
@@ -28,6 +34,20 @@ const Admin = (props) => {
                 <FormNewProduct setShowFormProduct = {setShowFormProduct} />
             </>
         )
+    } else if (showFormEditUser){
+        componentToRender = (
+            <>
+                <LogoWall/>
+                <FormEditUser setShowFormEditUser = {setShowFormEditUser} selectedUser = {selectedUser}/>
+            </>
+        )
+    } else if (showFormEditProduct){
+        componentToRender = (
+            <>
+                <LogoWall/>
+                <FormEditProduct setShowFormEditProduct = {setShowFormEditProduct} selectedProductEdit = {selectedProductEdit}/>
+            </>
+        )
     }else {
         componentToRender = (
             <AdminView 
@@ -40,7 +60,10 @@ const Admin = (props) => {
             setShowFormUser = {setShowFormUser}
             showFormProduct = {showFormProduct}
             setShowFormProduct = {setShowFormProduct}
-
+            setShowFormEditUser = {setShowFormEditUser}
+            setSelectedUser = {setSelectedUser}
+            setSelectedProductEdit = {setSelectedProductEdit}
+            setShowFormEditProduct = {setShowFormEditProduct}
             /> 
         )
     }

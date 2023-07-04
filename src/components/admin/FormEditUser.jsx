@@ -3,12 +3,12 @@ import { HiOutlineUsers } from 'react-icons/hi';
 import {MdKeyboardArrowDown} from 'react-icons/md';
 import { AiOutlineLock, AiOutlineMail } from "react-icons/ai";
 import { useForm } from 'react-hook-form';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
-const FormNewUser = (props) => {
-    
-    // Llamado a funciones para formularios
-    const { register, handleSubmit, formState: { errors }, setError } = useForm()
+const FormEditUser = (props) => {
+    console.log(props.selectedUser)
+    // // Llamado a funciones para formularios
+    const { register,  formState: { errors }, handleSubmit } = useForm()
 
     // Obtener token almacenado en localStorage
     const token = localStorage.getItem('token');
@@ -18,8 +18,8 @@ const FormNewUser = (props) => {
         
         //Solicitud a la api para crear usuario
 
-        fetch('http://localhost:8080/users',{
-            method: 'POST',
+        fetch(`http://localhost:8080/users/${props.selectedUser.id}`,{
+            method: 'PATCH',
             headers: {
             'Content-Type': 'application/json',
             // Se envía token de autorización
@@ -27,12 +27,8 @@ const FormNewUser = (props) => {
             },
             body: JSON.stringify(data)
         })
-        .then((res) => {        
-            if (res.status === 400) {
-                setError('email', { type: 'invalid', message: 'Email already exists' });          
-            } else{
-                handleClickClose();
-            }
+        .then(() => {        
+            handleClickClose();
         })
         .catch((err) => {
         console.log(err)
@@ -41,19 +37,19 @@ const FormNewUser = (props) => {
     }
     // Cerrar el formulario
     const handleClickClose = () => {
-        props.setShowFormUser(false)         
+        props.setShowFormEditUser(false)         
     }
 
     
     return (
         <>
             <section className="section-new-employee">
-                <CgClose className="icon-close-form-user" onClick = {handleClickClose}/>
-                <h1 className="new-employee-title">New employee</h1> 
+                <CgClose className="icon-close-form-user"  onClick = {handleClickClose}/>
+                <h1 className="new-employee-title">Edit employee</h1> 
                 <form className="form-new-employee" onSubmit={handleSubmit(onSubmit)}> 
                     <div className="container-input-new-employee">  
                         <HiOutlineUsers className="icon-form"/>
-                        <select defaultValue={''} {...register('role', { required: 'Role is required' })} className = "select-role">
+                        <select defaultValue={props.selectedUser.role} {...register('role', { required: 'Role is required' })} className = "select-role">
                             <option value=""  disabled>Role</option>
                             <option value="admin">Admin</option>
                             <option value="waiter">Waiter</option>
@@ -76,6 +72,7 @@ const FormNewUser = (props) => {
                             className="input-new-employee"
                             id="email"
                             placeholder="Email"
+                            defaultValue = {props.selectedUser.email}
                             />     
                         {errors.email && <p className="error-message">{errors.email.message}</p>}                  
                     </div>  
@@ -98,16 +95,16 @@ const FormNewUser = (props) => {
                         {errors.password && <p className="error-message">{errors.password.message}</p>}                        
                     </div>     
 
-                    <button type="submit" className="submit-btn">Create</button>
+                    <button type="submit" className="submit-btn">Save</button>
                 </form>        
             </section>
         </>
     );
   };
 
-export default FormNewUser;
+export default FormEditUser;
 
 
-FormNewUser.propTypes = {
-    setShowFormUser: PropTypes.func,
-  };
+// FormNewUser.propTypes = {
+//     setShowFormUser: PropTypes.func,
+//   };

@@ -1,4 +1,4 @@
-//import { CgClose } from 'react-icons/cg';
+import PropTypes from 'prop-types';
 
 const ModalConfirm = (props) => {
     console.log(props.selectedItem)
@@ -41,4 +41,9 @@ const ModalConfirm = (props) => {
 
 export default ModalConfirm;
 
+ModalConfirm.propTypes = {
+    selectedItem: PropTypes.string,
+    type: PropTypes.string,
+    setShowModalConfirm: PropTypes.func,
+};
 

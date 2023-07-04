@@ -1,45 +1,35 @@
 import { CgClose } from "react-icons/cg";
-import { CiViewList, CiImageOn } from 'react-icons/ci';
-import {MdKeyboardArrowDown, MdAttachMoney} from 'react-icons/md';
-import { IoFastFoodOutline } from 'react-icons/io5';
+import {MdKeyboardArrowDown} from 'react-icons/md';
 import { useForm } from 'react-hook-form';
-import PropTypes from 'prop-types';
+import { CiViewList, CiImageOn } from 'react-icons/ci';
+import { MdAttachMoney} from 'react-icons/md';
+import { IoFastFoodOutline } from 'react-icons/io5';
+// import PropTypes from 'prop-types';
 
-
-const FormNewProduct = (props) => {
-    
-    // Llamado a funciones para formularios
-    const { register, handleSubmit, formState: { errors }, setError } = useForm()
+const FormEditProduct = (props) => {
+    console.log(props.selectedProductEdit)
+    // // Llamado a funciones para formularios
+    const { register,  formState: { errors }, handleSubmit } = useForm()
 
     // Obtener token almacenado en localStorage
     const token = localStorage.getItem('token');
 
     // Manejar el envío del formulario y hacer la solicitud de la api para iniciar sesión
     const onSubmit = (data) => {
-        const newData = {
-            name : data.name,
-            type: data.type,
-            price: data.price,
-            image: data.image,
-            qty: 1
-        }
+        
         //Solicitud a la api para crear usuario
 
-        fetch('http://localhost:8080/products',{
-            method: 'POST',
+        fetch(`http://localhost:8080/products/${props.selectedProductEdit.id}`,{
+            method: 'PATCH',
             headers: {
             'Content-Type': 'application/json',
             // Se envía token de autorización
             'Authorization': `Bearer ${token}`,
             },
-            body: JSON.stringify(newData)
+            body: JSON.stringify(data)
         })
-        .then((res) => {        
-            if (res.status === 400) {
-                setError('name', { type: 'invalid', message: 'Product already exists' });          
-            } else{
-                handleClickClose();
-            }
+        .then(() => {        
+            handleClickClose();
         })
         .catch((err) => {
         console.log(err)
@@ -48,7 +38,7 @@ const FormNewProduct = (props) => {
     }
     // Cerrar el formulario
     const handleClickClose = () => {
-        props.setShowFormProduct(false)         
+        props.setShowFormEditProduct(false)         
     }
 
     
@@ -56,7 +46,7 @@ const FormNewProduct = (props) => {
         <>
             <section className="section-new-product">
                 <CgClose className="icon-close-form-product" onClick = {handleClickClose}/>
-                <h1 className="new-product-title">New product</h1> 
+                <h1 className="new-product-title">Edit product</h1> 
                 <form className="form-new-product" onSubmit={handleSubmit(onSubmit)}> 
                     
                     <div className="container-input-new-product">           
@@ -69,12 +59,13 @@ const FormNewProduct = (props) => {
                             className="input-new-product"
                             id="name"
                             placeholder="Name"
+                            defaultValue={props.selectedProductEdit.name}
                             />     
                         {errors.name && <p className="error-message">{errors.name.message}</p>}                  
                     </div>  
                     <div className="container-input-new-product">  
                         <CiViewList className="icon-form"/>
-                        <select defaultValue={''} {...register('type', { required: 'Type is required' })} className = "select-type">
+                        <select defaultValue={props.selectedProductEdit.type} {...register('type', { required: 'Type is required' })} className = "select-type">
                             <option value=""  disabled>Type</option>
                             <option value="breakfast">Breakfast</option>
                             <option value="lunch">Lunch - Dinner</option>                           
@@ -92,6 +83,7 @@ const FormNewProduct = (props) => {
                             className="input-new-product"
                             id="price"
                             placeholder="Price"
+                            defaultValue={props.selectedProductEdit.price}
                         />
                         {errors.price && <p className="error-message">{errors.price.message}</p>}                        
                     </div>
@@ -106,6 +98,7 @@ const FormNewProduct = (props) => {
                             className="input-new-product"
                             id="image"
                             placeholder="Image URL"
+                            defaultValue={props.selectedProductEdit.image}
                         />
                         {errors.image && <p className="error-message">{errors.image.message}</p>}                        
                     </div>          
@@ -117,8 +110,9 @@ const FormNewProduct = (props) => {
     );
   };
 
-export default FormNewProduct;
+export default FormEditProduct;
 
-FormNewProduct.propTypes = {
-  setShowFormProduct: PropTypes.func,
-};
+
+// FormNewUser.propTypes = {
+//     setShowFormUser: PropTypes.func,
+//   };

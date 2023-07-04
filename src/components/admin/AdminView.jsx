@@ -30,9 +30,21 @@ const AdminView = (props) => {
                 {(props.selectedOptionsAdmin === 'employees') ? (
                     <>
                         <BtnCreateElement optionCreate ={ props.optionCreate } setShowFormUser = {props.setShowFormUser}/>
-                        <ListEmployees role = {'admin'}/>
-                        <ListEmployees role = {'chef'}/>
-                        <ListEmployees role = {'waiter'}/>
+                        <ListEmployees 
+                            role = {'admin'} 
+                            setShowFormEditUser = {props.setShowFormEditUser} 
+                            setSelectedUser = {props.setSelectedUser}
+                        />
+                        <ListEmployees 
+                            role = {'chef'} 
+                            setShowFormEditUser = {props.setShowFormEditUser} 
+                            setSelectedUser = {props.setSelectedUser}
+                        />
+                        <ListEmployees 
+                            role = {'waiter'} 
+                            setShowFormEditUser = {props.setShowFormEditUser} 
+                            setSelectedUser = {props.setSelectedUser}
+                        />
                     </>
                 ) 
                 : (
@@ -40,9 +52,14 @@ const AdminView = (props) => {
                         <BtnCreateElement optionCreate ={ props.optionCreate } setShowFormProduct = {props.setShowFormProduct}/>
                         <ListProducts 
                         type = {'breakfast'} 
-    
+                        setShowFormEditProduct = {props.setShowFormEditProduct} 
+                        setSelectedProductEdit = {props.setSelectedProductEdit}
                         />
-                        <ListProducts type = {'lunch'} />
+                        <ListProducts 
+                        type = {'lunch'}
+                        setShowFormEditProduct = {props.setShowFormEditProduct} 
+                        setSelectedProductEdit = {props.setSelectedProductEdit}
+                        />
                     </>
                 )}
             </div>
@@ -57,4 +74,8 @@ AdminView.propTypes = {
     selectedOptionsAdmin: PropTypes.string,
     setSelectedOptionsAdmin: PropTypes.func,
     setShowAdminView: PropTypes.func,
+    setOptionCreate: PropTypes.func, 
+    optionCreate: PropTypes.string,
+    setShowFormProduct: PropTypes.func,
+    setShowFormUser: PropTypes.func,
 };
