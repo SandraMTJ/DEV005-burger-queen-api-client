@@ -37,7 +37,7 @@ const ListProducts = (props) => {
 
     return (
        <>
-        {showModalConfirm && <ModalConfirm selectedProduct={selectedProduct} setShowModalConfirm={setShowModalConfirm} />}
+        {showModalConfirm && <ModalConfirm type = {'products'} selectedItem={selectedProduct} setShowModalConfirm={setShowModalConfirm} />}
          <table className="table-employees">
             <thead>
                 <tr>
