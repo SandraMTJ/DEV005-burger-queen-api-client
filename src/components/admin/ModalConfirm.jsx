@@ -24,11 +24,22 @@ const ModalConfirm = (props) => {
 
     }
 
+    let name;
+
+    if(props.type==='products'){
+        name = props.selectedItem.name;
+    } else {
+        name = props.selectedItem.email.substring(0, props.selectedItem.email.indexOf("@"));
+    }
+
     return (
+
+
 
         <div className="background-modal">
             <div className="modal-order">
-                <span> Are you sure you want to delete? </span>
+                <span> Are you sure you want to delete <strong>{name}</strong>?</span>
+                
                 <div className='btns-modal-confirm'>
                     <button className="btn-cancel" onClick={handleClick}>Cancel</button>
                     <button className = "btn-confirm"  onClick={() => onDelete()} >Confirm</button>
