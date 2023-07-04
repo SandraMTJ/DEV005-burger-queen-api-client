@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 
 const ModalConfirm = (props) => {
-    console.log(props.selectedItem)
   
     // Llamar al token almacenado
     const token = localStorage.getItem('token');
@@ -10,7 +9,6 @@ const ModalConfirm = (props) => {
     const handleClick = () =>{
         props.setShowModalConfirm(false)
     }
-
 
     const onDelete = () => {
 
@@ -27,10 +25,11 @@ const ModalConfirm = (props) => {
     }
 
     return (
+
         <div className="background-modal">
             <div className="modal-order">
                 <span> Are you sure you want to delete? </span>
-                <div className='icons-modal-order'>
+                <div className='btns-modal-confirm'>
                     <button className="btn-cancel" onClick={handleClick}>Cancel</button>
                     <button className = "btn-confirm"  onClick={() => onDelete()} >Confirm</button>
                 </div>
@@ -42,7 +41,7 @@ const ModalConfirm = (props) => {
 export default ModalConfirm;
 
 ModalConfirm.propTypes = {
-    selectedItem: PropTypes.string,
+    selectedItem: PropTypes.object,
     type: PropTypes.string,
     setShowModalConfirm: PropTypes.func,
 };

@@ -483,16 +483,19 @@
   background-color: rgba(15, 15, 15, 0.9); ;
 }
 .modal-order{
-  background-color: white;
-  width: 50%;
-  height: 20%;
+  background-color: #504F4F;
+  color: white;
+  width: 60%;
+  height: 30%;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px;
+  border-radius: 15px;
   font-size: 30px;
   position: relative;
   flex-direction: column;
+  padding: 30px;
+  text-align: center;
 }
 .icons-modal-order{
   font-size: 40px;
@@ -709,6 +712,32 @@
   -webkit-appearance: none; /* Oculta la flecha en navegadores webkit */
   -moz-appearance: none; /* Oculta la flecha en navegadores Gecko */
   appearance: none; /* Oculta la flecha en otros navegadores */
+}
+
+/*Modal confirm*/
+.background-modal{
+  height: 100%;
+}
+.btn-cancel, .btn-confirm{
+  width: 40%;
+  border-radius: 25px;
+  border: none;
+  font-size: 25px;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+  margin:10px;
+}
+.btn-confirm{
+  background-color: #640000;
+  color: white;
+}
+.btn-cancel{
+  background-color: #D68C1C;
+  font-weight: bold;
+}
+.btns-modal-confirm{
+  width: 100%;
 }
 @media (min-width: 850px) {
   .login-container{  

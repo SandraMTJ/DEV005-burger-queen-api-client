@@ -31,4 +31,5 @@ export default OptionsAdmin;
 OptionsAdmin.propTypes = {
   selectedOptionsAdmin: PropTypes.string,
   setSelectedOptionsAdmin: PropTypes.func,
+  setOptionCreate: PropTypes.func,
 };

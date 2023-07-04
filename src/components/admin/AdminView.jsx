@@ -6,7 +6,10 @@ import PropTypes from 'prop-types';
 import LogoWall from "../wall/LogoWall";
 import ListEmployees from "./ListEmployees";
 import ListProducts from "./ListProducts";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const AdminView = (props) => {
+
 
     const navigate = useNavigate()
     
@@ -15,6 +18,17 @@ const AdminView = (props) => {
         props.setShowAdminView(false)
         navigate('/')
     }
+
+    toast.success('Product created successfully', {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });     
 
     return (
         <>
@@ -48,7 +62,8 @@ const AdminView = (props) => {
                     </>
                 ) 
                 : (
-                    <>
+                    <>  
+                        {props.showToastify && <ToastContainer />}
                         <BtnCreateElement optionCreate ={ props.optionCreate } setShowFormProduct = {props.setShowFormProduct}/>
                         <ListProducts 
                         type = {'breakfast'} 
@@ -78,4 +93,9 @@ AdminView.propTypes = {
     optionCreate: PropTypes.string,
     setShowFormProduct: PropTypes.func,
     setShowFormUser: PropTypes.func,
+    setSelectedProductEdit: PropTypes.func,
+    setShowFormEditProduct: PropTypes.func,
+    showToastify: PropTypes.bool,
+    setSelectedUser: PropTypes.func,
+    setShowFormEditUser: PropTypes.func,
 };

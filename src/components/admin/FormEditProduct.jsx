@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { CiViewList, CiImageOn } from 'react-icons/ci';
 import { MdAttachMoney} from 'react-icons/md';
 import { IoFastFoodOutline } from 'react-icons/io5';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const FormEditProduct = (props) => {
     console.log(props.selectedProductEdit)
@@ -113,6 +113,7 @@ const FormEditProduct = (props) => {
 export default FormEditProduct;
 
 
-// FormNewUser.propTypes = {
-//     setShowFormUser: PropTypes.func,
-//   };
+FormEditProduct.propTypes = {
+    setShowFormEditProduct: PropTypes.func,
+    selectedProductEdit: PropTypes.object,
+};

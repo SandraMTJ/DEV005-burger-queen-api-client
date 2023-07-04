@@ -3,7 +3,7 @@ import { HiOutlineUsers } from 'react-icons/hi';
 import {MdKeyboardArrowDown} from 'react-icons/md';
 import { AiOutlineLock, AiOutlineMail } from "react-icons/ai";
 import { useForm } from 'react-hook-form';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const FormEditUser = (props) => {
     console.log(props.selectedUser)
@@ -104,7 +104,7 @@ const FormEditUser = (props) => {
 
 export default FormEditUser;
 
-
-// FormNewUser.propTypes = {
-//     setShowFormUser: PropTypes.func,
-//   };
+FormEditUser.propTypes = {
+    selectedUser: PropTypes.object,
+    setShowFormEditUser: PropTypes.func,
+  };
