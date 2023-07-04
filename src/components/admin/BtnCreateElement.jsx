@@ -1,4 +1,4 @@
-
+import PropTypes from 'prop-types';
 const BtnCreateElement = (props) => {
     const handleClick = () => {
         if(props.optionCreate === 'employee'){
@@ -17,3 +17,10 @@ const BtnCreateElement = (props) => {
 };
 
 export default BtnCreateElement;
+
+
+BtnCreateElement.propTypes = {
+    optionCreate: PropTypes.string,
+    setShowFormProduct: PropTypes.func,
+    setShowFormUser: PropTypes.func,
+};

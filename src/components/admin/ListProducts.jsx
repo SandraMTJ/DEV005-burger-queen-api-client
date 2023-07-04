@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ModalConfirm from "./ModalConfirm";
+import PropTypes from 'prop-types';
 
 const ListProducts = (props) => {
     const [selectedProduct, setSelectedProduct] = useState('');
@@ -34,6 +35,11 @@ const ListProducts = (props) => {
         setShowModalConfirm(true)
     }
 
+    const handleEdit = (product) => {
+        props.setSelectedProductEdit(product);
+        props.setShowFormEditProduct(true)
+    }
+
 
     return (
        <>
@@ -48,7 +54,7 @@ const ListProducts = (props) => {
             {products.map((product) => (
                 <tr key={product.id} className="employees-row">
                     <td className='celd-email'>{product.name}</td>
-                    <td className='celd-edit'><button className="btns-tables-edit">Edit</button></td>
+                    <td className='celd-edit'><button className="btns-tables-edit" onClick={() => handleEdit(product)}>Edit</button></td>
                     <td className='celd-delete'><button className="btns-tables-delete" onClick={() => handleDelete(product)}>Delete</button></td>            
                 </tr>   
                 )) }       
@@ -61,8 +67,6 @@ const ListProducts = (props) => {
 export default ListProducts;
 
 
-// AdminView.propTypes = {
-//     selectedOptionsAdmin: PropTypes.string,
-//     setSelectedOptionsAdmin: PropTypes.func,
-//     setShowAdminView: PropTypes.func,
-// };
+ListProducts.propTypes = {
+    type: PropTypes.string,
+};
