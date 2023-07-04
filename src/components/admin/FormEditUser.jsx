@@ -6,7 +6,6 @@ import { useForm } from 'react-hook-form';
 import PropTypes from 'prop-types';
 
 const FormEditUser = (props) => {
-    console.log(props.selectedUser)
     // // Llamado a funciones para formularios
     const { register,  formState: { errors }, handleSubmit } = useForm()
 

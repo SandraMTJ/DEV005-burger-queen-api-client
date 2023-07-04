@@ -103,7 +103,7 @@ const FormEditProduct = (props) => {
                         {errors.image && <p className="error-message">{errors.image.message}</p>}                        
                     </div>          
 
-                    <button type="submit" className="submit-btn">Create</button>
+                    <button type="submit" className="submit-btn">Save</button>
                 </form>        
             </section>
         </>
