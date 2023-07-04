@@ -1,7 +1,7 @@
 //import { CgClose } from 'react-icons/cg';
 
 const ModalConfirm = (props) => {
-    console.log(props.selectedProduct)
+    console.log(props.selectedItem)
   
     // Llamar al token almacenado
     const token = localStorage.getItem('token');
@@ -15,7 +15,7 @@ const ModalConfirm = (props) => {
     const onDelete = () => {
 
         // Solicitud a la API para modificar la información de la orden
-        fetch(`http://localhost:8080/products/${props.selectedProduct.id}`,{
+        fetch(`http://localhost:8080/${props.type}/${props.selectedItem.id}`,{
             method: 'DELETE',
             headers: {
             // Se envía token de autorización

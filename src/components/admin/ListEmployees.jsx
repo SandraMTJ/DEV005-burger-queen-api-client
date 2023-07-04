@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
+import ModalConfirm from "./ModalConfirm";
 
 const ListEmployees = (props) => {
 
     const [employees, setEmployees] = useState([]);
+    const [selectedEmployee, setSelectedEmployee] = useState('');
+    const [showModalConfirm, setShowModalConfirm] = useState(false);
 
     // Llamar al token almacenado
     const token = localStorage.getItem('token');
@@ -23,12 +26,17 @@ const ListEmployees = (props) => {
         .catch(error => {
             console.error('API error:', error);
         });
-    }, []);
+    }, [employees]);
 
 
+    const handleDelete = (product) => {
+        setSelectedEmployee(product);
+        setShowModalConfirm(true)
+    }
 
     return (
        <>
+         {showModalConfirm && <ModalConfirm type = {'users'} selectedItem={selectedEmployee} setShowModalConfirm={setShowModalConfirm} />}
          <table className="table-employees">
             <thead>
                 <tr>
@@ -40,7 +48,7 @@ const ListEmployees = (props) => {
                 <tr key={user.id} className="employees-row">
                     <td className='celd-email'>{user.email}</td>
                     <td className='celd-edit'><button className="btns-tables-edit">Edit</button></td>
-                    <td className='celd-delete'><button className="btns-tables-delete">Delete</button></td>            
+                    <td className='celd-delete'><button className="btns-tables-delete" onClick={() => handleDelete(user)}>Delete</button></td>            
                 </tr>   
                 )) }       
             </tbody>                   
