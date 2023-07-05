@@ -37,8 +37,7 @@ const FormNewProduct = (props) => {
         .then((res) => {        
             if (res.status === 400) {
                 setError('name', { type: 'invalid', message: 'Product already exists' });          
-            } else{                 
-                props.setShowToastify(true);    
+            } else{                   
                 handleClickClose();                     
             }
         })
@@ -123,5 +122,4 @@ export default FormNewProduct;
 
 FormNewProduct.propTypes = {
   setShowFormProduct: PropTypes.func,
-  setShowToastify: PropTypes.func,
 };
