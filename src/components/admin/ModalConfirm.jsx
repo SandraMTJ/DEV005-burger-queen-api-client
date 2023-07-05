@@ -5,14 +5,14 @@ const ModalConfirm = (props) => {
     // Llamar al token almacenado
     const token = localStorage.getItem('token');
 
-    // Función que maneja el cambio de estado se showModalOrder, para que no se muestre el modal
+    // Función que maneja el cambio de estado se showModalConfirm, para que no se muestre el modal
     const handleClick = () =>{
         props.setShowModalConfirm(false)
     }
 
     const onDelete = () => {
 
-        // Solicitud a la API para modificar la información de la orden
+        // Solicitud a la API para eliminar el item seleccionado
         fetch(`http://localhost:8080/${props.type}/${props.selectedItem.id}`,{
             method: 'DELETE',
             headers: {
@@ -24,6 +24,7 @@ const ModalConfirm = (props) => {
 
     }
 
+    // Si es un producto se guarda el nombre en caso contrario con usuario se guarda el email hasta antes del @
     let name;
 
     if(props.type==='products'){

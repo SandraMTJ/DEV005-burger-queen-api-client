@@ -19,7 +19,7 @@ const ListProducts = (props) => {
         })
         .then(response => response.json())
         .then(data => {
-            // Filtramos los usuarios y guardamos las que tienen status delivering
+            // Filtramos los productos según el tipo
             const fetchProducts = data.filter(product => product.type === props.type);
             setProducts(fetchProducts);
         })
@@ -28,11 +28,13 @@ const ListProducts = (props) => {
         });
     }, [products]);
 
+    // Al dar click en botón delete se abre modal y desde allí se le elimina producto
     const handleDelete = (product) => {
         setSelectedProduct(product);
         setShowModalConfirm(true)
     }
 
+    // Al dar click en botón editar se abre formulario para editar producto
     const handleEdit = (product) => {
         props.setSelectedProductEdit(product);
         props.setShowFormEditProduct(true)
@@ -41,6 +43,7 @@ const ListProducts = (props) => {
 
     return (
        <>
+        {/* Si ShowModalConfirm es true se muestra si no, no */}
         {showModalConfirm && <ModalConfirm type = {'products'} selectedItem={selectedProduct} setShowModalConfirm={setShowModalConfirm} />}
          <table className="table-employees">
             <thead>

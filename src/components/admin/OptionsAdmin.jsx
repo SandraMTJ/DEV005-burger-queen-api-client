@@ -4,6 +4,7 @@ const OptionsAdmin = (props) => {
     return (
       <div className="container-options-admin">
         <div className="container-btns-admin">
+          {/* Cuando botón se seleccione se agrega clase selected para que cambie de color a amarillo */}
             <button
              className={`btn-employee ${props.selectedOptionsAdmin === 'employees' ? 'selected' : ''} `}
              onClick={() => {

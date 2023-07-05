@@ -14,7 +14,7 @@ const FormNewProduct = (props) => {
     // Obtener token almacenado en localStorage
     const token = localStorage.getItem('token');
 
-    // Manejar el envío del formulario y hacer la solicitud de la api para iniciar sesión
+    // Manejar el envío del formulario y hacer la solicitud de la api para crear un producto
     const onSubmit = (data) => {
         const newData = {
             name : data.name,
@@ -23,7 +23,7 @@ const FormNewProduct = (props) => {
             image: data.image,
             qty: 1
         }
-        //Solicitud a la api para crear usuario
+        //Solicitud a la api para crear producto
 
         fetch('http://localhost:8080/products',{
             method: 'POST',
@@ -34,6 +34,8 @@ const FormNewProduct = (props) => {
             },
             body: JSON.stringify(newData)
         })
+
+        // Si la Api envia codigo status 400 el producto ya existe
         .then((res) => {        
             if (res.status === 400) {
                 setError('name', { type: 'invalid', message: 'Product already exists' });          

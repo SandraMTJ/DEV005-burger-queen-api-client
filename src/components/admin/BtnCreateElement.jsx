@@ -1,4 +1,6 @@
 import PropTypes from 'prop-types';
+
+// Función del botón crear Empleado o Producto
 const BtnCreateElement = (props) => {
     const handleClick = () => {
         if(props.optionCreate === 'employee'){

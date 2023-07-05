@@ -12,10 +12,10 @@ const FormEditUser = (props) => {
     // Obtener token almacenado en localStorage
     const token = localStorage.getItem('token');
 
-    // Manejar el envío del formulario y hacer la solicitud de la api para iniciar sesión
+    // Manejar el envío del formulario para editar el usuario
     const onSubmit = (data) => {
         
-        //Solicitud a la api para crear usuario
+        //Solicitud a la api para editar usuario por id
 
         fetch(`http://localhost:8080/users/${props.selectedUser.id}`,{
             method: 'PATCH',

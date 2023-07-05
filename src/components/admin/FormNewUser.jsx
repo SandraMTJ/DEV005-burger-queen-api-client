@@ -13,7 +13,7 @@ const FormNewUser = (props) => {
     // Obtener token almacenado en localStorage
     const token = localStorage.getItem('token');
 
-    // Manejar el envío del formulario y hacer la solicitud de la api para iniciar sesión
+    // Manejar el envío del formulario y hacer la solicitud de la api para crear usuario
     const onSubmit = (data) => {
         
         //Solicitud a la api para crear usuario
@@ -27,6 +27,8 @@ const FormNewUser = (props) => {
             },
             body: JSON.stringify(data)
         })
+
+        // Si la Api envia codigo status 400 el usuario ya existe
         .then((res) => {        
             if (res.status === 400) {
                 setError('email', { type: 'invalid', message: 'Email already exists' });          

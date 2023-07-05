@@ -6,19 +6,24 @@ import PropTypes from 'prop-types';
 import LogoWall from "../wall/LogoWall";
 import ListEmployees from "./ListEmployees";
 import ListProducts from "./ListProducts";
+
+
+// Función para vista de Admin
 const AdminView = (props) => {
 
-
+    // Al dar click en close se muestra vista de Wall nos redirige con navigate
     const navigate = useNavigate()
     
-     // Mostrar la vista de admin 
+     
      const handleClick = () =>{
         props.setShowAdminView(false)
         navigate('/')
     }
 
+   
     return (
         <>
+         {/* Mostramos componente con opciones de Admin, botones empleados y productos */}
             <LogoWall/>
             <OptionsAdmin 
                 selectedOptionsAdmin = {props.selectedOptionsAdmin} 
@@ -28,8 +33,10 @@ const AdminView = (props) => {
             
             <CgClose  className="icon-close-status" onClick={handleClick}/>
             <div className="container-tables">
+                {/* Maneja la opción (Employee o Products)  */}
                 {(props.selectedOptionsAdmin === 'employees') ? (
                     <>
+                        {/* Dependiendo de la opción seleccionada (Employee o Products) el boton de crear cambia */}
                         <BtnCreateElement optionCreate ={ props.optionCreate } setShowFormUser = {props.setShowFormUser}/>
                         <ListEmployees 
                             role = {'admin'} 

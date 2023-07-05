@@ -14,10 +14,10 @@ const FormEditProduct = (props) => {
     // Obtener token almacenado en localStorage
     const token = localStorage.getItem('token');
 
-    // Manejar el envío del formulario y hacer la solicitud de la api para iniciar sesión
+    // Manejar el envío del formulario para editar el producto
     const onSubmit = (data) => {
         
-        //Solicitud a la api para crear usuario
+        //Solicitud a la api para editar producto por id
 
         fetch(`http://localhost:8080/products/${props.selectedProductEdit.id}`,{
             method: 'PATCH',

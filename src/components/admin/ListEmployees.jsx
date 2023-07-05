@@ -21,7 +21,7 @@ const ListEmployees = (props) => {
         })
         .then(response => response.json())
         .then(data => {
-            // Filtramos los usuarios y guardamos las que tienen status delivering
+            // Filtramos los usuarios por su role
             const fetchEmployees = data.filter(user => user.role === props.role);
             setEmployees(fetchEmployees);
         })
@@ -30,11 +30,13 @@ const ListEmployees = (props) => {
         });
     }, [employees]);
 
-
+    // // Al dar click en botón delete se abre modal y desde allí se le elimina usuario
     const handleDelete = (user) => {
         setSelectedEmployee(user);
         setShowModalConfirm(true)
     }
+
+    // Al dar click en botón editar se abre formulario para editar usuario
     const handleEdit = (user) => {
         props.setSelectedUser(user);
         props.setShowFormEditUser(true)
