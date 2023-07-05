@@ -17,7 +17,6 @@ const Admin = (props) => {
     const [selectedUser, setSelectedUser] = useState('');
     const [showFormEditProduct, setShowFormEditProduct] = useState(false);
     const [selectedProductEdit, setSelectedProductEdit] = useState('');
-    const [showToastify, setShowToastify] = useState(false)
   
     let componentToRender;
 
@@ -32,7 +31,7 @@ const Admin = (props) => {
         componentToRender = (
             <>
                 <LogoWall/>
-                <FormNewProduct setShowToastify = {setShowToastify} setShowFormProduct = {setShowFormProduct} />
+                <FormNewProduct setShowFormProduct = {setShowFormProduct} />
             </>
         )
     } else if (showFormEditUser){
@@ -65,8 +64,6 @@ const Admin = (props) => {
             setSelectedUser = {setSelectedUser}
             setSelectedProductEdit = {setSelectedProductEdit}
             setShowFormEditProduct = {setShowFormEditProduct}
-            showToastify = {showToastify}
-
             /> 
         )
     }
