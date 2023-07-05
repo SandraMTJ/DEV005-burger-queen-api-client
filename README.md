@@ -1,5 +1,5 @@
 # Burger Queen
-
+![Burger queen](https://github.com/Dev-Mao/DEV005-burger-queen-api-client/blob/Mao/assets_readme/VistasBQ.png?raw=true)
 
 Para ingresar a la aplicación web, utilizarla y verificar su funcionalidad, ingresa a este link: [pendiente](pendiente), con los siguientes datos: 
 
