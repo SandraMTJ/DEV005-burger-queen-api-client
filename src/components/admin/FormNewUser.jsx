@@ -50,7 +50,7 @@ const FormNewUser = (props) => {
     return (
         <>
             <section className="section-new-employee">
-                <CgClose className="icon-close-form-user" onClick = {handleClickClose}/>
+                <CgClose  data-testid="close-icon" className="icon-close-form-user" onClick = {handleClickClose}/>
                 <h1 className="new-employee-title">New employee</h1> 
                 <form className="form-new-employee" onSubmit={handleSubmit(onSubmit)}> 
                     <div className="container-input-new-employee">  

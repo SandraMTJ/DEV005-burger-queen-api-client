@@ -1,6 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen} from '@testing-library/react';
 import FormNewProduct from './FormNewProduct';
 import fetchMock from 'fetch-mock';
+
 
 describe('FormNewProduct', () => {
 
@@ -11,12 +12,11 @@ describe('FormNewProduct', () => {
   });
 
   it('contains all necessary input fields', () => {
-    render(<FormNewProduct />);    
+    render(<FormNewProduct />);
     expect(screen.getByPlaceholderText('Name')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('Price')).toBeInTheDocument();
     expect(screen.getByPlaceholderText('Image URL')).toBeInTheDocument();
-  });  
-
+  });
   afterEach(() => {
     fetchMock.restore();
   });

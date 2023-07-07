@@ -58,7 +58,7 @@ const FormNewProduct = (props) => {
         <>
            
             <section className="section-new-product">
-                <CgClose className="icon-close-form-product" onClick = {handleClickClose}/>
+                <CgClose  data-testid="close-icon" className="icon-close-form-product" onClick = {handleClickClose}/>
                 <h1 className="new-product-title">New product</h1> 
                 <form className="form-new-product" onSubmit={handleSubmit(onSubmit)}> 
                     

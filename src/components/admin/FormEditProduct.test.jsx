@@ -2,7 +2,6 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import FormEditProduct from './FormEditProduct';
 import { vi } from 'vitest';
 import fetchMock from 'fetch-mock';
-
 describe('FormEditProduct', () => {
     // Test para ver si el formulario renderiza
     it('test render form', () => {
@@ -36,7 +35,6 @@ describe('FormEditProduct', () => {
         expect(screen.getByDisplayValue('10')).toBeInTheDocument();
         expect(screen.getByDisplayValue('https://test.com/image.jpg')).toBeInTheDocument();
     });
-
     // Testea que el formulario no se envíe con datos inválidos
     it('test_submit_invalid_inputs', async () => {
         const props = {
@@ -69,16 +67,13 @@ describe('FormEditProduct', () => {
           },
           setShowFormEditProduct: vi.fn()
         };
-      
         render(<FormEditProduct {...props} />);
         fireEvent.click(screen.getByTestId('close-icon')); // Reemplaza 'close-icon' con el valor correcto del atributo data-testid en el ícono
         expect(props.setShowFormEditProduct).toHaveBeenCalledTimes(1);
-    });    
-
+    });
   afterEach(() => {
     fetchMock.restore();
   });
-
   it('submits the form and closes the form', async () => {
     const props = {
       selectedProductEdit: {
@@ -90,19 +85,13 @@ describe('FormEditProduct', () => {
       },
       setShowFormEditProduct: vi.fn(),
     };
-
     // Mock la llamada a la API
     fetchMock.patch(`http://localhost:8080/products/${props.selectedProductEdit.id}`, 200);
-
     render(<FormEditProduct {...props} />);
     fireEvent.submit(screen.getByRole('button', { name: 'Save' }));
-
     // Espera a que la llamada a la API se complete
     await waitFor(() => expect(fetchMock.called()).toBeTruthy());
-
     // Verifica que se haya llamado a la función setShowFormEditProduct
     expect(props.setShowFormEditProduct).toHaveBeenCalledTimes(1);
   });
-      
 })
-

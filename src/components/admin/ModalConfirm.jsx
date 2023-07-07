@@ -42,8 +42,8 @@ const ModalConfirm = (props) => {
                 <span> Are you sure you want to delete <strong>{name}</strong>?</span>
                 
                 <div className='btns-modal-confirm'>
-                    <button className="btn-cancel" onClick={handleClick}>Cancel</button>
-                    <button className = "btn-confirm"  onClick={() => onDelete()} >Confirm</button>
+                    <button className="btn-cancel" data-testid="cancel-button" onClick={handleClick}>Cancel</button>
+                    <button className = "btn-confirm" data-testid="confirm-button" onClick={() => onDelete()} >Confirm</button>
                 </div>
             </div>
         </div>

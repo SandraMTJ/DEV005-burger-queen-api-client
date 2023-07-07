@@ -7,8 +7,10 @@ import OptionsAdmin from './OptionsAdmin';
 import BtnCreateElement from './BtnCreateElement';
 import ListEmployees from './ListEmployees';
 import ListProducts from './ListProducts';
+
 describe("AdminView", () => {
-  // Muestra AdminView sin fallas
+
+  // Muestra AdminView sin fallas  
   it('renders AdminView without crashing', () => {
     render(
       <BrowserRouter>
@@ -38,6 +40,8 @@ describe("AdminView", () => {
           />
         );
     });
+      
+
     // Prueba que se muestre componente ListProducts sin fallas
     it('renders ListProducts component without crashing', () => {
         render(
@@ -59,6 +63,7 @@ describe("AdminView", () => {
         fireEvent.click(getByTestId('close-icon'));
         expect(setShowAdminView).toHaveBeenCalledWith(false);
     });
+
     // Prueba el caso cuando la vista no tiene empleados o productos para mostrar
     it('test no employees or products to display', () => {
         const { getByText } = render(
@@ -71,4 +76,5 @@ describe("AdminView", () => {
         expect(getByText('Chefs')).toBeInTheDocument();
         expect(getByText('Waiters')).toBeInTheDocument();
     });
+
 });

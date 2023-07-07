@@ -13,7 +13,6 @@ describe('ModalConfirm', () => {
         render(<ModalConfirm type='products' selectedItem={selectedItem} />);
         expect(screen.getByText('Test Product')).toBeInTheDocument();
     });
-
     // Tests that ModalConfirm calls setShowModalConfirm(false) when cancel button is clicked
     it('calls setShowModalConfirm(false) on cancel button click', () => {
         const setShowModalConfirm = vi.fn();
