@@ -31,7 +31,7 @@ const AdminView = (props) => {
                 setOptionCreate = { props.setOptionCreate }   
             />
             
-            <CgClose  className="icon-close-status" onClick={handleClick}/>
+            <CgClose data-testid="close-icon" className="icon-close-status" onClick={handleClick}/>
             <div className="container-tables">
                 {/* Maneja la opción (Employee o Products)  */}
                 {(props.selectedOptionsAdmin === 'employees') ? (
