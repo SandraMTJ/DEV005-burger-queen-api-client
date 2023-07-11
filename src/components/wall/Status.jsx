@@ -3,17 +3,13 @@ import { BsSquare, BsCheckSquare } from 'react-icons/bs';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import handleChangeStatus from './handleChangeStatus';
-
-const Status = (props) => { 
-
+const Status = (props) => {
   // Creación de estado para almacenar órdenes listas para entregar
   const [ordersReady, setOrdersReady] = useState([]);
   // Creación de estado para almacenar órdenes entregadas
   const [ordersDelivered, setOrdersDelivered] = useState([]);
-   
   // Llamar al token almacenado
   const token = localStorage.getItem('token');
-
     // Solicitud a la API para traer las órdenes
     fetch('http://localhost:8080/orders', {
       headers: {
@@ -32,30 +28,27 @@ const Status = (props) => {
     .catch(error => {
       console.error('API error:', error);
     });
-
-  
   // Cerrar vista de status
   const handleClick = () => {
     props.setShowStatus(false)
   }
-
-  return (  
-    <>      
-      <CgClose className="icon-close-status" onClick = {handleClick}/> 
+  return (
+    <>
+      <CgClose className="icon-close-status" onClick = {handleClick}/>
       <section className="section-status">
         <h1 className="status-title">Orders status</h1>
         {/* Título de la tabla */}
         <table className="status-title-table">
-          <thead className="titles-status-table">                    
+          <thead className="titles-status-table">
             <tr>
                 <th className='status-celd1' scope="col">Ready to deliver</th>
-                <th className='status-celd3' scope="col">Delivered</th>         
-            </tr>                   
+                <th className='status-celd3' scope="col">Delivered</th>
+            </tr>
           </thead>
         </table>
-        <div className="status-container">         
+        <div className="status-container">
           <table className="status-content-table">
-            <tbody className="container-status"> 
+            <tbody className="container-status">
               {/* Órdenes listas para entregar */}
               <th className="ready-to-deliver-column" scope="col">
                 {/* Si está vacío, muestra mensaje 'No orders' */}
@@ -87,10 +80,9 @@ const Status = (props) => {
                   ))
                 )}
             </th>
-
-            {/* Órdenes entregadas */}  
+            {/* Órdenes entregadas */}
             <th className="delivered-column" scope="col">
-              {/* Si está vacío, muestra mensaje 'No orders' */}            
+              {/* Si está vacío, muestra mensaje 'No orders' */}
               {ordersDelivered.length === 0 ? (
                 <tr className="delivered-row">
                   <td colSpan="5" className='no-orders-message-waiter'>No orders</td>
@@ -118,7 +110,7 @@ const Status = (props) => {
                     </tr>
                   ))
                 )}
-              </th>                                                               
+              </th>
             </tbody>
           </table>
         </div>
@@ -127,7 +119,6 @@ const Status = (props) => {
   );
 };
 export default Status;
-
 Status.propTypes = {
   setShowStatus: PropTypes.func,
 };
