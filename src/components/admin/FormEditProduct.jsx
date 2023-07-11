@@ -19,7 +19,7 @@ const FormEditProduct = (props) => {
         
         //Solicitud a la api para editar producto por id
 
-        fetch(`http://localhost:8080/products/${props.selectedProductEdit.id}`,{
+        fetch(`http://localhost:8080/${props.selectedProductEdit.id}`,{
             method: 'PATCH',
             headers: {
             'Content-Type': 'application/json',
